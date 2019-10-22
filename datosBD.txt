@@ -1,0 +1,4 @@
+driverClassName=com.mysql.cj.jdbc.Driver
+username=hr
+password=hr
+url=jdbc:mysql://localhost/bidaiong1?serverTimezone=UTC

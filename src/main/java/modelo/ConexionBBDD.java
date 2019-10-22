@@ -11,7 +11,7 @@ public class ConexionBBDD {
 	Connection conexion = null;
 	Pool pool = null;
 	
-	public ModificarBBDD() {
+	public ConexionBBDD() {
 		pool = new Pool();
 		conectar();
 	}
@@ -28,5 +28,7 @@ public class ConexionBBDD {
 			System.exit(0);
 		}
 	}
+	
+	
 
 }
