@@ -31,7 +31,7 @@ public class Pool {
     
     public String[] getDatos() {
     	Textos textos = new Textos();
-    	final String NombreFichero = System.getProperty("user.dir") + "\\datosBD.txt";
+    	final String NombreFichero = System.getProperty("user.dir") + "\\ficheros\\datosBD.txt";
     	return textos.cogerDatosDeFichero(NombreFichero);
     }
 }
