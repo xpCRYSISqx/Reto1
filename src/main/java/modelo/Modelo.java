@@ -2,10 +2,10 @@ package modelo;
 
 public class Modelo {
 	
-	public ModificarBBDD modificarBBDD = null;
+	public EscritorBBDD escritorBBDD = null;
 	
 	public Modelo() {
-		modificarBBDD = new ModificarBBDD();
+		escritorBBDD = new EscritorBBDD();
 	}
 
 }

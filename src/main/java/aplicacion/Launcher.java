@@ -12,7 +12,7 @@ public class Launcher {
 		Controlador controlador = new Controlador(vista, modelo);
 		
 		// ESTO ES DE PRUEBA !!
-		int codDepart = modelo.modificarBBDD.insertarDepartamento("Informatica", "Elorrieta");
+		int codDepart = modelo.escritorBBDD.insertarDepartamento("Informatica", "Elorrieta");
 		System.out.println(codDepart);
 	}
 }
