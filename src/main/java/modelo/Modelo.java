@@ -7,10 +7,5 @@ public class Modelo {
 	public Modelo() {
 		modificarBBDD = new ModificarBBDD();
 	}
-	
-	public int insertarDepartamento(String nombre, String localizacion) {
-		int result = modificarBBDD.insertarDepartamento(nombre, localizacion);
-		return result;
-	}
 
 }
