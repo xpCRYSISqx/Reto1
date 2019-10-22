@@ -12,18 +12,15 @@ public class Textos {
 		String[] datos = new String[4];
 		FileReader fileReader = null;
 		BufferedReader buffer = null;
-		
 		try {
 			fileReader = new FileReader(datosBD);
 			buffer = new BufferedReader(fileReader);
 			String linea = "";
 			String clave = "";
 			String dato = "";
-			
 			while ((linea = buffer.readLine()) != null) {
-				clave = linea.substring(0, linea.indexOf(":"));
-				dato = linea.substring(linea.indexOf(":") + 2);
-				
+				clave = linea.substring(0, linea.indexOf("="));
+				dato = linea.substring(linea.indexOf("=") + 1);
 				switch (clave) {
 					case "url": datos[0] = dato; break;
 					case "database": datos[1] = dato; break;
@@ -32,7 +29,6 @@ public class Textos {
 				}
 			}
 		} catch (Exception e) {
-			//Implementar logger?
 			System.out.println(e.getMessage());
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos",JOptionPane.ERROR_MESSAGE);
 			System.exit(0);
@@ -43,7 +39,6 @@ public class Textos {
 				e2.printStackTrace();
 			}
 		}
-		
 		return datos;
 	}
 }

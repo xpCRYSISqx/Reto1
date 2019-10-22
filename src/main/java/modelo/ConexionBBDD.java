@@ -17,18 +17,27 @@ public class ConexionBBDD {
 	}
 	
 	/**
-	 * Pide una conexion al pool de conexiones y la almacena en el atributo 'conn'
+	 * Pide una conexion al pool de conexiones y la almacena en el atributo 'conexion'
 	 */
-	private void conectar() {
+	protected Connection conectar() {
 		try {
 			conexion = pool.getConnection();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos: error de conexion", JOptionPane.ERROR_MESSAGE);
 			System.exit(0);
 		}
+		return conexion;
 	}
 	
-	
+	protected void desconectar() {
+		if (conexion != null) {
+			try {
+				conexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 }

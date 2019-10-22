@@ -1,5 +1,6 @@
 package modelo;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -31,7 +32,7 @@ public class Pool {
     
     public String[] getDatos() {
     	Textos textos = new Textos();
-    	final String NombreFichero = System.getProperty("user.dir") + "\\ficheros\\datosBD.txt";
+    	String NombreFichero = "ficheros" + File.separator + "datosBD.txt";
     	return textos.cogerDatosDeFichero(NombreFichero);
     }
 }
