@@ -13,6 +13,12 @@ public class Launcher {
 		
 		// ESTO ES DE PRUEBA !!
 		int codDepart = modelo.escritorBBDD.insertarDepartamento("Informatica", "Elorrieta");
-		System.out.println(codDepart);
+		System.out.println("Departamento: " + codDepart);
+		
+		int codCargo = modelo.escritorBBDD.insertarCargo("Director");
+		System.out.println("Cargo: " + codCargo);
+		
+		int codEmpleado = modelo.escritorBBDD.insertarEmpleado("Nombre", "Apellido", 2000, 1, 2, 1, true);
+		System.out.println("Empleado: " + codEmpleado);
 	}
 }

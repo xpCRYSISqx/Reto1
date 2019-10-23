@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -65,11 +64,11 @@ public class EscritorBBDD {
 		return codCargo;
 	}
 	
-	public int insertarEmpleado(String nombre, String apellidos, float sueldo, int codDepart, int codCargo, int codJefe, boolean esJefe, Timestamp fechaAlta) {
+	public int insertarEmpleado(String nombre, String apellidos, float sueldo, int codDepart, int codCargo, int codJefe, boolean esJefe) {
 		Connection conexion = pool.conectar();
 		PreparedStatement stmt = null;
 		ResultSet result = null;
-		String query = "INSERT INTO EMPLEADOS (NOMBRE, LOCALIZACION) VALUES (?, ?)";
+		String query = "INSERT INTO EMPLEADOS (NOMBRE, APELLIDOS, SUELDO, COD_DEPART, COD_CARGO, COD_JEFE, ES_JEFE, FECHA_ALTA) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
 		int codEmpleado = -1;
 		try {
 			stmt = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -80,7 +79,6 @@ public class EscritorBBDD {
 			stmt.setInt(5, codCargo);
 			stmt.setInt(6, codJefe);
 			stmt.setBoolean(7, esJefe);
-			stmt.setTimestamp(8, fechaAlta);
 			stmt.executeUpdate();
 			result = stmt.getGeneratedKeys();
 			result.next();
