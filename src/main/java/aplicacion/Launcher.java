@@ -10,5 +10,9 @@ public class Launcher {
 		Vista vista = new Vista();
 		Modelo modelo = new Modelo();
 		Controlador controlador = new Controlador(vista, modelo);
+		
+		// ESTO ES DE PRUEBA !!
+		int codDepart = modelo.escritorBBDD.insertarDepartamento("Informatica", "Elorrieta");
+		System.out.println(codDepart);
 	}
 }

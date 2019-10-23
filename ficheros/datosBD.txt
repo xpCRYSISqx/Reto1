@@ -1,4 +1,4 @@
-driverClassName=com.mysql.cj.jdbc.Driver
-username=hr
+database=reto1
+user=hr
 password=hr
-url=jdbc:mysql://192.168.101.26/reto1?serverTimezone=UTC
+url=192.168.101.26
