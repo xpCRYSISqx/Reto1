@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<empleados>
+   <empleado>	<!--- DIRECTOR -->
+      <nombre>David</nombre>
+      <apellidos>Navarro</apellidos>
+      <sueldo>3200</sueldo>
+      <cod_depart>1</cod_depart>
+      <cod_cargo>1</cod_cargo>
+      <cod_jefe>0</cod_jefe>
+      <es_jefe>True</es_jefe>
+   </empleado>
+   
+   <empleado>	<!--- SUBDIRECTOR -->
+      <nombre>Ana</nombre>
+      <apellidos>Diaz</apellidos>
+      <sueldo>2800</sueldo>
+      <cod_depart>1</cod_depart>
+      <cod_cargo>2</cod_cargo>
+      <cod_jefe>1</cod_jefe>
+      <es_jefe>True</es_jefe>
+   </empleado>
+   
+   <empleado>		<!--- JEFE DE DEPARTAMENTO -->
+      <nombre>Julian</nombre>
+      <apellidos>Ballesteros</apellidos>
+      <sueldo>2500</sueldo>
+      <cod_depart>2</cod_depart>
+      <cod_cargo>3</cod_cargo>
+      <cod_jefe>1</cod_jefe>
+      <es_jefe>True</es_jefe>
+   </empleado>
+   
+   <empleado>	<!--- PROFESOR -->
+      <nombre>Rosa</nombre>
+      <apellidos>Tebar</apellidos>
+      <sueldo>2100</sueldo>
+      <cod_depart>2</cod_depart>
+      <cod_cargo>4</cod_cargo>
+      <cod_jefe>3</cod_jefe>
+      <es_jefe>False</es_jefe>
+   </empleado>
+   
+   <empleado>	<!--- PROFESOR -->
+      <nombre>Emilian</nombre>
+      <apellidos>Torres</apellidos>
+      <sueldo>2100</sueldo>
+      <cod_depart>2</cod_depart>
+      <cod_cargo>4</cod_cargo>
+      <cod_jefe>3</cod_jefe>
+      <es_jefe>False</es_jefe>
+   </empleado>
+</empleados>

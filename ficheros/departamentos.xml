@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<departamentos>
+   <departamento>
+      <cod_depart>1</cod_depart>
+      <nombre>Dirección</nombre>
+      <localizacion>Elorrieta</localizacion>
+   </departamento>
+   
+    <departamento>
+      <cod_depart>2</cod_depart>
+      <nombre>Informática</nombre>
+      <localizacion>Errekamari</localizacion>
+   </departamento>
+</departamentos>
