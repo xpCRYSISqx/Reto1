@@ -41,7 +41,7 @@ public class LectorArchivos {
 	public String leerArchivoCSV(String nombreArchivo) {
 		CSVReader reader = null;
 		String resultado = "";
-		String path = "biblioteca" + File.separator + nombreArchivo; //films_score.csv
+		String path = "ficheros" + File.separator + nombreArchivo; //films_score.csv
 		try {
 			reader = new CSVReader(new FileReader(path));
 			String[] nextLine=null;
@@ -63,7 +63,7 @@ public class LectorArchivos {
 	}
 	
 	public String leerArchivoXML(String nombreArchivo) {	
-		String filePath = "biblioteca" + File.separator + nombreArchivo; //books.xml
+		String filePath = "ficheros" + File.separator + nombreArchivo; //books.xml
         File xmlFile = new File(filePath);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder;
