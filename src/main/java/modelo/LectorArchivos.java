@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.swing.JFrame;
@@ -62,38 +63,67 @@ public class LectorArchivos {
 		return resultado;
 	}
 	
-	public String leerArchivoXML(String nombreArchivo) {	
-		String filePath = "ficheros" + File.separator + nombreArchivo; //books.xml
+	public ArrayList<Departamento> leerDepartamentoXML(String nombreArchivo) {	
+		String filePath = "ficheros" + File.separator + nombreArchivo;
         File xmlFile = new File(filePath);
+        ArrayList<Departamento> departamentos = new ArrayList();
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder;
-        String root = "";
         try {
             dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
             doc.getDocumentElement().normalize();
-            root = "Root element: " + doc.getDocumentElement().getNodeName() + "\n";
-            root += "----------------------------\n";
             NodeList nodeList = doc.getElementsByTagName("book");
             for (int i = 0; i < nodeList.getLength(); i++) {
         		Node nNode = nodeList.item(i);
-        		root += "Current Element: " + nNode.getNodeName() + "\n";
+        		Departamento departamento = new Departamento();
         		if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-
+        			
         			Element eElement = (Element) nNode;
 
-        			root += "Title: " + eElement.getElementsByTagName("author").item(0).getTextContent() + "\n";
-        			root += "Title: " + eElement.getElementsByTagName("title").item(0).getTextContent() + "\n";
-        			root += "Genre: " + eElement.getElementsByTagName("genre").item(0).getTextContent() + "\n";
-        			root += "Price: " + eElement.getElementsByTagName("price").item(0).getTextContent() + "\n";
-        			root += "Publish Date: " + eElement.getElementsByTagName("publish_date").item(0).getTextContent() + "\n";
-        			root += "Description: " + eElement.getElementsByTagName("description").item(0).getTextContent() + "\n";
-        			root += "----------------------------\n";
+        			departamento.setCodDepartamento(Integer.parseInt(eElement.getElementsByTagName("cod_depart").item(0).getTextContent()));
+        			departamento.setNombre(eElement.getElementsByTagName("nombre").item(0).getTextContent());
+        			departamento.setLocalizacion(eElement.getElementsByTagName("localizacion").item(0).getTextContent());
         		}
+        		departamentos.add(departamento);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return root;
+        return departamentos;
+	}
+	
+	public ArrayList<Empleado> leerEmpleadoXML(String nombreArchivo) {	
+		String filePath = "ficheros" + File.separator + nombreArchivo;
+        File xmlFile = new File(filePath);
+        ArrayList<Empleado> empleados = new ArrayList();
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder;
+        try {
+            dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(xmlFile);
+            doc.getDocumentElement().normalize();
+            NodeList nodeList = doc.getElementsByTagName("book");
+            for (int i = 0; i < nodeList.getLength(); i++) {
+        		Node nNode = nodeList.item(i);
+        		Empleado empleado = new Empleado();
+        		if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+        			
+        			Element eElement = (Element) nNode;
+        			
+        			empleado.setNombre(eElement.getElementsByTagName("nombre").item(0).getTextContent());
+        			empleado.setApellidos(eElement.getElementsByTagName("apellidos").item(0).getTextContent());
+        			empleado.setSueldo(Integer.parseInt(eElement.getElementsByTagName("sueldo").item(0).getTextContent()));
+        			empleado.setCodDepartamento(Integer.parseInt(eElement.getElementsByTagName("cod_depart").item(0).getTextContent()));
+        			empleado.setCodCargo(Integer.parseInt(eElement.getElementsByTagName("cod_cargo").item(0).getTextContent()));
+        			empleado.setCodJefe(Integer.parseInt(eElement.getElementsByTagName("cod_jefe").item(0).getTextContent()));
+        			empleado.setEsJefe(Boolean.parseBoolean(eElement.getElementsByTagName("es_jefe").item(0).getTextContent()));
+        		}
+        		empleados.add(empleado);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return empleados;
 	}
 }
