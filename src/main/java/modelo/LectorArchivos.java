@@ -50,10 +50,11 @@ public class LectorArchivos {
 			while ((nextLine = reader.readNext()) != null) {
 				Cargo cargo = new Cargo();
 				if(vuelta != 0) {
-					//cargo.setCodCargo(nextLine(0));
-					
+					cargo.setCodCargo(Integer.parseInt(nextLine[0]));
+					cargo.setNombre(nextLine[1]);
 				}
-				
+				vuelta++;
+				cargos.add(cargo);
 			}
 		} catch (Exception e) {
 			//Excepción que corresponda
