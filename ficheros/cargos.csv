@@ -1,3 +1,5 @@
-"Index, ""cod_depart"", ""nombre"", ""localizacion"""
-" 1, ""Dirección"", ""Elorrieta"""
-" 2,""Informática"",""Errekamari"""
+"cod_cargo", "nombre"
+1,"Director"
+2,"Subdirector"
+3,"Jefe de departamento"
+4,"Profesor"
