@@ -66,21 +66,19 @@ public class LectorArchivos {
 	public ArrayList<Departamento> leerDepartamentoXML(String nombreArchivo) {	
 		String filePath = "ficheros" + File.separator + nombreArchivo;
         File xmlFile = new File(filePath);
-        ArrayList<Departamento> departamentos = new ArrayList();
+        ArrayList<Departamento> departamentos = new ArrayList<Departamento>();
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder;
         try {
             dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
             doc.getDocumentElement().normalize();
-            NodeList nodeList = doc.getElementsByTagName("book");
+            NodeList nodeList = doc.getElementsByTagName("departamento");
             for (int i = 0; i < nodeList.getLength(); i++) {
         		Node nNode = nodeList.item(i);
         		Departamento departamento = new Departamento();
         		if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-        			
         			Element eElement = (Element) nNode;
-
         			departamento.setCodDepartamento(Integer.parseInt(eElement.getElementsByTagName("cod_depart").item(0).getTextContent()));
         			departamento.setNombre(eElement.getElementsByTagName("nombre").item(0).getTextContent());
         			departamento.setLocalizacion(eElement.getElementsByTagName("localizacion").item(0).getTextContent());
@@ -96,14 +94,14 @@ public class LectorArchivos {
 	public ArrayList<Empleado> leerEmpleadoXML(String nombreArchivo) {	
 		String filePath = "ficheros" + File.separator + nombreArchivo;
         File xmlFile = new File(filePath);
-        ArrayList<Empleado> empleados = new ArrayList();
+        ArrayList<Empleado> empleados = new ArrayList<Empleado>();
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder;
         try {
             dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
             doc.getDocumentElement().normalize();
-            NodeList nodeList = doc.getElementsByTagName("book");
+            NodeList nodeList = doc.getElementsByTagName("empleado");
             for (int i = 0; i < nodeList.getLength(); i++) {
         		Node nNode = nodeList.item(i);
         		Empleado empleado = new Empleado();
