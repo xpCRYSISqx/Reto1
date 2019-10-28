@@ -22,7 +22,7 @@ import com.opencsv.CSVReader;
 public class LectorArchivos {
 	
 	public String leerArchivoTXT(String nombreArchivo) {
-		String path = "ficheros" + File.separator + nombreArchivo;;
+		String path = "ficheros" + File.separator + nombreArchivo;
 		BufferedReader buffer = null;
 		String resultado = "";
 		try {
@@ -39,15 +39,16 @@ public class LectorArchivos {
 		return resultado;
 	}
 	
-	public String leerArchivoCSV(String nombreArchivo) {
+	public ArrayList<Cargo> leerCargosCSV(String nombreArchivo) {
 		CSVReader reader = null;
-		String resultado = "";
-		String path = "ficheros" + File.separator + nombreArchivo; //films_score.csv
+		ArrayList<Cargo> cargos = new ArrayList();
+		String path = "ficheros" + File.separator + nombreArchivo;
 		try {
 			reader = new CSVReader(new FileReader(path));
 			String[] nextLine=null;
 			while ((nextLine = reader.readNext()) != null) {
-				System.out.println(Arrays.toString(nextLine));
+				Cargo cargo = new Cargo();
+				
 			}
 		} catch (Exception e) {
 			//Excepción que corresponda
@@ -60,7 +61,7 @@ public class LectorArchivos {
 				}
 			} 
 		}
-		return resultado;
+		return cargos;
 	}
 	
 	public ArrayList<Departamento> leerDepartamentoXML(String nombreArchivo) {	

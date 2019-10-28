@@ -1,6 +1,11 @@
 package aplicacion;
 
+import java.util.ArrayList;
+
 import controlador.Controlador;
+import modelo.Cargo;
+import modelo.Departamento;
+import modelo.LectorArchivos;
 import modelo.Modelo;
 import vista.Vista;
 
