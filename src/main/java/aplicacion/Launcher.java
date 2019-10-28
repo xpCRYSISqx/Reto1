@@ -3,14 +3,10 @@ package aplicacion;
 import java.util.ArrayList;
 
 import controlador.Controlador;
-<<<<<<< HEAD
 import modelo.Cargo;
 import modelo.Departamento;
 import modelo.LectorArchivos;
-=======
-import modelo.Departamento;
 import modelo.Empleado;
->>>>>>> 8991a38468f3bad83d9ee26f4bac22005a1a90c9
 import modelo.Modelo;
 import vista.Vista;
 
