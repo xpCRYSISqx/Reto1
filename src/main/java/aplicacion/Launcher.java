@@ -3,9 +3,14 @@ package aplicacion;
 import java.util.ArrayList;
 
 import controlador.Controlador;
+<<<<<<< HEAD
 import modelo.Cargo;
 import modelo.Departamento;
 import modelo.LectorArchivos;
+=======
+import modelo.Departamento;
+import modelo.Empleado;
+>>>>>>> 8991a38468f3bad83d9ee26f4bac22005a1a90c9
 import modelo.Modelo;
 import vista.Vista;
 
@@ -16,14 +21,30 @@ public class Launcher {
 		Modelo modelo = new Modelo();
 		Controlador controlador = new Controlador(vista, modelo);
 		
+		
 		// ESTO ES DE PRUEBA !!
-		int codDepart = modelo.escritorBBDD.insertarDepartamento("Informatica", "Elorrieta");
-		System.out.println("Departamento: " + codDepart);
 		
-		int codCargo = modelo.escritorBBDD.insertarCargo("Director");
-		System.out.println("Cargo: " + codCargo);
+		ArrayList<Departamento> departamentos = modelo.lectorArchivos.leerDepartamentoXML("departamentos.xml");
+		for(int i = 0; i < departamentos.size(); i++) {
+			Departamento depart = departamentos.get(i);
+			if (!modelo.lectorBBDD.comprobarDepartamento(depart.getNombre(), depart.getLocalizacion())) {
+				modelo.escritorBBDD.insertarDepartamento(depart.getNombre(), depart.getLocalizacion());
+				System.out.println("Insertando departamento " + depart.getNombre());
+			} else {
+				System.out.println("El departamento " + depart.getNombre() + " ya existe en la base de datos");
+			}
+		}
 		
-		int codEmpleado = modelo.escritorBBDD.insertarEmpleado("Nombre", "Apellido", 2000, 1, 2, 1, true);
-		System.out.println("Empleado: " + codEmpleado);
+		ArrayList<Empleado> empleados = modelo.lectorArchivos.leerEmpleadoXML("empleados.xml");
+		for(int i = 0; i < empleados.size(); i++) {
+			Empleado empleado = empleados.get(i);
+			if (!modelo.lectorBBDD.comprobarEmpleado(empleado.getNombre(), empleado.getApellidos())) {
+				modelo.escritorBBDD.insertarEmpleado(empleado.getNombre(), empleado.getApellidos(), empleado.getSueldo(), empleado.getCodDepartamento(), empleado.getCodCargo(), empleado.getCodJefe(), empleado.getEsJefe());
+				System.out.println("Insertando empleado " + empleado.getNombre());
+			} else {
+				System.out.println("El empleado " + empleado.getNombre() + " ya existe en la base de datos");
+			}
+		}
+		
 	}
 }
