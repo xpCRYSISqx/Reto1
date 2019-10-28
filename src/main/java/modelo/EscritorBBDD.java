@@ -2,8 +2,8 @@ package modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 
 import javax.swing.JFrame;
@@ -11,86 +11,98 @@ import javax.swing.JOptionPane;
 
 public class EscritorBBDD {
 	
+	Modelo modelo = null;
 	PoolConexiones pool = null;
 	
-	public EscritorBBDD() {
-		pool = PoolConexiones.getPool();
+	public EscritorBBDD(Modelo modelo) {
+		this.modelo = modelo;
+		this.pool = modelo.pool;
 	}
 	
-	public int insertarDepartamento(String nombre, String localizacion) {
+	/**
+	 * 
+	 * @param codDepart
+	 * @param nombre
+	 * @param localizacion
+	 */
+	public void insertarDepartamento(int codDepart, String nombre, String localizacion) {
 		Connection conexion = pool.conectar();
 		PreparedStatement stmt = null;
-		ResultSet result = null;
-		String query = "INSERT INTO DEPARTAMENTOS (NOMBRE, LOCALIZACION) VALUES (?, ?)";
-		int codDepart = -1;
+		String query = "INSERT INTO DEPARTAMENTOS (COD_DEPART, NOMBRE, LOCALIZACION) VALUES (?, ?, ?)";
 		try {
 			stmt = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			stmt.setString(1, nombre);
-			stmt.setString(2, localizacion);
+			stmt.setInt(1, codDepart);
+			stmt.setString(2, nombre);
+			stmt.setString(3, localizacion);
 			stmt.executeUpdate();
-			result = stmt.getGeneratedKeys();
-			result.next();
-			codDepart = result.getInt(1);
 		} catch (SQLException e) {
 //			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
-			System.exit(0);
+//			System.exit(0);
 		} finally {
 			pool.desconectar();
 		}
-		return codDepart;
 	}
 	
-	public int insertarCargo(String nombre) {
+	/**
+	 * 
+	 * @param codCargo
+	 * @param nombre
+	 */
+	public void insertarCargo(int codCargo, String nombre) {
 		Connection conexion = pool.conectar();
 		PreparedStatement stmt = null;
-		ResultSet result = null;
-		String query = "INSERT INTO CARGOS (NOMBRE) VALUES (?)";
-		int codCargo = -1;
+		String query = "INSERT INTO CARGOS (COD_CARGO, NOMBRE) VALUES (?, ?)";
 		try {
 			stmt = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			stmt.setString(1, nombre);
+			stmt.setInt(1, codCargo);
+			stmt.setString(2, nombre);
 			stmt.executeUpdate();
-			result = stmt.getGeneratedKeys();
-			result.next();
-			codCargo = result.getInt(1);
 		} catch (SQLException e) {
 //			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
-			System.exit(0);
+//			System.exit(0);
 		} finally {
 			pool.desconectar();
 		}
-		return codCargo;
 	}
 	
-	public int insertarEmpleado(String nombre, String apellidos, float sueldo, int codDepart, int codCargo, int codJefe, boolean esJefe) {
+	/**
+	 * 
+	 * @param codEmpleado
+	 * @param nombre
+	 * @param apellidos
+	 * @param sueldo
+	 * @param codDepart
+	 * @param codCargo
+	 * @param codJefe
+	 * @param esJefe
+	 */
+	public void insertarEmpleado(int codEmpleado, String nombre, String apellidos, float sueldo, int codDepart, int codCargo, Integer codJefe, boolean esJefe) {
 		Connection conexion = pool.conectar();
 		PreparedStatement stmt = null;
-		ResultSet result = null;
-		String query = "INSERT INTO EMPLEADOS (NOMBRE, APELLIDOS, SUELDO, COD_DEPART, COD_CARGO, COD_JEFE, ES_JEFE, FECHA_ALTA) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
-		int codEmpleado = -1;
+		String query = "INSERT INTO EMPLEADOS (COD_EMPLE, NOMBRE, APELLIDOS, SUELDO, COD_DEPART, COD_CARGO, COD_JEFE, ES_JEFE, FECHA_ALTA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+		if (codJefe == 0) {
+			codJefe = null;
+		}
 		try {
 			stmt = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			stmt.setString(1, nombre);
-			stmt.setString(2, apellidos);
-			stmt.setFloat(3, sueldo);
-			stmt.setInt(4, codDepart);
-			stmt.setInt(5, codCargo);
-			stmt.setInt(6, codJefe);
-			stmt.setBoolean(7, esJefe);
+			stmt.setInt(1, codEmpleado);
+			stmt.setString(2, nombre);
+			stmt.setString(3, apellidos);
+			stmt.setFloat(4, sueldo);
+			stmt.setInt(5, codDepart);
+			stmt.setInt(6, codCargo);
+			stmt.setObject(7, codJefe, java.sql.Types.INTEGER);
+			stmt.setBoolean(8, esJefe);
 			stmt.executeUpdate();
-			result = stmt.getGeneratedKeys();
-			result.next();
-			codEmpleado = result.getInt(1);
 		} catch (SQLException e) {
 //			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
-			System.exit(0);
+//			System.exit(0);
 		} finally {
 			pool.desconectar();
 		}
-		return codEmpleado;
 	}
 
 }

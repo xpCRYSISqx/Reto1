@@ -2,14 +2,18 @@ package modelo;
 
 public class Modelo {
 	
+	public LectorArchivos lectorArchivos = null;
+	public PoolConexiones pool = null;
+	public ResultSetConverter converter = null;
 	public EscritorBBDD escritorBBDD = null;
 	public LectorBBDD lectorBBDD = null;
-	public LectorArchivos lectorArchivos = null;
 	
 	public Modelo() {
-		escritorBBDD = new EscritorBBDD();
-		lectorBBDD = new LectorBBDD();
 		lectorArchivos = new LectorArchivos();
+		pool = PoolConexiones.getPool(this);
+		converter = new ResultSetConverter();
+		escritorBBDD = new EscritorBBDD(this);
+		lectorBBDD = new LectorBBDD(this);
 	}
 
 }

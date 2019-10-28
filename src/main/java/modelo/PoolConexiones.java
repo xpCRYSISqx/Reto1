@@ -1,6 +1,5 @@
 package modelo;
 
-import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -15,14 +14,16 @@ public class PoolConexiones {
 	private static PoolConexiones pool;
 	private BasicDataSource dataSource;
 	private Connection conexion = null;
+	Modelo modelo = null;
 		
-	private PoolConexiones() {
+	private PoolConexiones(Modelo modelo) {
+		this.modelo = modelo;
 		crearPoolConexiones();
 	}
 	
-	public static PoolConexiones getPool() {
+	public static PoolConexiones getPool(Modelo modelo) {
 		if (pool == null){
-			pool = new PoolConexiones();
+			pool = new PoolConexiones(modelo);
 		}
 		return pool;
 	}
@@ -45,7 +46,7 @@ public class PoolConexiones {
 		try {
 			conexion = dataSource.getConnection();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+//			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos: error de conexion", JOptionPane.ERROR_MESSAGE);
 			System.exit(0);
 		}
@@ -60,7 +61,9 @@ public class PoolConexiones {
 			try {
 				conexion.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+//				e.printStackTrace();
+				JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos: error de desconexion", JOptionPane.ERROR_MESSAGE);
+				System.exit(0);
 			}
 		}
 	}
@@ -70,8 +73,7 @@ public class PoolConexiones {
 	 * @return
 	 */
     private String[] getDatos() {
-    	Textos textos = new Textos();
-    	String NombreFichero = "ficheros" + File.separator + "datosBD.txt";
-    	return textos.cogerDatosDeFichero(NombreFichero);
+//    	System.out.println("Prueba");
+    	return modelo.lectorArchivos.leerDatosConexion("datosBD.txt");
     }
 }
