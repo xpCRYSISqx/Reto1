@@ -3,14 +3,10 @@ package aplicacion;
 import java.util.ArrayList;
 
 import controlador.Controlador;
-<<<<<<< HEAD
 import modelo.Cargo;
-import modelo.Departamento;
 import modelo.LectorArchivos;
-=======
 import modelo.Departamento;
 import modelo.Empleado;
->>>>>>> 8991a38468f3bad83d9ee26f4bac22005a1a90c9
 import modelo.Modelo;
 import vista.Vista;
 
@@ -35,7 +31,7 @@ public class Launcher {
 			}
 		}
 		
-		ArrayList<Empleado> empleados = modelo.lectorArchivos.leerEmpleadoXML("empleados.xml");
+		/*ArrayList<Empleado> empleados = modelo.lectorArchivos.leerEmpleadoXML("empleados.xml");
 		for(int i = 0; i < empleados.size(); i++) {
 			Empleado empleado = empleados.get(i);
 			if (!modelo.lectorBBDD.comprobarEmpleado(empleado.getNombre(), empleado.getApellidos())) {
@@ -44,7 +40,9 @@ public class Launcher {
 			} else {
 				System.out.println("El empleado " + empleado.getNombre() + " ya existe en la base de datos");
 			}
-		}
+		}*/
+		
+		ArrayList<Cargo> cargo = modelo.lectorArchivos.leerCargosCSV("cargos.csv");
 		
 	}
 }

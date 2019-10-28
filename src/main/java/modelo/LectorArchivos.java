@@ -41,6 +41,7 @@ public class LectorArchivos {
 	
 	public ArrayList<Cargo> leerCargosCSV(String nombreArchivo) {
 		CSVReader reader = null;
+		int vuelta = 0;
 		ArrayList<Cargo> cargos = new ArrayList();
 		String path = "ficheros" + File.separator + nombreArchivo;
 		try {
@@ -48,6 +49,10 @@ public class LectorArchivos {
 			String[] nextLine=null;
 			while ((nextLine = reader.readNext()) != null) {
 				Cargo cargo = new Cargo();
+				if(vuelta != 0) {
+					//cargo.setCodCargo(nextLine(0));
+					
+				}
 				
 			}
 		} catch (Exception e) {
