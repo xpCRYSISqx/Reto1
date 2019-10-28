@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <empleados>
    <empleado>	<!--- DIRECTOR -->
+      <cod_empleado>1</cod_empleado>
       <nombre>David</nombre>
       <apellidos>Navarro</apellidos>
       <sueldo>3200</sueldo>
@@ -9,8 +10,8 @@
       <cod_jefe>0</cod_jefe>
       <es_jefe>True</es_jefe>
    </empleado>
-   
    <empleado>	<!--- SUBDIRECTOR -->
+      <cod_empleado>2</cod_empleado>
       <nombre>Ana</nombre>
       <apellidos>Diaz</apellidos>
       <sueldo>2800</sueldo>
@@ -19,8 +20,8 @@
       <cod_jefe>1</cod_jefe>
       <es_jefe>True</es_jefe>
    </empleado>
-   
    <empleado>		<!--- JEFE DE DEPARTAMENTO -->
+      <cod_empleado>3</cod_empleado>
       <nombre>Julian</nombre>
       <apellidos>Ballesteros</apellidos>
       <sueldo>2500</sueldo>
@@ -29,8 +30,8 @@
       <cod_jefe>1</cod_jefe>
       <es_jefe>True</es_jefe>
    </empleado>
-   
    <empleado>	<!--- PROFESOR -->
+      <cod_empleado>4</cod_empleado>
       <nombre>Rosa</nombre>
       <apellidos>Tebar</apellidos>
       <sueldo>2100</sueldo>
@@ -39,8 +40,8 @@
       <cod_jefe>3</cod_jefe>
       <es_jefe>False</es_jefe>
    </empleado>
-   
    <empleado>	<!--- PROFESOR -->
+      <cod_empleado>5</cod_empleado>
       <nombre>Emilian</nombre>
       <apellidos>Torres</apellidos>
       <sueldo>2100</sueldo>

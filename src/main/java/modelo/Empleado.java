@@ -2,16 +2,25 @@ package modelo;
 
 public class Empleado {
 	
+	private int codEmpleado;
 	private String nombre;
 	private String apellidos;
 	private int sueldo;
 	private int codDepartamento;
 	private int codCargo;
-	private int codJefe;
+	private Integer codJefe;
 	private Boolean esJefe;
 	
 	public Empleado() {
 		
+	}
+
+	public int getCodEmpleado() {
+		return codEmpleado;
+	}
+
+	public void setCodEmpleado(int codEmpleado) {
+		this.codEmpleado = codEmpleado;
 	}
 
 	public String getNombre() {
