@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -21,40 +20,56 @@ import com.opencsv.CSVReader;
 
 public class LectorArchivos {
 	
-	public String leerArchivoTXT(String nombreArchivo) {
-		String path = "ficheros" + File.separator + nombreArchivo;
+	public String[] leerDatosConexion(String nombreArchivo) {
+		String nombreFichero = "ficheros" + File.separator + nombreArchivo;
+		String[] datos = new String[4];
+		String linea, clave, dato = "";
+		FileReader fileReader = null;
 		BufferedReader buffer = null;
-		String resultado = "";
 		try {
-			buffer = new BufferedReader(new FileReader(path));
-			String linea = "";
+			fileReader = new FileReader(nombreFichero);
+			buffer = new BufferedReader(fileReader);
 			while ((linea = buffer.readLine()) != null) {
-				resultado = resultado+linea +"\n";					
+				clave = linea.substring(0, linea.indexOf("="));
+				dato = linea.substring(linea.indexOf("=") + 1);
+				switch (clave) {
+					case "url": datos[0] = dato; break;
+					case "database": datos[1] = dato; break;
+					case "user": datos[2] = dato; break;
+					case "password": datos[3] = dato; break;
+				}
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+//			System.out.println(e.getMessage());
+			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos",JOptionPane.ERROR_MESSAGE);
 			System.exit(0);
+		} finally {
+			try {
+				fileReader.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
-		return resultado;
+		return datos;
 	}
 	
 	public ArrayList<Cargo> leerCargosCSV(String nombreArchivo) {
 		CSVReader reader = null;
 		int vuelta = 0;
-		ArrayList<Cargo> cargos = new ArrayList();
+		ArrayList<Cargo> cargos = new ArrayList<Cargo>();
 		String path = "ficheros" + File.separator + nombreArchivo;
+		String[] nextLine = null;
 		try {
 			reader = new CSVReader(new FileReader(path));
-			String[] nextLine=null;
 			while ((nextLine = reader.readNext()) != null) {
-				Cargo cargo = new Cargo();
+				//La vuelta 0 es cuando lee los encabezados, por eso nos la saltamos
 				if(vuelta != 0) {
+					Cargo cargo = new Cargo();
 					cargo.setCodCargo(Integer.parseInt(nextLine[0]));
 					cargo.setNombre(nextLine[1]);
+					cargos.add(cargo);
 				}
 				vuelta++;
-				cargos.add(cargo);
 			}
 		} catch (Exception e) {
 			//Excepción que corresponda
@@ -112,10 +127,9 @@ public class LectorArchivos {
             for (int i = 0; i < nodeList.getLength(); i++) {
         		Node nNode = nodeList.item(i);
         		Empleado empleado = new Empleado();
-        		if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-        			
+        		if (nNode.getNodeType() == Node.ELEMENT_NODE) {			
         			Element eElement = (Element) nNode;
-        			
+        			empleado.setCodEmpleado(Integer.parseInt(eElement.getElementsByTagName("cod_empleado").item(0).getTextContent()));
         			empleado.setNombre(eElement.getElementsByTagName("nombre").item(0).getTextContent());
         			empleado.setApellidos(eElement.getElementsByTagName("apellidos").item(0).getTextContent());
         			empleado.setSueldo(Integer.parseInt(eElement.getElementsByTagName("sueldo").item(0).getTextContent()));
