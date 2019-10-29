@@ -25,15 +25,15 @@ public class EscritorBBDD {
 	 * @param nombre
 	 * @param localizacion
 	 */
-	public void insertarDepartamento(int codDepart, String nombre, String localizacion) {
+	public void insertarDepartamento(Departamento departamento) {
 		Connection conexion = pool.conectar();
 		PreparedStatement stmt = null;
 		String query = "INSERT INTO DEPARTAMENTOS (COD_DEPART, NOMBRE, LOCALIZACION) VALUES (?, ?, ?)";
 		try {
 			stmt = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			stmt.setInt(1, codDepart);
-			stmt.setString(2, nombre);
-			stmt.setString(3, localizacion);
+			stmt.setInt(1, departamento.getCodDepartamento());
+			stmt.setString(2, departamento.getNombre());
+			stmt.setString(3, departamento.getLocalizacion());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 //			e1.printStackTrace();
@@ -49,14 +49,14 @@ public class EscritorBBDD {
 	 * @param codCargo
 	 * @param nombre
 	 */
-	public void insertarCargo(int codCargo, String nombre) {
+	public void insertarCargo(Cargo cargo) {
 		Connection conexion = pool.conectar();
 		PreparedStatement stmt = null;
 		String query = "INSERT INTO CARGOS (COD_CARGO, NOMBRE) VALUES (?, ?)";
 		try {
 			stmt = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			stmt.setInt(1, codCargo);
-			stmt.setString(2, nombre);
+			stmt.setInt(1, cargo.getCodCargo());
+			stmt.setString(2, cargo.getNombre());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 //			e1.printStackTrace();
@@ -78,23 +78,23 @@ public class EscritorBBDD {
 	 * @param codJefe
 	 * @param esJefe
 	 */
-	public void insertarEmpleado(int codEmpleado, String nombre, String apellidos, float sueldo, int codDepart, int codCargo, Integer codJefe, boolean esJefe) {
+	public void insertarEmpleado(Empleado empleado) {
 		Connection conexion = pool.conectar();
 		PreparedStatement stmt = null;
 		String query = "INSERT INTO EMPLEADOS (COD_EMPLE, NOMBRE, APELLIDOS, SUELDO, COD_DEPART, COD_CARGO, COD_JEFE, ES_JEFE, FECHA_ALTA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())";
-		if (codJefe == 0) {
-			codJefe = null;
+		if (empleado.getCodJefe() == 0) {
+			empleado.setCodJefe((Integer) null);
 		}
 		try {
 			stmt = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			stmt.setInt(1, codEmpleado);
-			stmt.setString(2, nombre);
-			stmt.setString(3, apellidos);
-			stmt.setFloat(4, sueldo);
-			stmt.setInt(5, codDepart);
-			stmt.setInt(6, codCargo);
-			stmt.setObject(7, codJefe, java.sql.Types.INTEGER);
-			stmt.setBoolean(8, esJefe);
+			stmt.setInt(1, empleado.getCodEmpleado());
+			stmt.setString(2, empleado.getNombre());
+			stmt.setString(3, empleado.getApellidos());
+			stmt.setFloat(4, empleado.getSueldo());
+			stmt.setInt(5, empleado.getCodDepartamento());
+			stmt.setInt(6, empleado.getCodCargo());
+			stmt.setObject(7, empleado.getCodJefe(), java.sql.Types.INTEGER);
+			stmt.setBoolean(8, empleado.getEsJefe());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 //			e1.printStackTrace();

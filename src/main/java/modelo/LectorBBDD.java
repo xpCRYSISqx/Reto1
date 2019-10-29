@@ -19,7 +19,7 @@ public class LectorBBDD {
 		this.pool = modelo.pool;
 	}
 	
-	public ArrayList<Departamento> obtenerDepartamento(String nombre, String localizacion) {
+	public ArrayList<Departamento> obtenerDepartamento(Departamento departamento) {
 		Connection conexion = pool.conectar();
 		PreparedStatement stmt = null;
 		ResultSet result = null;
@@ -27,8 +27,8 @@ public class LectorBBDD {
 		String query = "SELECT * FROM DEPARTAMENTOS WHERE NOMBRE = ? AND LOCALIZACION = ?";
 		try {
 			stmt = conexion.prepareStatement(query);
-			stmt.setString(1, nombre);
-			stmt.setString(2, localizacion);
+			stmt.setString(1, departamento.getNombre());
+			stmt.setString(2, departamento.getLocalizacion());
 			result = stmt.executeQuery();
 			departamentos = modelo.converter.convertDepartamentos(result);
 		} catch (SQLException e) {
@@ -41,7 +41,7 @@ public class LectorBBDD {
 		return departamentos;
 	}
 	
-	public ArrayList<Cargo> obtenerCargo(String nombre) {
+	public ArrayList<Cargo> obtenerCargo(Cargo cargo) {
 		Connection conexion = pool.conectar();
 		PreparedStatement stmt = null;
 		ResultSet result = null;
@@ -49,7 +49,7 @@ public class LectorBBDD {
 		String query = "SELECT * FROM CARGOS WHERE NOMBRE = ?";
 		try {
 			stmt = conexion.prepareStatement(query);
-			stmt.setString(1, nombre);
+			stmt.setString(1, cargo.getNombre());
 			result = stmt.executeQuery();
 			cargos = modelo.converter.convertCargos(result);
 		} catch (SQLException e) {
@@ -62,7 +62,7 @@ public class LectorBBDD {
 		return cargos;
 	}
 	
-	public ArrayList<Empleado> obtenerEmpleado(String nombre, String apellidos) {
+	public ArrayList<Empleado> obtenerEmpleado(Empleado empleado) {
 		Connection conexion = pool.conectar();
 		PreparedStatement stmt = null;
 		ResultSet result = null;
@@ -70,8 +70,8 @@ public class LectorBBDD {
 		String query = "SELECT * FROM EMPLEADOS WHERE NOMBRE = ? AND APELLIDOS = ?";
 		try {
 			stmt = conexion.prepareStatement(query);
-			stmt.setString(1, nombre);
-			stmt.setString(2, apellidos);
+			stmt.setString(1, empleado.getNombre());
+			stmt.setString(2, empleado.getApellidos());
 			result = stmt.executeQuery();
 			empleados = modelo.converter.convertEmpleados(result);
 		} catch (SQLException e) {

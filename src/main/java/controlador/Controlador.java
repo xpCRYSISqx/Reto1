@@ -71,9 +71,9 @@ public class Controlador {
 		ArrayList<Departamento> departamentos = modelo.lectorArchivos.leerDepartamentoXML("departamentos.xml");
 		for(int i = 0; i < departamentos.size(); i++) {
 			Departamento depart = departamentos.get(i);
-			ArrayList<Departamento> departamentosBD = modelo.lectorBBDD.obtenerDepartamento(depart.getNombre(), depart.getLocalizacion());
+			ArrayList<Departamento> departamentosBD = modelo.lectorBBDD.obtenerDepartamento(depart);
 			if (departamentosBD.size() == 0) {
-				modelo.escritorBBDD.insertarDepartamento(depart.getCodDepartamento(), depart.getNombre(), depart.getLocalizacion());
+				modelo.escritorBBDD.insertarDepartamento(depart);
 				System.out.println("Insertando departamento " + depart.getNombre());
 			} else {
 				System.out.println("El departamento " + depart.getNombre() + " ya existe en la localizacion " + depart.getLocalizacion());
@@ -84,9 +84,9 @@ public class Controlador {
 		ArrayList<Cargo> cargos = modelo.lectorArchivos.leerCargosCSV("cargos.csv");
 		for(int i = 0; i < cargos.size(); i++) {
 			Cargo cargo = cargos.get(i);
-			ArrayList<Cargo> cargosBD = modelo.lectorBBDD.obtenerCargo(cargo.getNombre());
+			ArrayList<Cargo> cargosBD = modelo.lectorBBDD.obtenerCargo(cargo);
 			if (cargosBD.size() == 0) {
-				modelo.escritorBBDD.insertarCargo(cargo.getCodCargo(), cargo.getNombre());
+				modelo.escritorBBDD.insertarCargo(cargo);
 				System.out.println("Insertando cargo " + cargo.getNombre());
 			} else {
 				System.out.println("El cargo " + cargo.getNombre() + " ya existe ");
@@ -97,9 +97,9 @@ public class Controlador {
 		ArrayList<Empleado> empleados = modelo.lectorArchivos.leerEmpleadoXML("empleados.xml");
 		for(int i = 0; i < empleados.size(); i++) {
 			Empleado empleado = empleados.get(i);
-			ArrayList<Empleado> empleadosBD = modelo.lectorBBDD.obtenerEmpleado(empleado.getNombre(), empleado.getApellidos());
+			ArrayList<Empleado> empleadosBD = modelo.lectorBBDD.obtenerEmpleado(empleado);
 			if (empleadosBD.size() == 0) {
-				modelo.escritorBBDD.insertarEmpleado(empleado.getCodEmpleado(), empleado.getNombre(), empleado.getApellidos(), empleado.getSueldo(), empleado.getCodDepartamento(), empleado.getCodCargo(), empleado.getCodJefe(), empleado.getEsJefe());
+				modelo.escritorBBDD.insertarEmpleado(empleado);
 				System.out.println("Insertando empleado " + empleado.getNombre());
 			} else {
 				System.out.println("El empleado " + empleado.getNombre() + " ya existe en la base de datos");

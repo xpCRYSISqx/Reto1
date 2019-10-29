@@ -15,5 +15,4 @@ public class Launcher extends Application {
 	public void start(Stage primaryStage) {
 		new Controlador(new Modelo(), primaryStage);
 	}
-	
 }
