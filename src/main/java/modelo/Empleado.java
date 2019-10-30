@@ -1,5 +1,7 @@
 package modelo;
 
+import java.sql.Date;
+
 public class Empleado {
 	
 	private int codEmpleado;
@@ -8,8 +10,9 @@ public class Empleado {
 	private int sueldo;
 	private int codDepartamento;
 	private int codCargo;
-	private Integer codJefe;
+	private int codJefe;
 	private Boolean esJefe;
+	private Date fechaAlta;
 	
 	public Empleado() {
 		
@@ -77,6 +80,14 @@ public class Empleado {
 
 	public void setEsJefe(Boolean esJefe) {
 		this.esJefe = esJefe;
+	}
+
+	public Date getFechaAlta() {
+		return fechaAlta;
+	}
+
+	public void setFechaAlta(Date fechaAlta) {
+		this.fechaAlta = fechaAlta;
 	}
 	
 }
