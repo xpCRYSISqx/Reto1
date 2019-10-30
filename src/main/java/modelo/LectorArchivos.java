@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,6 +20,8 @@ import org.w3c.dom.NodeList;
 import com.opencsv.CSVReader;
 
 public class LectorArchivos {
+	
+	EscritorFicheros escritorFicheros = new EscritorFicheros();
 	
 	public String[] leerDatosConexion(String nombreArchivo) {
 		String nombreFichero = "ficheros" + File.separator + nombreArchivo;
@@ -42,12 +45,14 @@ public class LectorArchivos {
 		} catch (Exception e) {
 //			System.out.println(e.getMessage());
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos",JOptionPane.ERROR_MESSAGE);
+			escritorFicheros.crearLog(new Date(), e.toString());
 			System.exit(0);
 		} finally {
 			try {
 				fileReader.close();
 			} catch (Exception e2) {
 				e2.printStackTrace();
+				escritorFicheros.crearLog(new Date(), e2.toString());
 			}
 		}
 		return datos;
@@ -72,6 +77,7 @@ public class LectorArchivos {
 				vuelta++;
 			}
 		} catch (Exception e) {
+			escritorFicheros.crearLog(new Date(), e.toString());
 			//Excepción que corresponda
 		} finally {
 			if (null != reader) {
@@ -79,6 +85,7 @@ public class LectorArchivos {
 					reader.close();
 				} catch (IOException e) {
 					e.printStackTrace();
+					escritorFicheros.crearLog(new Date(), e.toString());
 				}
 			} 
 		}
@@ -109,6 +116,7 @@ public class LectorArchivos {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            escritorFicheros.crearLog(new Date(), e.toString());
         }
         return departamentos;
 	}
@@ -142,6 +150,7 @@ public class LectorArchivos {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            escritorFicheros.crearLog(new Date(), e.toString());
         }
         return empleados;
 	}

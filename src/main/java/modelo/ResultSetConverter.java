@@ -3,8 +3,11 @@ package modelo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ResultSetConverter {
+	
+	EscritorFicheros escritorFicheros = new EscritorFicheros();
 	
 	/**
 	 * 
@@ -22,6 +25,7 @@ public class ResultSetConverter {
 	        }
 		} catch (SQLException e) {
 			e.printStackTrace();
+			escritorFicheros.crearLog(new Date(), e.toString());
 		}
 		return departamentos;
 	}
@@ -41,6 +45,7 @@ public class ResultSetConverter {
 	        }
 		} catch (SQLException e) {
 			e.printStackTrace();
+			escritorFicheros.crearLog(new Date(), e.toString());
 		}
 		return cargos;
 	}
@@ -66,6 +71,7 @@ public class ResultSetConverter {
 	        }
 		} catch (SQLException e) {
 			e.printStackTrace();
+			escritorFicheros.crearLog(new Date(), e.toString());
 		}
 		return empleados;
 	}

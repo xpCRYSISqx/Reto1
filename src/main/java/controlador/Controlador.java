@@ -2,6 +2,7 @@ package controlador;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -12,12 +13,14 @@ import javafx.stage.Stage;
 import modelo.Cargo;
 import modelo.Departamento;
 import modelo.Empleado;
+import modelo.EscritorFicheros;
 import modelo.Modelo;
 
 public class Controlador {
 	
 	public Modelo modelo;
 	public Stage stage;
+	EscritorFicheros escritorFicheros = new EscritorFicheros();
 	
 	public Controlador(Modelo modelo, Stage stage) {
 		this.modelo = modelo;
@@ -62,6 +65,7 @@ public class Controlador {
 			FXML = FXMLLoader.load(getClass().getResource("/vista/" + FXMLLink));
 		} catch (IOException e) {
 			e.printStackTrace();
+			escritorFicheros.crearLog(new Date(), e.toString());
 		}
 		return FXML;
 	}
