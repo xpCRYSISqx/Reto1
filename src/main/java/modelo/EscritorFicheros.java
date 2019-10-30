@@ -90,11 +90,15 @@ public class EscritorFicheros {
 			escritor.println("===================================================================================================================");
 			escritor.println();
 			for(int i = 0; i < cargos.size(); i++) {
-				
+				escritor.println("Descripción: " + cargos.get(i).getNombre());
+				escritor.println("Código del cargo: " + cargos.get(i).getCodCargo());
+				escritor.println("----------------------------------------------------------------------------");
+				escritor.println();
 			}
 		}
 		catch(Exception e){
 			e.printStackTrace();
+			crearLog(new Date(), e.toString());
 		}
 		finally { //Una vez terminado, se cierra el fichero
 			try {
@@ -102,6 +106,7 @@ public class EscritorFicheros {
 			}
 			catch(Exception e) {
 				e.printStackTrace();
+				crearLog(new Date(), e.toString());
 			}
 		}
 	}
