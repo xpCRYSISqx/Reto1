@@ -24,14 +24,14 @@ public class EscritorFicheros {
 			escritor.println("Fecha: " + fecha + " - Motivo del error: " + motivo);
 		}
 		catch(Exception e){
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		finally {
 			try {
 				fichero.close();
 			}
 			catch(Exception e) {
-				System.out.println(e);	
+				e.printStackTrace();
 			}
 		}
 	}
