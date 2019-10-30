@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="900.0" prefWidth="1150.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+   <children>
+      <Text layoutX="201.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codigo de Empleado" wrappingWidth="128.13671875" />
+      <Text layoutX="201.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" wrappingWidth="128.13672497868538" />
+      <Text layoutX="201.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos" wrappingWidth="128.13672497868538" />
+      <Text layoutX="201.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sueldo" wrappingWidth="120.13671875" />
+      <Text layoutX="201.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departamento" wrappingWidth="120.13671875" />
+      <Text layoutX="201.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cargo" wrappingWidth="120.13671875" />
+      <Text layoutX="201.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jefe" wrappingWidth="120.13671875" />
+      <Text layoutX="201.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Es jefe?" wrappingWidth="120.13671875" />
+      <TextField id="codigoEmpleText" layoutX="373.0" layoutY="118.0" />
+      <TextField id="nombreText" layoutX="373.0" layoutY="148.0" />
+      <TextField id="apellidosText" layoutX="373.0" layoutY="178.0" />
+      <TextField id="sueldoText" layoutX="373.0" layoutY="208.0" />
+      <ComboBox id="departComboBox" layoutX="373.0" layoutY="238.0" prefWidth="150.0" />
+      <ComboBox id="cargoComboBox" layoutX="373.0" layoutY="268.0" prefWidth="150.0" />
+      <ComboBox id="jefeComboBox" layoutX="373.0" layoutY="298.0" prefWidth="150.0" />
+      <Button layoutX="1046.0" layoutY="27.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="86.0" text="SALIR" />
+      <Button layoutX="50.0" layoutY="27.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="MENÚ PRINCIPAL" />
+      <RadioButton id="radioButtonNo" layoutX="373.0" layoutY="332.0" mnemonicParsing="false" text="No" />
+      <RadioButton id="radioButtonSi" layoutX="373.0" layoutY="357.0" mnemonicParsing="false" text="Si" />
+   </children>
+</AnchorPane>

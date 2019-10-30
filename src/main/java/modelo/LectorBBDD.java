@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -13,6 +14,7 @@ public class LectorBBDD {
 	
 	Modelo modelo = null;
 	PoolConexiones pool = null;
+	EscritorFicheros escritorFicheros = new EscritorFicheros();
 	
 	public LectorBBDD(Modelo modelo) {
 		this.modelo = modelo;
@@ -34,6 +36,7 @@ public class LectorBBDD {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
+			escritorFicheros.crearLog(new Date(), e.toString());
 			System.exit(0);
 		} finally {
 			pool.desconectar();
@@ -55,6 +58,7 @@ public class LectorBBDD {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
+			escritorFicheros.crearLog(new Date(), e.toString());
 			System.exit(0);
 		} finally {
 			pool.desconectar();
@@ -77,6 +81,7 @@ public class LectorBBDD {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
+			escritorFicheros.crearLog(new Date(), e.toString());
 			System.exit(0);
 		} finally {
 			pool.desconectar();
@@ -97,6 +102,7 @@ public class LectorBBDD {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
+			escritorFicheros.crearLog(new Date(), e.toString());
 			System.exit(0);
 		} finally {
 			pool.desconectar();
@@ -117,6 +123,7 @@ public class LectorBBDD {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
+			escritorFicheros.crearLog(new Date(), e.toString());
 			System.exit(0);
 		} finally {
 			pool.desconectar();
@@ -137,6 +144,7 @@ public class LectorBBDD {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
+			escritorFicheros.crearLog(new Date(), e.toString());
 			System.exit(0);
 		} finally {
 			pool.desconectar();
@@ -157,6 +165,7 @@ public class LectorBBDD {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
+			escritorFicheros.crearLog(new Date(), e.toString());
 			System.exit(0);
 		} finally {
 			pool.desconectar();

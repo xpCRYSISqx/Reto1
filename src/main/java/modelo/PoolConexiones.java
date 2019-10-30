@@ -2,6 +2,7 @@ package modelo;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -15,6 +16,7 @@ public class PoolConexiones {
 	private BasicDataSource dataSource;
 	private Connection conexion = null;
 	Modelo modelo = null;
+	EscritorFicheros escritorFicheros = new EscritorFicheros();
 		
 	private PoolConexiones(Modelo modelo) {
 		this.modelo = modelo;
@@ -48,6 +50,7 @@ public class PoolConexiones {
 		} catch (SQLException e) {
 //			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos: error de conexion", JOptionPane.ERROR_MESSAGE);
+			escritorFicheros.crearLog(new Date(), e.toString());
 			System.exit(0);
 		}
 		return conexion;
@@ -63,6 +66,7 @@ public class PoolConexiones {
 			} catch (SQLException e) {
 //				e.printStackTrace();
 				JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos: error de desconexion", JOptionPane.ERROR_MESSAGE);
+				escritorFicheros.crearLog(new Date(), e.toString());
 				System.exit(0);
 			}
 		}

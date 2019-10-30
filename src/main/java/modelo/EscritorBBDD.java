@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
+import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -13,6 +14,7 @@ public class EscritorBBDD {
 	
 	Modelo modelo = null;
 	PoolConexiones pool = null;
+	EscritorFicheros escritorFicheros = new EscritorFicheros();
 	
 	public EscritorBBDD(Modelo modelo) {
 		this.modelo = modelo;
@@ -38,6 +40,7 @@ public class EscritorBBDD {
 		} catch (SQLException e) {
 //			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
+			escritorFicheros.crearLog(new Date(), e.toString());
 //			System.exit(0);
 		} finally {
 			pool.desconectar();
@@ -61,6 +64,7 @@ public class EscritorBBDD {
 		} catch (SQLException e) {
 //			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
+			escritorFicheros.crearLog(new Date(), e.toString());
 //			System.exit(0);
 		} finally {
 			pool.desconectar();
@@ -99,6 +103,7 @@ public class EscritorBBDD {
 		} catch (SQLException e) {
 //			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
+			escritorFicheros.crearLog(new Date(), e.toString());
 //			System.exit(0);
 		} finally {
 			pool.desconectar();
