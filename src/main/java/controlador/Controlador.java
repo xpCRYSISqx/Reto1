@@ -49,8 +49,14 @@ public class Controlador {
 			Scene scene = new Scene(FXML);
 			stage.setTitle("Aplicacion");
 			stage.setScene(scene);
+			//si ponemos resizable en false hay que añadir primero el setWidth y
+			//setHeight para que no aparezca espacio extra a la derecha y la izquierda
+			stage.setWidth(1150);
+			stage.setHeight(900);
 			stage.setResizable(false);
 			stage.show();
+			FXML.requestFocus();//poner el foco por defecto en la scena en vez de en el primer boton
+			scene.getStylesheets().add("assets/css/styles.css");
 		}
 	}
 	

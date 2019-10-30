@@ -1,0 +1,26 @@
+.fondo-negro {
+	-fx-background-color: #222;
+}
+.fondo-gris {
+	-fx-background-color:  #333;
+}
+.fondo-azul {
+	-fx-background-color:  #00acc1;
+}
+.side-button {
+	-fx-background-radius: 0;
+	-fx-border-width: 0 0 1 0;
+	-fx-border-color: #555;
+	-fx-padding: 0 0 0 70px;
+}
+.side-button:hover {
+	-fx-background-color:  #00acc1;
+}
+.textfield {
+	-fx-background-radius: 0;
+}
+.btn {
+	-fx-background-color:  #00acc1;
+	-fx-background-radius: 0;
+	-fx-padding: 10px 20px;
+}
