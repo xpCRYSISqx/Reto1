@@ -13,21 +13,22 @@ import javafx.stage.Stage;
 import modelo.Cargo;
 import modelo.Departamento;
 import modelo.Empleado;
-import modelo.EscritorFicheros;
 import modelo.Modelo;
 
 public class Controlador {
 	
 	public Modelo modelo;
 	public Stage stage;
-	EscritorFicheros escritorFicheros = new EscritorFicheros();
 	
-	public Controlador(Modelo modelo, Stage stage) {
+	public Controlador() {
+	}
+	
+	public void setModelo(Modelo modelo) {
 		this.modelo = modelo;
+	}
+	
+	public void setStage(Stage stage) {
 		this.stage = stage;
-		cargarArchivos();
-		centrarStage();
-		cambiarScene("Menu.fxml");
 	}
 	
 	/**
@@ -67,16 +68,22 @@ public class Controlador {
 	 */
 	public Parent loadFXML(String FXMLLink) {
 		Parent FXML = null;
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/" + FXMLLink));     
 		try {
-			FXML = FXMLLoader.load(getClass().getResource("/vista/" + FXMLLink));
+			FXML = fxmlLoader.load();
 		} catch (IOException e) {
-			e.printStackTrace();
-			escritorFicheros.crearLog(new Date(), e.toString());
-		}
+			modelo.escritorFicheros.crearLog(new Date(), e.toString());
+		}          
+		Controlador controller = fxmlLoader.<Controlador>getController();
+		controller.setModelo(modelo);
 		return FXML;
 	}
 	
+	/**
+	 * Carga los datos de los archivos si la base de datos esta vacia
+	 */
 	public void cargarArchivos() {
+		
 		//Insertar departmentos leidos del fichero
 		ArrayList<Departamento> departamentos = modelo.lectorArchivos.leerDepartamentoXML("departamentos.xml");
 		for(int i = 0; i < departamentos.size(); i++) {

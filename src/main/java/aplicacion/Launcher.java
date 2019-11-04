@@ -13,6 +13,11 @@ public class Launcher extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
-		new Controlador(new Modelo(), primaryStage);
+		Controlador controlador = new Controlador();
+		controlador.setModelo(new Modelo());
+		controlador.setStage(primaryStage);
+		controlador.cargarArchivos();
+		controlador.centrarStage();
+		controlador.cambiarScene("Menu.fxml");
 	}
 }

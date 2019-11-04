@@ -1,56 +1,41 @@
 package controlador;
 
-import java.io.IOException;
-
 import com.jfoenix.controls.JFXButton;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
-public class MenuControlador {
+public class MenuControlador extends Controlador {
 
     @FXML
-    private AnchorPane cabecera;
+    private AnchorPane cabecera, sidebar, contenido;
 
     @FXML
     private Text logo;
 
     @FXML
-    private AnchorPane sidebar;
-
-    @FXML
-    private JFXButton btnEmpleados;
-
-    @FXML
-    private JFXButton btnDepart;
-
-    @FXML
-    private JFXButton btnInformes;
-
-    @FXML
-    private AnchorPane contenido;
+    private JFXButton btnEmpleados, btnDepart, btnInformes;
 
     @FXML
     void mostrarEmpleados(ActionEvent event) {
+    	// quita la vista actual del panel contenido
 		contenido.getChildren().clear();
-		try {
-			contenido.getChildren().add(FXMLLoader.load(getClass().getResource("/vista/empleados.fxml")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
+		// carga la vista empleados en el panel contenido
+		Parent FXML = loadFXML("empleados.fxml");
+		contenido.getChildren().add(FXML);
     }
     
     @FXML
     void mostrarDepartamentos(ActionEvent event) {
+    	// quita la vista actual del panel contenido
 		contenido.getChildren().clear();
-		try {
-			contenido.getChildren().add(FXMLLoader.load(getClass().getResource("/vista/departamentos.fxml")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		// carga la vista empleados en el panel contenido
+		Parent FXML = loadFXML("departamentos.fxml");
+		contenido.getChildren().add(FXML);
     }
 
     @FXML
