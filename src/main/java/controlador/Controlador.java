@@ -4,10 +4,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
+
+import com.jfoenix.controls.JFXSnackbar;
+import com.jfoenix.controls.JFXSnackbar.SnackbarEvent;
+
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import modelo.Cargo;
@@ -19,6 +26,7 @@ public class Controlador {
 	
 	public Modelo modelo;
 	public Stage stage;
+	private JFXSnackbar snackbar;
 	
 	public Controlador() {
 	}
@@ -122,5 +130,13 @@ public class Controlador {
 				System.out.println("El empleado " + empleado.getNombre() + " ya existe en la base de datos");
 			}
 		}
+	}
+	
+	public void mostrarMensaje(AnchorPane anchorpane, String mensaje) {
+		Text nodo = new Text(mensaje);
+		nodo.setFill(Color.WHITE);
+		snackbar = new JFXSnackbar(anchorpane);
+		snackbar.enqueue(new SnackbarEvent(nodo));
+		snackbar.getStylesheets().setAll("styles.css");
 	}
 }

@@ -23,5 +23,4 @@ public class nuevoDepartControlador {
     void guardar(ActionEvent event) {
 
     }
-
 }
