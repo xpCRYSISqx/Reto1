@@ -2,15 +2,15 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root fx:id="paneBase" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-	<AnchorPane fx:id="card" maxWidth="750.0" minHeight="150.0" prefWidth="600.0">
+<fx:root fx:id="paneBase" styleClass="card-departamento" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+	<AnchorPane fx:id="card" styleClass="fondo-gris">
 	   <children>
 	      <Text fx:id="nombre" fill="WHITE" layoutX="35.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOMBRE Y APELLIDOS">
 	         <font>
@@ -19,15 +19,14 @@
 	      </Text>
 	      <FontAwesomeIconView fill="WHITE" glyphName="MAP_MARKER" layoutX="35.0" layoutY="70.0" size="20" />
 	      <Text fx:id="departamento" fill="WHITE" layoutX="55.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DEPARTAMENTO" />
-         <Label fx:id="descripcion" layoutX="35.0" layoutY="75.0" prefHeight="40.0" prefWidth="390.0" text="Cargo" textFill="WHITE" wrapText="true" />
-         <JFXButton layoutX="5.0" layoutY="5.0" onAction="#verEmpleado" prefHeight="150.0" prefWidth="600.0" ripplerFill="#bbbbbb" style="-fx-background-color: transparent;" text=" " />
+         <Label fx:id="cargo" layoutX="35.0" layoutY="75.0" prefHeight="40.0" prefWidth="390.0" text="Cargo" textFill="WHITE" wrapText="true" />
+         <JFXButton fx:id="cardBtn" onAction="#verEmpleado" prefHeight="150.0" prefWidth="600.0" ripplerFill="#bbbbbb" text=" " />
 	   </children>
 	   <cursor>
 	      <Cursor fx:constant="HAND" />
 	   </cursor>
 	</AnchorPane>
-   <styleClass>
-      <String fx:value="fondo-gris" />
-      <String fx:value="card-departamento" />
-   </styleClass>
+   <padding>
+      <Insets bottom="15.0" />
+   </padding>
 </fx:root>
