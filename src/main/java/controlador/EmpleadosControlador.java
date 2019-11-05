@@ -10,6 +10,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -29,7 +30,11 @@ public class EmpleadosControlador extends Controlador implements Initializable {
 
     @FXML
     void nuevo(ActionEvent event) {
-
+    	// quita la vista actual del panel contenido
+    	contenedor.getChildren().clear();
+    	// carga la vista empleados en el panel contenido
+    	Parent FXML = loadFXML("nuevoEmpleado.fxml");
+    	contenedor.getChildren().add(FXML);
     }
 
 	@Override

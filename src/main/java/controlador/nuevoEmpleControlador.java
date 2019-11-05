@@ -1,7 +1,13 @@
 package controlador;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
@@ -9,7 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import modelo.*;
 
-public class nuevoEmpleControlador extends Controlador{
+public class nuevoEmpleControlador extends Controlador implements Initializable{
 
 	Empleado empleado = new Empleado();
 	
@@ -29,13 +35,13 @@ public class nuevoEmpleControlador extends Controlador{
     private TextField sueldoEmpleText;
 
     @FXML
-    private ComboBox<?> departEmpleComboBox;
+    private ComboBox<Departamento> departEmpleComboBox;
 
     @FXML
-    private ComboBox<?> cargoEmpleComboBox;
+    private ComboBox<Cargo> cargoEmpleComboBox;
 
     @FXML
-    private ComboBox<?> jefeEmpleComboBox;
+    private ComboBox<Empleado> jefeEmpleComboBox;
 
     @FXML
     private RadioButton siEmpleRadioButton;
@@ -55,6 +61,12 @@ public class nuevoEmpleControlador extends Controlador{
 	    	 else
 	    		 this.modelo.escritorBBDD.insertarEmpleado(empleado);
     	 }
+    }
+    
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+    	ObservableList<Departamento> listaDepart = FXCollections.observableArrayList(this.modelo.lectorBBDD.obtenerTodosLosDepartamento());
+    	departEmpleComboBox.setItems(listaDepart);
     }
     
     boolean validarDatos() {
@@ -96,6 +108,6 @@ public class nuevoEmpleControlador extends Controlador{
     		this.mostrarMensaje(panelNuevoEmpleado, "Se debe seleccionar si el empleado es jefe o no");
     		return false;
     	}
-    	return true;	
+    	return true;
     }
 }
