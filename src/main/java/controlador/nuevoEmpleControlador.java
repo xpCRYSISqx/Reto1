@@ -90,10 +90,10 @@ public class nuevoEmpleControlador extends Controlador implements Initializable 
     	
     	// validar codigo
     	if(codigoEmpleText.getText().equals("")) {
-    		this.mostrarMensaje2(panelNuevoEmpleado, "El campo 'codigo' no puede estar vacio");
+    		this.mostrarMensaje2(panelNuevoEmpleado, "El campo 'codigo' no puede estar vacio", 400);
     		return false;
     	} else if(!comprobar.comprobarNumerico(codigoEmpleText.getText())) {
-    		this.mostrarMensaje2(panelNuevoEmpleado, "El campo 'codigo' debe ser un valor numérico");
+    		this.mostrarMensaje2(panelNuevoEmpleado, "El campo 'codigo' debe ser un valor numérico", 400);
     		return false;
     	}
    	 	

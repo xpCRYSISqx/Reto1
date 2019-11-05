@@ -127,7 +127,7 @@ public class MenuControlador extends Controlador implements Initializable {
 			}
 		}
 		
-		mostrarMensaje2(contenido, info);
+		mostrarMensaje2(contenido, info, 600); //anchorpane, texto, anchura
 	}
 
 }

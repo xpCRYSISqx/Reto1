@@ -30,10 +30,8 @@ public class DepartamentosControlador extends Controlador implements Initializab
 
     @FXML
     void nuevo(ActionEvent event) {
-    	// quita la vista actual del panel contenido
+    	Parent FXML = loadFXML("nuevoDepartamento.fxml");
 		contenido.getChildren().clear();
-		// carga la vista empleados en el panel contenido
-		Parent FXML = loadFXML("nuevoDepartamento.fxml");
 		contenido.getChildren().add(FXML);
     }
 
@@ -50,17 +48,7 @@ public class DepartamentosControlador extends Controlador implements Initializab
 	    		Departamento depart = departamentos.get(i);
 	    		
 	    		// crea la tarjeta con la informacion del alojamiento
-	    		CardDepartamento card = new CardDepartamento(depart, (float)(i)/16 + 1F, true);
-	    		
-	    		// añade listener a la tarjeta
-//	    		card.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<Event>(){
-//	    			@Override
-//	    			public void handle(Event event) {
-//	    				Principal.modelo.reserva.setAlojamiento(alojamiento);
-//	    				Principal.aplicacion.CambiarScene("PaneInfo.fxml");
-//	    			}
-//	    		});
-	    		
+	    		CardDepartamento card = new CardDepartamento(depart, (float)(i)/16 + 1F, contenido);
 	    		JFXDepthManager.setDepth(card, 1);
 	    		
 	        	// añade la tarjeta al grid

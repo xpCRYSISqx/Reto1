@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -27,15 +28,16 @@ public class CardDepartamento extends AnchorPane implements Initializable {
     private Label descripcion;
     
     private Departamento departamento;
-    
     private float tAnimacion;
+    private AnchorPane contenido;
     
-	public CardDepartamento(Departamento alojamiento, float tAnimacion, boolean animacionActivada) {
+	public CardDepartamento(Departamento alojamiento, float tAnimacion, AnchorPane contenido) {
 		
 		this.departamento = alojamiento;
 		this.tAnimacion = tAnimacion;
+		this.contenido = contenido;
 		
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/departamento.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/cardDepartamento.fxml"));
 	    fxmlLoader.setRoot(this);
 	    fxmlLoader.setController(this);
 
@@ -45,8 +47,7 @@ public class CardDepartamento extends AnchorPane implements Initializable {
 	        throw new RuntimeException(e);
 	    }
 	    
-	    if(animacionActivada) 
-	    	inizializarAnimacion();
+	    inizializarAnimacion();
 	}
 	
 	@Override
@@ -59,7 +60,15 @@ public class CardDepartamento extends AnchorPane implements Initializable {
 	
 	@FXML
     void verDepartamento(ActionEvent event) {
-    	
+		Parent FXML = null;
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/departamento.fxml"));
+		try {
+			FXML = fxmlLoader.load();
+		} catch (IOException e) {
+//			modelo.escritorFicheros.crearLog(new Date(), e.toString());
+		} 
+    	contenido.getChildren().clear();
+    	contenido.getChildren().add(FXML);
     }
 	
 	/**

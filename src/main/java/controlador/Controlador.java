@@ -14,6 +14,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DialogPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
@@ -98,13 +99,14 @@ public class Controlador {
 		snackbar.setPrefWidth(720.0);
 	}
 	
-	public void mostrarMensaje2(AnchorPane anchorpane, String mensaje) {
+	public void mostrarMensaje2(AnchorPane anchorpane, String mensaje, int width) {
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("Advertencia");
 		alert.setHeaderText(null);
 		alert.setContentText(mensaje);
+		alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 		DialogPane dialogPane = alert.getDialogPane();
-		dialogPane.setPrefWidth(550);
+		dialogPane.setPrefWidth(width);
 		dialogPane.getStylesheets().add("assets/css/styles.css");
 		alert.showAndWait();
 	}

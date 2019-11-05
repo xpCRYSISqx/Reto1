@@ -14,14 +14,14 @@
 	-fx-padding: 0 0 0 70px;
 }
 .side-button:hover {
-	-fx-background-color:  #00acc1;
+	-fx-background-color: #00acc1;
 }
 .textfield {
 	-fx-background-radius: 0;
 }
 .btn {
 	-fx-background-color:  #00acc1;
-	-fx-background-radius: 0;
+	-fx-background-radius: 2px;
 	-fx-padding: 10px 20px;
 }
 
@@ -55,9 +55,10 @@
 }
 
 /* Dialog pane */
-.dialog-pane{
+.dialog-pane {
   -fx-border-width:0px;
   -fx-background-color: #333;
+  -fx-padding: 1.5em;
  }
 
 /**Costumization of The Bar where the buttons are located**/
@@ -67,21 +68,23 @@
 }
 
 .dialog-pane > .content.label {
-   -fx-padding: 1.5em;
+   -fx-padding: 1em 1em 0 1em;
    -fx-background-color: #333;
    -fx-text-fill: #fff;
    -fx-font-size: 15.0px;
 }
 
 /**Costumization of Buttons**/
-.dialog-pane .button{
+.dialog-pane .button {
    -fx-background-color: #00acc1;
    -fx-text-fill: #fff;
    -fx-wrap-text: true;
    -fx-cursor: hand;
+   -fx-background-radius: 2px;
+   -fx-padding: 10px 20px;
  }
 
-.dialog-pane .button:hover{     
+.dialog-pane .button:hover {     
   -fx-background-color: #00acc1;
   -fx-text-fill: #fff;
  }
