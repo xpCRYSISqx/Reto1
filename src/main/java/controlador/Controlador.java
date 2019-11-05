@@ -24,9 +24,10 @@ import modelo.Modelo;
 
 public class Controlador {
 	
-	public Modelo modelo;
-	public Stage stage;
-	private JFXSnackbar snackbar;
+	protected Modelo modelo;
+	protected Stage stage;
+	protected JFXSnackbar snackbar;
+    protected AnchorPane contenido;
 	
 	public Controlador() {
 	}
@@ -37,6 +38,10 @@ public class Controlador {
 	
 	public void setStage(Stage stage) {
 		this.stage = stage;
+	}
+	
+	public void setContent(AnchorPane contenido) {
+		this.contenido = contenido;
 	}
 	
 	/**
@@ -76,12 +81,12 @@ public class Controlador {
 	 */
 	public Parent loadFXML(String FXMLLink) {
 		Parent FXML = null;
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/" + FXMLLink));     
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/" + FXMLLink));
 		try {
 			FXML = fxmlLoader.load();
 		} catch (IOException e) {
 			modelo.escritorFicheros.crearLog(new Date(), e.toString());
-		}          
+		}   
 		Controlador controller = fxmlLoader.<Controlador>getController();
 		controller.setModelo(modelo);
 		return FXML;

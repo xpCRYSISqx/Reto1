@@ -1,4 +1,4 @@
-									package controlador;
+package controlador;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,10 +31,10 @@ public class EmpleadosControlador extends Controlador implements Initializable {
     @FXML
     void nuevo(ActionEvent event) {
     	// quita la vista actual del panel contenido
-    	contenedor.getChildren().clear();
-    	// carga la vista empleados en el panel contenido
-    	Parent FXML = loadFXML("nuevoEmpleado.fxml");
-    	contenedor.getChildren().add(FXML);
+		contenido.getChildren().clear();
+		// carga la vista empleados en el panel contenido
+		Parent FXML = loadFXML("nuevoEmpleado.fxml");
+		contenido.getChildren().add(FXML);
     }
 
 	@Override
