@@ -16,9 +16,9 @@ public class ResultSetConverter {
 	 */
 	public ArrayList<Departamento> convertDepartamentos(ResultSet result) {
 		ArrayList<Departamento> departamentos = new ArrayList<Departamento>();
-		Departamento depart = new Departamento();
 		try {
 			while (result.next()) {
+				Departamento depart = new Departamento();
 				depart.setNombre(result.getString("NOMBRE"));
 				depart.setLocalizacion(result.getString("LOCALIZACION"));
 				departamentos.add(depart);
@@ -37,9 +37,9 @@ public class ResultSetConverter {
 	 */
 	public ArrayList<Cargo> convertCargos(ResultSet result) {
 		ArrayList<Cargo> cargos = new ArrayList<Cargo>();
-		Cargo cargo = new Cargo();
 		try {
 			while (result.next()) {
+				Cargo cargo = new Cargo();
 				cargo.setNombre(result.getString("NOMBRE"));
 				cargos.add(cargo);
 	        }
@@ -57,9 +57,9 @@ public class ResultSetConverter {
 	 */
 	public ArrayList<Empleado> convertEmpleados(ResultSet result) {
 		ArrayList<Empleado> empleados = new ArrayList<Empleado>();
-		Empleado emple = new Empleado();
 		try {
 			while (result.next()) {
+				Empleado emple = new Empleado();
 				emple.setNombre(result.getString("NOMBRE"));
 				emple.setApellidos(result.getString("APELLIDOS"));
 				emple.setSueldo(result.getInt("SUELDO"));
