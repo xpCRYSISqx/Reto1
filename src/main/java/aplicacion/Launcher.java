@@ -16,7 +16,6 @@ public class Launcher extends Application {
 		Controlador controlador = new Controlador();
 		controlador.setModelo(new Modelo());
 		controlador.setStage(primaryStage);
-		controlador.cargarArchivos();
 		controlador.centrarStage();
 		controlador.cambiarScene("Menu.fxml");
 	}
