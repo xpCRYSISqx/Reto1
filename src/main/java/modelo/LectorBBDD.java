@@ -89,6 +89,28 @@ public class LectorBBDD {
 		return empleados;
 	}
 	
+	public ArrayList<Empleado> obtenerEmpleadoPorCodigo(int codigo) {
+		Connection conexion = pool.conectar();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+		String query = "SELECT * FROM EMPLEADOS WHERE COD_EMPLE = ?";
+		try {
+			stmt = conexion.prepareStatement(query);
+			stmt.setInt(1, codigo);
+			result = stmt.executeQuery();
+			empleados = modelo.converter.convertEmpleados(result);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
+			escritorFicheros.crearLog(new Date(), e.toString());
+			System.exit(0);
+		} finally {
+			pool.desconectar();
+		}
+		return empleados;
+	}
+	
 	public ArrayList<Departamento> obtenerTodosLosDepartamento() {
 		Connection conexion = pool.conectar();
 		PreparedStatement stmt = null;
@@ -172,32 +194,5 @@ public class LectorBBDD {
 		}
 		return empleados;
 	}
-	
-	public Empleado obtenerEmpleadoPorCodigo(int codigo) {
-		Connection conexion = pool.conectar();
-		PreparedStatement stmt = null;
-		ResultSet result = null;
-		Empleado empleado = new Empleado();
-		String query = "SELECT * FROM EMPLEADOS WHERE COD_EMPLE = ?";
-		try {
-			stmt = conexion.prepareStatement(query);
-			stmt.setInt(1, codigo);
-			result = stmt.executeQuery();
-			empleado.setNombre(result.getString("NOMBRE"));
-			empleado.setApellidos(result.getString("APELLIDOS"));
-			empleado.setSueldo(result.getInt("SUELDO"));
-			empleado.setCodDepartamento(result.getInt("COD_DEPART"));
-			empleado.setCodCargo(result.getInt("COD_CARGO"));
-			empleado.setCodJefe(result.getInt("COD_JEFE"));
-			empleado.setEsJefe(result.getBoolean("ES_JEFE"));
-		} catch (SQLException e) {
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(new Date(), e.toString());
-			System.exit(0);
-		} finally {
-			pool.desconectar();
-		}
-		return empleado;
-	}
+
 }

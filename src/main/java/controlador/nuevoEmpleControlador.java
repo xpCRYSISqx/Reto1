@@ -44,17 +44,17 @@ public class nuevoEmpleControlador extends Controlador implements Initializable 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
     	Platform.runLater(() -> {
-    		// inizializa el combobox departamentos
+    		// inicializa el combobox departamentos
 	    	ObservableList<Departamento> listaDepart = FXCollections.observableArrayList(modelo.lectorBBDD.obtenerTodosLosDepartamento());
 	    	departEmpleComboBox.setItems(listaDepart);
 	    	departEmpleComboBox.getSelectionModel().selectFirst();
 	    	
-	    	// inizializa el combobox cargos
+	    	// inicializa el combobox cargos
 	    	ObservableList<Cargo> listaCargos = FXCollections.observableArrayList(modelo.lectorBBDD.obtenerTodosLosCargos());
 	    	cargoEmpleComboBox.setItems(listaCargos);
 	    	cargoEmpleComboBox.getSelectionModel().selectFirst();
 	    	
-	    	// inizializa el combobox jefes
+	    	// inicializa el combobox jefes
 	    	ObservableList<Empleado> listaJefes = FXCollections.observableArrayList(modelo.lectorBBDD.obtenerJefes());
 	    	jefeEmpleComboBox.setItems(listaJefes);
 	    	jefeEmpleComboBox.getSelectionModel().selectFirst();
@@ -64,53 +64,67 @@ public class nuevoEmpleControlador extends Controlador implements Initializable 
     @FXML
     void guardar(ActionEvent event) {
     	 if(validarDatos()) {
-	    	 if(this.modelo.lectorBBDD.obtenerEmpleadoPorCodigo(empleado.getCodEmpleado()) != null) {
+    		 int codEmple = Integer.parseInt(codigoEmpleText.getText());
+	    	 if(this.modelo.lectorBBDD.obtenerEmpleadoPorCodigo(codEmple).size() != 0) {
 	    		 this.mostrarMensaje(panelNuevoEmpleado, "Ya existe un empleado con ese codigo");
-	    	 }
-	    	 else
+	    	 } else {
+	    		 empleado.setCodEmpleado(codEmple);
+	    		 empleado.setNombre(nombreEmpleText.getText());
+	    		 empleado.setApellidos(apellidosEmpleText.getText());
+	    		 empleado.setSueldo(Integer.parseInt(sueldoEmpleText.getText()));
+	    		 empleado.setCodDepartamento(departEmpleComboBox.getSelectionModel().getSelectedItem().getCodDepartamento());
+	    		 empleado.setCodCargo(cargoEmpleComboBox.getSelectionModel().getSelectedItem().getCodCargo());
+	    		 empleado.setCodJefe(jefeEmpleComboBox.getSelectionModel().getSelectedItem().getCodEmpleado());
+	    		 if(siEmpleRadioButton.isSelected()) {
+					empleado.setEsJefe(true);
+	    		 } else if(noEmpleRadioButton.isSelected()) {
+					empleado.setEsJefe(false);
+	    		 }
 	    		 this.modelo.escritorBBDD.insertarEmpleado(empleado);
+	    	 }
     	 }
     }
     
     boolean validarDatos() {
     	Comprobadores comprobar = new Comprobadores();
     	
-    	if(comprobar.comprobarNumerico(codigoEmpleText.getText()))
-    		empleado.setCodEmpleado(Integer.parseInt(codigoEmpleText.getText()));
-    	else {
-    		this.mostrarMensaje2(panelNuevoEmpleado, "El campo de codigo no puede estar vacio y tiene que ser un valor numérico");
+    	// validar codigo
+    	if(codigoEmpleText.getText().equals("")) {
+    		this.mostrarMensaje2(panelNuevoEmpleado, "El campo 'codigo' no puede estar vacio");
+    		return false;
+    	} else if(!comprobar.comprobarNumerico(codigoEmpleText.getText())) {
+    		this.mostrarMensaje2(panelNuevoEmpleado, "El campo 'codigo' debe ser un valor numérico");
     		return false;
     	}
-   	 
+   	 	
+    	// validar nombre
     	if(nombreEmpleText.getText().equals("")) {
-    		this.mostrarMensaje(panelNuevoEmpleado, "El campo de nombre no puede estar vacío");
+    		this.mostrarMensaje(panelNuevoEmpleado, "El campo 'nombre' no puede estar vacío");
     		return false;
     	}
-    	else
-    		empleado.setNombre(nombreEmpleText.getText());
-   	 
+   	 	
+    	// validar apellidos
     	if(apellidosEmpleText.getText().equals("")) {
-    		this.mostrarMensaje(panelNuevoEmpleado, "El campo de nombre no puede estar vacío");
-    		return false;
-    	}
-    	else
-    		empleado.setApellidos(apellidosEmpleText.getText());
-    	
-    	if(comprobar.comprobarNumerico(sueldoEmpleText.getText()))
-    		empleado.setSueldo(Integer.parseInt(sueldoEmpleText.getText()));
-    	else {
-    		this.mostrarMensaje(panelNuevoEmpleado, "El campo de sueldo no puede estar vacio y tiene que ser un valor numérico");
+    		this.mostrarMensaje(panelNuevoEmpleado, "El campo 'apellidos' no puede estar vacío");
     		return false;
     	}
     	
-    	if(siEmpleRadioButton.isSelected())
-    		empleado.setEsJefe(true);
-    	else if(noEmpleRadioButton.isSelected())
-    		empleado.setEsJefe(false);
-    	else {
-    		this.mostrarMensaje(panelNuevoEmpleado, "Se debe seleccionar si el empleado es jefe o no");
+    	// validar sueldo
+    	if(sueldoEmpleText.getText().equals("")) {
+    		this.mostrarMensaje(panelNuevoEmpleado, "El campo 'sueldo' no puede estar vacio");
+    		return false;
+    	} else if(!comprobar.comprobarNumerico(sueldoEmpleText.getText())) {
+    		this.mostrarMensaje(panelNuevoEmpleado, "El campo 'sueldo' debe ser un valor numérico");
     		return false;
     	}
+    	
+    	// validar esJefe
+    	if(!siEmpleRadioButton.isSelected() && !noEmpleRadioButton.isSelected()) {
+    		this.mostrarMensaje(panelNuevoEmpleado, "Debe seleccionar si el empleado es jefe o no");
+    		return false;
+    	}
+    	
+    	// si todo es valido devuelve true
     	return true;
     }
 }

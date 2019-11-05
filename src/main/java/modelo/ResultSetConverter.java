@@ -19,6 +19,7 @@ public class ResultSetConverter {
 		try {
 			while (result.next()) {
 				Departamento depart = new Departamento();
+				depart.setCodDepartamento(result.getInt("COD_DEPART"));
 				depart.setNombre(result.getString("NOMBRE"));
 				depart.setLocalizacion(result.getString("LOCALIZACION"));
 				departamentos.add(depart);
@@ -40,6 +41,7 @@ public class ResultSetConverter {
 		try {
 			while (result.next()) {
 				Cargo cargo = new Cargo();
+				cargo.setCodCargo(result.getInt("COD_CARGO"));
 				cargo.setNombre(result.getString("NOMBRE"));
 				cargos.add(cargo);
 	        }
@@ -60,6 +62,7 @@ public class ResultSetConverter {
 		try {
 			while (result.next()) {
 				Empleado emple = new Empleado();
+				emple.setCodEmpleado(result.getInt("COD_EMPLE"));
 				emple.setNombre(result.getString("NOMBRE"));
 				emple.setApellidos(result.getString("APELLIDOS"));
 				emple.setSueldo(result.getInt("SUELDO"));
