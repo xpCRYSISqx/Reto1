@@ -11,6 +11,8 @@ import modelo.*;
 
 public class nuevoEmpleControlador extends Controlador {
 
+	Empleado empleado = new Empleado();
+	
 	@FXML
 	private AnchorPane panelNuevoEmpleado;
 	
@@ -46,13 +48,54 @@ public class nuevoEmpleControlador extends Controlador {
 
     @FXML
     void guardar(ActionEvent event) {
-    	 Empleado empleado = new Empleado();
-    	 Comprobadores comprobar = new Comprobadores();
-    	 
-    	 if(comprobar.comprobarNumerico(codigoEmpleText.getText())) {
-    		 empleado.setCodEmpleado(Integer.parseInt(codigoEmpleText.getText()));
+    	 if(validarDatos()) {
+	    	 if(this.modelo.lectorBBDD.obtenerEmpleadoPorCodigo(empleado.getCodEmpleado()) != null) {
+	    		 this.mostrarMensaje(panelNuevoEmpleado, "Ya existe un empleado con ese codigo");
+	    	 }
+	    	 else
+	    		 this.modelo.escritorBBDD.insertarEmpleado(empleado);
     	 }
-    	 else
-    		 this.mostrarMensaje(panelNuevoEmpleado, "El codigo tiene que ser numerico");
+    }
+    
+    boolean validarDatos() {
+    	Comprobadores comprobar = new Comprobadores();
+    	
+    	if(comprobar.comprobarNumerico(codigoEmpleText.getText()))
+    		empleado.setCodEmpleado(Integer.parseInt(codigoEmpleText.getText()));
+    	else {
+    		this.mostrarMensaje(panelNuevoEmpleado, "El campo de codigo no puede estar vacio y tiene que ser un valor numérico");
+    		return false;
+    	}
+   	 
+    	if(nombreEmpleText.getText().equals("")) {
+    		this.mostrarMensaje(panelNuevoEmpleado, "El campo de nombre no puede estar vacío");
+    		return false;
+    	}
+    	else
+    		empleado.setNombre(nombreEmpleText.getText());
+   	 
+    	if(apellidosEmpleText.getText().equals("")) {
+    		this.mostrarMensaje(panelNuevoEmpleado, "El campo de nombre no puede estar vacío");
+    		return false;
+    	}
+    	else
+    		empleado.setApellidos(apellidosEmpleText.getText());
+    	
+    	if(comprobar.comprobarNumerico(sueldoEmpleText.getText()))
+    		empleado.setSueldo(Integer.parseInt(sueldoEmpleText.getText()));
+    	else {
+    		this.mostrarMensaje(panelNuevoEmpleado, "El campo de sueldo no puede estar vacio y tiene que ser un valor numérico");
+    		return false;
+    	}
+    	
+    	if(siEmpleRadioButton.isSelected())
+    		empleado.setEsJefe(true);
+    	else if(noEmpleRadioButton.isSelected())
+    		empleado.setEsJefe(false);
+    	else {
+    		this.mostrarMensaje(panelNuevoEmpleado, "Se debe seleccionar si el empleado es jefe o no");
+    		return false;
+    	}
+    	return true;	
     }
 }
