@@ -152,12 +152,12 @@ public class LectorBBDD {
 		return empleados;
 	}
 	
-	public ArrayList<Empleado> obtenerSoloJefesDeEmpleado() {
+	public ArrayList<Empleado> obtenerJefes() {
 		Connection conexion = pool.conectar();
 		PreparedStatement stmt = null;
 		ResultSet result = null;
 		ArrayList<Empleado> empleados = new ArrayList<Empleado>();
-		String query = "SELECT NOMBRE, APELLIDOS FROM EMPLEADOS WHERE ES_JEFE = 1";
+		String query = "SELECT * FROM EMPLEADOS WHERE ES_JEFE = 1";
 		try {
 			stmt = conexion.prepareStatement(query);
 			result = stmt.executeQuery();

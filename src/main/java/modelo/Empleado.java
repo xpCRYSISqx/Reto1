@@ -90,4 +90,9 @@ public class Empleado {
 		this.fechaAlta = fechaAlta;
 	}
 	
+	@Override
+	public String toString() {
+		return nombre;
+	}
+	
 }

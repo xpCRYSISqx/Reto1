@@ -3,6 +3,7 @@ package controlador;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,7 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import modelo.*;
 
-public class nuevoEmpleControlador extends Controlador /*implements Initializable*/{
+public class nuevoEmpleControlador extends Controlador implements Initializable {
 
 	Empleado empleado = new Empleado();
 	
@@ -23,16 +24,7 @@ public class nuevoEmpleControlador extends Controlador /*implements Initializabl
 	private AnchorPane panelNuevoEmpleado;
 	
     @FXML
-    private TextField codigoEmpleText;
-
-    @FXML
-    private TextField nombreEmpleText;
-
-    @FXML
-    private TextField apellidosEmpleText;
-
-    @FXML
-    private TextField sueldoEmpleText;
+    private TextField codigoEmpleText, nombreEmpleText, apellidosEmpleText, sueldoEmpleText;
 
     @FXML
     private ComboBox<Departamento> departEmpleComboBox;
@@ -44,14 +36,31 @@ public class nuevoEmpleControlador extends Controlador /*implements Initializabl
     private ComboBox<Empleado> jefeEmpleComboBox;
 
     @FXML
-    private RadioButton siEmpleRadioButton;
-
-    @FXML
-    private RadioButton noEmpleRadioButton;
+    private RadioButton siEmpleRadioButton, noEmpleRadioButton;
 
     @FXML
     private Button btnGuardar;
-
+    
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+    	Platform.runLater(() -> {
+    		// inizializa el combobox departamentos
+	    	ObservableList<Departamento> listaDepart = FXCollections.observableArrayList(modelo.lectorBBDD.obtenerTodosLosDepartamento());
+	    	departEmpleComboBox.setItems(listaDepart);
+	    	departEmpleComboBox.getSelectionModel().selectFirst();
+	    	
+	    	// inizializa el combobox cargos
+	    	ObservableList<Cargo> listaCargos = FXCollections.observableArrayList(modelo.lectorBBDD.obtenerTodosLosCargos());
+	    	cargoEmpleComboBox.setItems(listaCargos);
+	    	cargoEmpleComboBox.getSelectionModel().selectFirst();
+	    	
+	    	// inizializa el combobox jefes
+	    	ObservableList<Empleado> listaJefes = FXCollections.observableArrayList(modelo.lectorBBDD.obtenerJefes());
+	    	jefeEmpleComboBox.setItems(listaJefes);
+	    	jefeEmpleComboBox.getSelectionModel().selectFirst();
+    	});
+    }
+    
     @FXML
     void guardar(ActionEvent event) {
     	 if(validarDatos()) {
@@ -63,19 +72,13 @@ public class nuevoEmpleControlador extends Controlador /*implements Initializabl
     	 }
     }
     
-    /*@Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-    	ObservableList<Departamento> listaDepart = FXCollections.observableArrayList(this.modelo.lectorBBDD.obtenerTodosLosDepartamento());
-    	departEmpleComboBox.setItems(listaDepart);
-    }*/
-    
     boolean validarDatos() {
     	Comprobadores comprobar = new Comprobadores();
     	
     	if(comprobar.comprobarNumerico(codigoEmpleText.getText()))
     		empleado.setCodEmpleado(Integer.parseInt(codigoEmpleText.getText()));
     	else {
-    		this.mostrarMensaje(panelNuevoEmpleado, "El campo de codigo no puede estar vacio y tiene que ser un valor numérico");
+    		this.mostrarMensaje2(panelNuevoEmpleado, "El campo de codigo no puede estar vacio y tiene que ser un valor numérico");
     		return false;
     	}
    	 

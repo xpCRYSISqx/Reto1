@@ -33,4 +33,9 @@ public class Departamento {
 	public void setLocalizacion(String localizacion) {
 		this.localizacion = localizacion;
 	}
+	
+	@Override
+	public String toString() {
+		return nombre;
+	}
 }

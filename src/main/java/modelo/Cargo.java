@@ -25,4 +25,9 @@ public class Cargo {
 		this.nombre = nombre;
 	}
 	
+	@Override
+	public String toString() {
+		return nombre;
+	}
+	
 }
