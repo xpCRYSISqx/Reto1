@@ -11,7 +11,7 @@ public class Empleado {
 	private int codDepartamento;
 	private int codCargo;
 	private int codJefe;
-	private Boolean esJefe;
+	private boolean esJefe;
 	private Date fechaAlta;
 	
 	public Empleado() {
