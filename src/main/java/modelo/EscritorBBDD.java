@@ -86,7 +86,7 @@ public class EscritorBBDD {
 		PreparedStatement stmt = null;
 		String query = "INSERT INTO EMPLEADOS (COD_EMPLE, NOMBRE, APELLIDOS, SUELDO, COD_DEPART, COD_CARGO, COD_JEFE, ES_JEFE, FECHA_ALTA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())";
 		if (empleado.getCodJefe() == 0) {
-			empleado.setCodJefe((Integer) null);
+			empleado.setCodJefe(null);
 		}
 		try {
 			stmt = conexion.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);

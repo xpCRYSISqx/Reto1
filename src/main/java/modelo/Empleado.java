@@ -10,7 +10,7 @@ public class Empleado {
 	private int sueldo;
 	private int codDepartamento;
 	private int codCargo;
-	private int codJefe;
+	private Integer codJefe;
 	private boolean esJefe;
 	private Date fechaAlta;
 	
@@ -66,11 +66,11 @@ public class Empleado {
 		this.codCargo = codCargo;
 	}
 
-	public int getCodJefe() {
+	public Integer getCodJefe() {
 		return codJefe;
 	}
 
-	public void setCodJefe(int codJefe) {
+	public void setCodJefe(Integer codJefe) {
 		this.codJefe = codJefe;
 	}
 
