@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import modelo.*;
 
-public class nuevoEmpleControlador extends Controlador implements Initializable{
+public class nuevoEmpleControlador extends Controlador /*implements Initializable*/{
 
 	Empleado empleado = new Empleado();
 	
@@ -63,11 +63,11 @@ public class nuevoEmpleControlador extends Controlador implements Initializable{
     	 }
     }
     
-    @Override
+    /*@Override
     public void initialize(URL arg0, ResourceBundle arg1) {
     	ObservableList<Departamento> listaDepart = FXCollections.observableArrayList(this.modelo.lectorBBDD.obtenerTodosLosDepartamento());
     	departEmpleComboBox.setItems(listaDepart);
-    }
+    }*/
     
     boolean validarDatos() {
     	Comprobadores comprobar = new Comprobadores();
