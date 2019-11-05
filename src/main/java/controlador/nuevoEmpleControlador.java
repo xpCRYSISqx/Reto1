@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import modelo.*;
 
-public class nuevoEmpleControlador extends Controlador{
+public class nuevoEmpleControlador extends Controlador {
 
 	@FXML
 	private AnchorPane panelNuevoEmpleado;

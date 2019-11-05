@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
+
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,6 +27,9 @@ public class CardEmpleado extends AnchorPane implements Initializable {
 
     @FXML
     private Label cargo;
+    
+    @FXML
+    private JFXButton cardBtn;
     
     private Empleado empleado;
     
