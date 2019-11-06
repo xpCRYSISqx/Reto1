@@ -76,7 +76,6 @@ public class CardEmpleado extends AnchorPane implements Initializable {
 		}
 		EmpleadoControlador controller = fxmlLoader.<EmpleadoControlador>getController();
 		controller.setEmpleado(empleado);
-//		controller.setModelo(modelo);
     	contenido.getChildren().clear();
     	contenido.getChildren().add(FXML);
     }

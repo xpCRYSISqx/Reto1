@@ -37,7 +37,6 @@ public class EmpleadosControlador extends Controlador implements Initializable {
 		
 		Platform.runLater(() -> {
 
-			modelo.empleados = modelo.lectorBBDD.obtenerTodosLosEmpleados();
 			GridPane grid = crearGrid();
 	        int i = 0;
 	    	for(i = 0; i < modelo.empleados.size(); i++) {

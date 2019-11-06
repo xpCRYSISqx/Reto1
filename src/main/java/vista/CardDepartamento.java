@@ -74,7 +74,6 @@ public class CardDepartamento extends AnchorPane implements Initializable {
 		} 
 		DepartamentoControlador controller = fxmlLoader.<DepartamentoControlador>getController();
 		controller.setDepartamento(departamento);
-//		controller.setModelo(modelo);
     	contenido.getChildren().clear();
     	contenido.getChildren().add(FXML);
     }

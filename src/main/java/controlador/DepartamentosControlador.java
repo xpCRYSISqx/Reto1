@@ -1,7 +1,6 @@
 package controlador;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.jfoenix.effects.JFXDepthManager;
@@ -25,8 +24,6 @@ public class DepartamentosControlador extends Controlador implements Initializab
     
     @FXML
     private AnchorPane contenedor;
-    
-    private ArrayList<Departamento> departamentos;
 
     @FXML
     void nuevo(ActionEvent event) {
@@ -40,12 +37,11 @@ public class DepartamentosControlador extends Controlador implements Initializab
 		
 		Platform.runLater(() -> {
 
-			departamentos = modelo.lectorBBDD.obtenerTodosLosDepartamento();
 			GridPane grid = crearGrid();
 	        int i = 0;
-	    	for(i = 0; i < departamentos.size(); i++) {
+	    	for(i = 0; i < modelo.departamentos.size(); i++) {
 	    		
-	    		Departamento depart = departamentos.get(i);
+	    		Departamento depart = modelo.departamentos.get(i);
 	    		
 	    		// crea la tarjeta con la informacion del alojamiento
 	    		CardDepartamento card = new CardDepartamento(depart, (float)(i)/16 + 1F, contenido, modelo);
