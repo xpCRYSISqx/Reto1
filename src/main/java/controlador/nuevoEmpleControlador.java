@@ -104,6 +104,9 @@ public class nuevoEmpleControlador extends Controlador implements Initializable 
 		} else if(!modelo.comprobador.comprobarNumerico(sueldoEmpleText.getText())) {
 			this.mostrarMensaje(panelNuevoEmpleado, "El campo 'sueldo' debe ser un valor numérico");
 			return false;
+		} else if (Integer.parseInt(sueldoEmpleText.getText()) < 0) {
+			this.mostrarMensaje(panelNuevoEmpleado, "El campo 'sueldo' debe ser un número positivo");
+			return false;
 		}
 
 		// validar esJefe

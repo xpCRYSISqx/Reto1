@@ -23,7 +23,7 @@ public class Launcher extends Application {
 		
 		// cargar vista principal
 		Parent FXML = null;
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/Menu.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/menu.fxml"));
 		try {
 			FXML = fxmlLoader.load();
 		} catch (IOException e) {

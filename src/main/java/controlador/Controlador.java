@@ -2,7 +2,6 @@ package controlador;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -21,9 +20,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import modelo.Cargo;
-import modelo.Departamento;
-import modelo.Empleado;
 import modelo.Modelo;
 
 public class Controlador implements Initializable {
@@ -42,9 +38,15 @@ public class Controlador implements Initializable {
 	}
 	
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {	
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		String info = "";
+		modelo.actualizarTodosLosDatos();
+		info += modelo.cargadorDatos.cargarDepartamentos();
+		info += modelo.cargadorDatos.cargarCargos();
+		info += modelo.cargadorDatos.cargarEmpleados();
+		mostrarMensaje2(contenido, info, 600); //anchorpane, texto, anchura
+		modelo.actualizarTodosLosDatos();
 		mostrarEmpleados(null);
-		cargarArchivos();
 	}
 
     @FXML
@@ -114,56 +116,5 @@ public class Controlador implements Initializable {
 		dialogPane.getStylesheets().add("assets/css/styles.css");
 		alert.showAndWait();
 	}
-	
-	/**
-	 * Carga los datos de los archivos si la base de datos esta vacia
-	 */
-	public void cargarArchivos() {
-		
-		String info = "";
-		
-		//Insertar departamentos leidos del fichero
-		ArrayList<Departamento> departamentos = modelo.lectorArchivos.leerDepartamentoXML("departamentos.xml");
-		for(int i = 0; i < departamentos.size(); i++) {
-			Departamento depart = departamentos.get(i);
-			if (modelo.comprobador.comprobarDepartamentoCodigo(depart.getCodDepartamento())) {
-				info += "Ya existe un departamento con código '" + depart.getCodDepartamento() + "'\n";
-			} else if (modelo.comprobador.comprobarDepartamentoNombre(depart.getNombre(), depart.getLocalizacion())) {
-				info += "Ya existe un departamento con nombre '" + depart.getNombre() + "' en la localizacion '" + depart.getLocalizacion() + "'\n";
-			} else {
-				modelo.escritorBBDD.insertarDepartamento(depart);
-				info += "Insertado departamento " + depart.getNombre() + "\n";
-			}
-		}
-		
-		//Insertar cargos leidos del fichero
-		ArrayList<Cargo> cargos = modelo.lectorArchivos.leerCargosCSV("cargos.csv");
-		for(int i = 0; i < cargos.size(); i++) {
-			Cargo cargo = cargos.get(i);
-			if (modelo.comprobador.comprobarCargoCodigo(cargo.getCodCargo())) {
-				info += "Ya existe un cargo con código '" + cargo.getCodCargo() + "'\n";
-			} else if (modelo.comprobador.comprobarCargoNombre(cargo.getNombre())) {
-				info += "Ya existe un cargo con nombre '" + cargo.getNombre() + "'\n";
-			} else {
-				modelo.escritorBBDD.insertarCargo(cargo);
-				info += "Insertado cargo " + cargo.getNombre() + "\n";
-			}
-		}
-		
-		//Insertar empleados leidos del fichero
-		ArrayList<Empleado> empleados = modelo.lectorArchivos.leerEmpleadoXML("empleados.xml");
-		for(int i = 0; i < empleados.size(); i++) {
-			Empleado empleado = empleados.get(i);
-			if (modelo.comprobador.comprobarEmpleadoCodigo(empleado.getCodEmpleado())) {
-				info += "Ya existe un empleado con el código '" + empleado.getCodEmpleado() + "' en la base de datos" + "\n";
-			} else if (modelo.comprobador.comprobarEmpleadoNombre(empleado.getNombre(), empleado.getApellidos())) {
-				info += "Ya existe un empleado con nombre '" + empleado.getNombre() + "' y apellidos '" + empleado.getApellidos() + "' en la base de datos" + "\n";
-			} else {
-				modelo.escritorBBDD.insertarEmpleado(empleado);
-				info += "Insertado empleado " + empleado.getNombre() + "\n";
-			}
-		}
-		
-		mostrarMensaje2(contenido, info, 600); //anchorpane, texto, anchura
-	}
+
 }

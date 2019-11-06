@@ -13,6 +13,7 @@ public class Modelo {
 	public ResultSetConverter converter = null;
 	public EscritorBBDD escritorBBDD = null;
 	public LectorBBDD lectorBBDD = null;
+	public CargadorDatos cargadorDatos = null;
 
 	public ArrayList<Departamento> departamentos = null;
 	public ArrayList<Cargo> cargos = null;
@@ -27,11 +28,7 @@ public class Modelo {
 		converter = new ResultSetConverter();
 		escritorBBDD = new EscritorBBDD(this);
 		lectorBBDD = new LectorBBDD(this);
-
-		actualizarDepartamentos();
-		actualizarCargos();
-		actualizarEmpleados();
-		actualizarJefes();
+		cargadorDatos = new CargadorDatos(this);
 	}
 
 	public static Modelo getModelo() {
@@ -39,6 +36,13 @@ public class Modelo {
 			modelo = new Modelo();
 		}
 		return modelo;
+	}
+	
+	public void actualizarTodosLosDatos() {
+		actualizarDepartamentos();
+		actualizarCargos();
+		actualizarEmpleados();
+		actualizarJefes();
 	}
 
 	public void actualizarDepartamentos() {
