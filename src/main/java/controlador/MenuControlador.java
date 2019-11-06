@@ -41,19 +41,15 @@ public class MenuControlador extends Controlador implements Initializable {
 
     @FXML
     void mostrarEmpleados(ActionEvent event) {
-    	// quita la vista actual del panel contenido
-		contenido.getChildren().clear();	
-		// carga la vista empleados en el panel contenido
-		Parent FXML = loadFXML("empleados.fxml");
+    	Parent FXML = loadFXML("empleados.fxml");
+		contenido.getChildren().clear();
 		contenido.getChildren().add(FXML);
     }
     
     @FXML
     void mostrarDepartamentos(ActionEvent event) {
-    	// quita la vista actual del panel contenido
+    	Parent FXML = loadFXML("departamentos.fxml");
 		contenido.getChildren().clear();
-		// carga la vista empleados en el panel contenido
-		Parent FXML = loadFXML("departamentos.fxml");
 		contenido.getChildren().add(FXML);
     }
 
@@ -76,8 +72,7 @@ public class MenuControlador extends Controlador implements Initializable {
 			modelo.escritorFicheros.crearLog(new Date(), e.toString());
 		}   
 		Controlador controller = fxmlLoader.<Controlador>getController();
-		controller.setModelo(modelo);
-		controller.setContent(contenido);
+		controller.setContentPane(contenido);
 		return FXML;
 	}
 	

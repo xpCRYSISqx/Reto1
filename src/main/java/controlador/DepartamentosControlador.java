@@ -48,7 +48,7 @@ public class DepartamentosControlador extends Controlador implements Initializab
 	    		Departamento depart = departamentos.get(i);
 	    		
 	    		// crea la tarjeta con la informacion del alojamiento
-	    		CardDepartamento card = new CardDepartamento(depart, (float)(i)/16 + 1F, contenido);
+	    		CardDepartamento card = new CardDepartamento(depart, (float)(i)/16 + 1F, contenido, modelo);
 	    		JFXDepthManager.setDepth(card, 1);
 	    		
 	        	// añade la tarjeta al grid

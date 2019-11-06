@@ -3,7 +3,6 @@ package aplicacion;
 import controlador.Controlador;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import modelo.Modelo;
 
 public class Launcher extends Application {
 	
@@ -14,7 +13,6 @@ public class Launcher extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		Controlador controlador = new Controlador();
-		controlador.setModelo(new Modelo());
 		controlador.setStage(primaryStage);
 		controlador.centrarStage();
 		controlador.cambiarScene("Menu.fxml");

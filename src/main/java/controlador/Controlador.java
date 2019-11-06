@@ -29,17 +29,14 @@ public class Controlador {
     protected AnchorPane contenido;
 	
 	public Controlador() {
-	}
-	
-	public void setModelo(Modelo modelo) {
-		this.modelo = modelo;
+		this.modelo = Modelo.getModelo();
 	}
 	
 	public void setStage(Stage stage) {
 		this.stage = stage;
 	}
 	
-	public void setContent(AnchorPane contenido) {
+	public void setContentPane(AnchorPane contenido) {
 		this.contenido = contenido;
 	}
 	
@@ -86,8 +83,6 @@ public class Controlador {
 		} catch (IOException e) {
 			modelo.escritorFicheros.crearLog(new Date(), e.toString());
 		}   
-		Controlador controller = fxmlLoader.<Controlador>getController();
-		controller.setModelo(modelo);
 		return FXML;
 	}
 	

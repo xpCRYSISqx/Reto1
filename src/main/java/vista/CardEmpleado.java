@@ -2,8 +2,10 @@ package vista;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
+import controlador.EmpleadoControlador;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import modelo.Empleado;
+import modelo.Modelo;
 
 public class CardEmpleado extends AnchorPane implements Initializable {
 	
@@ -30,12 +33,14 @@ public class CardEmpleado extends AnchorPane implements Initializable {
     private Empleado empleado;
     private float tAnimacion;
     private AnchorPane contenido;
+    private Modelo modelo;
     
-	public CardEmpleado(Empleado empleado, float tAnimacion, AnchorPane contenido) {
+	public CardEmpleado(Empleado empleado, float tAnimacion, AnchorPane contenido, Modelo modelo) {
 		
 		this.empleado = empleado;
 		this.tAnimacion = tAnimacion;
 		this.contenido = contenido;
+		this.modelo = modelo;
 		
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/cardEmpleado.fxml"));
 	    fxmlLoader.setRoot(this);
@@ -67,8 +72,11 @@ public class CardEmpleado extends AnchorPane implements Initializable {
 		try {
 			FXML = fxmlLoader.load();
 		} catch (IOException e) {
-//			modelo.escritorFicheros.crearLog(new Date(), e.toString());
-		}   
+			modelo.escritorFicheros.crearLog(new Date(), e.toString());
+		}
+		EmpleadoControlador controller = fxmlLoader.<EmpleadoControlador>getController();
+		controller.setEmpleado(empleado);
+//		controller.setModelo(modelo);
     	contenido.getChildren().clear();
     	contenido.getChildren().add(FXML);
     }

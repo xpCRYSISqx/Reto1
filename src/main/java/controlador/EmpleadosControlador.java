@@ -1,7 +1,6 @@
 package controlador;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.jfoenix.effects.JFXDepthManager;
@@ -25,8 +24,6 @@ public class EmpleadosControlador extends Controlador implements Initializable {
     
     @FXML
     private AnchorPane contenedor;
-    
-    private ArrayList<Empleado> empleados;
 
     @FXML
     void nuevo(ActionEvent event) {
@@ -40,15 +37,15 @@ public class EmpleadosControlador extends Controlador implements Initializable {
 		
 		Platform.runLater(() -> {
 
-			empleados = modelo.lectorBBDD.obtenerTodosLosEmpleados();
+			modelo.empleados = modelo.lectorBBDD.obtenerTodosLosEmpleados();
 			GridPane grid = crearGrid();
 	        int i = 0;
-	    	for(i = 0; i < empleados.size(); i++) {
+	    	for(i = 0; i < modelo.empleados.size(); i++) {
 	    		
-	    		Empleado empleado = empleados.get(i);
+	    		Empleado empleado = modelo.empleados.get(i);
 	    		
-	    		// crea la tarjeta con la informacion del alojamiento
-	    		CardEmpleado card = new CardEmpleado(empleado, (float)(i)/16 + 1F, contenido);	    		
+	    		// crea la tarjeta con la informacion del empleado
+	    		CardEmpleado card = new CardEmpleado(empleado, (float)(i)/16 + 1F, contenido, modelo);	    		
 	    		JFXDepthManager.setDepth(card, 1);
 	    		
 	        	// añade la tarjeta al grid

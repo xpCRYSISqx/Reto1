@@ -2,8 +2,10 @@ package vista;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
+import controlador.DepartamentoControlador;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import modelo.Departamento;
+import modelo.Modelo;
 
 public class CardDepartamento extends AnchorPane implements Initializable {
 	
@@ -30,12 +33,14 @@ public class CardDepartamento extends AnchorPane implements Initializable {
     private Departamento departamento;
     private float tAnimacion;
     private AnchorPane contenido;
+    private Modelo modelo;
     
-	public CardDepartamento(Departamento alojamiento, float tAnimacion, AnchorPane contenido) {
+	public CardDepartamento(Departamento departamento, float tAnimacion, AnchorPane contenido, Modelo modelo) {
 		
-		this.departamento = alojamiento;
+		this.departamento = departamento;
 		this.tAnimacion = tAnimacion;
 		this.contenido = contenido;
+		this.modelo = modelo;
 		
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/cardDepartamento.fxml"));
 	    fxmlLoader.setRoot(this);
@@ -65,8 +70,11 @@ public class CardDepartamento extends AnchorPane implements Initializable {
 		try {
 			FXML = fxmlLoader.load();
 		} catch (IOException e) {
-//			modelo.escritorFicheros.crearLog(new Date(), e.toString());
+			modelo.escritorFicheros.crearLog(new Date(), e.toString());
 		} 
+		DepartamentoControlador controller = fxmlLoader.<DepartamentoControlador>getController();
+		controller.setDepartamento(departamento);
+//		controller.setModelo(modelo);
     	contenido.getChildren().clear();
     	contenido.getChildren().add(FXML);
     }
