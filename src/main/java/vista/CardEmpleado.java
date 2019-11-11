@@ -58,8 +58,8 @@ public class CardEmpleado extends AnchorPane implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {		
 		this.nombre.setText(this.empleado.getNombre());
-//		this.departamento.setText(this.empleado.getCodDepartamento());
-//		this.cargo.setText(this.empleado.getCodCargo());
+		this.departamento.setText(String.valueOf(this.empleado.getCodDepartamento()));
+		this.cargo.setText(String.valueOf(this.empleado.getCodCargo()));
 //		this.descripcion.setText(this.empleado.getDescripcion());
 //		this.precio.setText(precio + "€");
 
