@@ -14,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import modelo.Cargo;
+import modelo.Departamento;
 import modelo.Empleado;
 import vista.CardEmpleado;
 
@@ -42,9 +44,21 @@ public class EmpleadosControlador extends Controlador implements Initializable {
 	    	for(i = 0; i < modelo.empleados.size(); i++) {
 	    		
 	    		Empleado empleado = modelo.empleados.get(i);
+	    		Departamento departamento = null;
+	    		Cargo cargo = null;
+	    		for(int j = 0; j < modelo.departamentos.size(); j++) {
+	    			if(empleado.getCodDepartamento() == modelo.departamentos.get(j).getCodDepartamento()) {
+	    				departamento = modelo.departamentos.get(j);
+	    			}
+	    		}
+	    		for(int j = 0; j < modelo.cargos.size(); j++) {
+	    			if(empleado.getCodCargo() == modelo.cargos.get(j).getCodCargo()) {
+	    				cargo = modelo.cargos.get(j);
+	    			}
+	    		}
 	    		
 	    		// crea la tarjeta con la informacion del empleado
-	    		CardEmpleado card = new CardEmpleado(empleado, (float)(i)/16 + 1F, contenido, modelo);	    		
+	    		CardEmpleado card = new CardEmpleado(empleado, departamento, cargo, (float)(i)/16 + 1F, contenido, modelo);	    		
 	    		JFXDepthManager.setDepth(card, 1);
 	    		
 	        	// añade la tarjeta al grid

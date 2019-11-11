@@ -16,6 +16,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import modelo.Cargo;
+import modelo.Departamento;
 import modelo.Empleado;
 import modelo.Modelo;
 
@@ -31,13 +33,17 @@ public class CardEmpleado extends AnchorPane implements Initializable {
     private Label cargo;
     
     private Empleado empleado;
+    private Departamento depart;
+    private Cargo car;
     private float tAnimacion;
     private AnchorPane contenido;
     private Modelo modelo;
     
-	public CardEmpleado(Empleado empleado, float tAnimacion, AnchorPane contenido, Modelo modelo) {
+	public CardEmpleado(Empleado empleado, Departamento depart, Cargo car, float tAnimacion, AnchorPane contenido, Modelo modelo) {
 		
 		this.empleado = empleado;
+		this.depart = depart;
+		this.car = car;
 		this.tAnimacion = tAnimacion;
 		this.contenido = contenido;
 		this.modelo = modelo;
@@ -58,8 +64,8 @@ public class CardEmpleado extends AnchorPane implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {		
 		this.nombre.setText(this.empleado.getNombre());
-		this.departamento.setText(String.valueOf(this.empleado.getCodDepartamento()));
-		this.cargo.setText(String.valueOf(this.empleado.getCodCargo()));
+		this.departamento.setText(depart.getNombre());
+		this.cargo.setText(car.getNombre());
 //		this.descripcion.setText(this.empleado.getDescripcion());
 //		this.precio.setText(precio + "€");
 

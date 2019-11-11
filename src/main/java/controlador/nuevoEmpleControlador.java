@@ -62,9 +62,9 @@ public class nuevoEmpleControlador extends Controlador implements Initializable 
 			String nombre = nombreEmpleText.getText();
 			String apellidos = apellidosEmpleText.getText();
 			if(modelo.comprobador.comprobarEmpleadoCodigo(codEmple)) {
-				this.mostrarMensaje(panelNuevoEmpleado, "Ya existe un empleado con ese codigo");
+				this.mostrarMensaje2(panelNuevoEmpleado, "Ya existe un empleado con ese codigo", 400);
 			} else if(modelo.comprobador.comprobarEmpleadoNombre(nombre, apellidos)) {
-				this.mostrarMensaje(panelNuevoEmpleado, "Ya existe un empleado con el mismo nombre y apellidos");
+				this.mostrarMensaje2(panelNuevoEmpleado, "Ya existe un empleado con el mismo nombre y apellidos", 400);
 			} else {
 				guardarEmpleado();
 				mostrarMensaje(panelNuevoEmpleado, "Nuevo empleado creado");
@@ -87,31 +87,31 @@ public class nuevoEmpleControlador extends Controlador implements Initializable 
 
 		// validar nombre
 		if(nombreEmpleText.getText().equals("")) {
-			this.mostrarMensaje(panelNuevoEmpleado, "El campo 'nombre' no puede estar vacío");
+			this.mostrarMensaje2(panelNuevoEmpleado, "El campo 'nombre' no puede estar vacío", 400);
 			return false;
 		}
 
 		// validar apellidos
 		if(apellidosEmpleText.getText().equals("")) {
-			this.mostrarMensaje(panelNuevoEmpleado, "El campo 'apellidos' no puede estar vacío");
+			this.mostrarMensaje2(panelNuevoEmpleado, "El campo 'apellidos' no puede estar vacío", 400);
 			return false;
 		}
 
 		// validar sueldo
 		if(sueldoEmpleText.getText().equals("")) {
-			this.mostrarMensaje(panelNuevoEmpleado, "El campo 'sueldo' no puede estar vacio");
+			this.mostrarMensaje2(panelNuevoEmpleado, "El campo 'sueldo' no puede estar vacio", 400);
 			return false;
 		} else if(!modelo.comprobador.comprobarNumerico(sueldoEmpleText.getText())) {
-			this.mostrarMensaje(panelNuevoEmpleado, "El campo 'sueldo' debe ser un valor numérico");
+			this.mostrarMensaje2(panelNuevoEmpleado, "El campo 'sueldo' debe ser un valor numérico", 400);
 			return false;
 		} else if (Integer.parseInt(sueldoEmpleText.getText()) < 0) {
-			this.mostrarMensaje(panelNuevoEmpleado, "El campo 'sueldo' debe ser un número positivo");
+			this.mostrarMensaje2(panelNuevoEmpleado, "El campo 'sueldo' debe ser un número positivo", 400);
 			return false;
 		}
 
 		// validar esJefe
 		if(!siEmpleRadioButton.isSelected() && !noEmpleRadioButton.isSelected()) {
-			this.mostrarMensaje(panelNuevoEmpleado, "Debe seleccionar si el empleado es jefe o no");
+			this.mostrarMensaje2(panelNuevoEmpleado, "Debe seleccionar si el empleado es jefe o no", 400);
 			return false;
 		}
 
