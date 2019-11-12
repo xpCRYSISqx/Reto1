@@ -94,7 +94,7 @@ public class DepartamentoControlador extends Controlador implements Initializabl
 	
 	public void mostrarDatosDepart(int posicion) {
 		
-		//this.departamento.setText(departamento.getNombre());
+		this.nombre.setText(departamento.getNombre());
 		this.codigo.setText(String.valueOf(departamento.getCodDepartamento()));
 		this.localizacion.setText(departamento.getLocalizacion());
 	}

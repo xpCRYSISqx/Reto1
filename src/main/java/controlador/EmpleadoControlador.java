@@ -109,7 +109,6 @@ public class EmpleadoControlador extends Controlador implements Initializable {
 			}
 		}
 		
-		
 		this.departamento.setText(departamento.getNombre());
 		this.cargo.setText(cargo.getNombre());
 		this.sueldo.setText(String.valueOf(empleado.getSueldo()));
