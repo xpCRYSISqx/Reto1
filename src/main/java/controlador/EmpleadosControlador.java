@@ -27,9 +27,6 @@ public class EmpleadosControlador extends Controlador implements Initializable {
     
     @FXML
     private AnchorPane contenedor;
-    
-    @FXML
-    private TextField textoBusqueda;
 
     @FXML
     void nuevo(ActionEvent event) {
@@ -66,37 +63,6 @@ public class EmpleadosControlador extends Controlador implements Initializable {
 		        // añade la tarjeta al grid
 				grid.add(card, 0, i); 
 	    		}
-		});
-		textoBusqueda.setOnKeyReleased(keyEvent -> {
-			Platform.runLater(() -> {
-
-				GridPane grid = crearGrid();
-		        int i = 0;
-		    	for(i = 0; i < modelo.empleados.size(); i++) {
-		    		if(textoBusqueda.getText().equals("") || textoBusqueda.getText().toUpperCase().equals(modelo.empleados.get(i).getNombre().toUpperCase().substring(0, textoBusqueda.getText().length()))) {
-				    	Empleado empleado = modelo.empleados.get(i);
-				    	Departamento departamento = null;
-				    	Cargo cargo = null;
-				    	for(int j = 0; j < modelo.departamentos.size(); j++) {
-				    		if(empleado.getCodDepartamento() == modelo.departamentos.get(j).getCodDepartamento()) {
-				    			departamento = modelo.departamentos.get(j);
-				    		}
-				    	}
-				    	for(int j = 0; j < modelo.cargos.size(); j++) {
-				    		if(empleado.getCodCargo() == modelo.cargos.get(j).getCodCargo()) {
-				    			cargo = modelo.cargos.get(j);
-				    		}
-				    	}
-				    		
-				    	// crea la tarjeta con la informacion del empleado
-				    	CardEmpleado card = new CardEmpleado(empleado, departamento, cargo, (float)(i)/16 + 1F, contenido, modelo);	    		
-				    	JFXDepthManager.setDepth(card, 1);
-				    		
-				        // añade la tarjeta al grid
-				    	grid.add(card, 0, i); 
-			    	}
-		    	}
-			});
 		});
 	}
 	
