@@ -28,3 +28,13 @@ Fecha: Tue Nov 05 09:49:13 CET 2019 - Motivo del error: javafx.fxml.LoadExceptio
 Fecha: Mon Nov 11 12:34:37 CET 2019 - Motivo del error: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+
+===================================================================================================================
+Fecha: Tue Nov 12 08:14:14 CET 2019 - Motivo del error: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+
+===================================================================================================================
+Fecha: Tue Nov 12 08:14:32 CET 2019 - Motivo del error: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
