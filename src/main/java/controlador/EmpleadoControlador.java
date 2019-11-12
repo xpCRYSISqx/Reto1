@@ -11,6 +11,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import modelo.Cargo;
+import modelo.Departamento;
 import modelo.Empleado;
 
 public class EmpleadoControlador extends Controlador implements Initializable {
@@ -93,8 +95,23 @@ public class EmpleadoControlador extends Controlador implements Initializable {
 		this.empleado = modelo.empleados.get(posicion);
 		this.nombreApellidos.setText(empleado.getNombre() + " " + empleado.getApellidos());
 		this.codigo.setText(String.valueOf(empleado.getCodEmpleado()));
-		this.departamento.setText(String.valueOf(empleado.getCodDepartamento()));
-		this.cargo.setText(String.valueOf(empleado.getCodCargo()));
+		
+		Departamento departamento = null;
+		Cargo cargo = null;
+		for(int j = 0; j < modelo.departamentos.size(); j++) {
+			if(empleado.getCodDepartamento() == modelo.departamentos.get(j).getCodDepartamento()) {
+				departamento = modelo.departamentos.get(j);
+			}
+		}
+		for(int j = 0; j < modelo.cargos.size(); j++) {
+			if(empleado.getCodCargo() == modelo.cargos.get(j).getCodCargo()) {
+				cargo = modelo.cargos.get(j);
+			}
+		}
+		
+		
+		this.departamento.setText(departamento.getNombre());
+		this.cargo.setText(cargo.getNombre());
 		this.sueldo.setText(String.valueOf(empleado.getSueldo()));
 		this.jefe.setText(String.valueOf(empleado.getCodJefe()));
 		this.fecha.setText(String.valueOf(empleado.getFechaAlta()));
