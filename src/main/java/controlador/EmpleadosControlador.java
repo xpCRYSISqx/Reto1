@@ -113,9 +113,4 @@ public class EmpleadosControlador extends Controlador implements Initializable {
     	contenedor.getChildren().setAll(grid);
     	return grid;
     }
-    
-    public void crearCartas() {
-    	
-	    
-    }
 }
