@@ -14,22 +14,22 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="80.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código:">
+      <Text fill="#00acc1" layoutX="80.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código:">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="80.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localizacion:">
+      <Text fill="#00acc1" layoutX="80.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localizacion:">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Label fx:id="codigo" layoutX="160.0" layoutY="110.0" text="codigo">
+      <Label fx:id="codigo" layoutX="160.0" layoutY="110.0" text="codigo" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="localizacion" layoutX="205.0" layoutY="150.0" text="localizacion">
+      <Label fx:id="localizacion" layoutX="205.0" layoutY="150.0" text="localizacion" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

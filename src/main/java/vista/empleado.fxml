@@ -14,62 +14,62 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="80.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código:">
+      <Text fill="#00acc1" layoutX="80.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código:">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="80.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departamento:">
+      <Text fill="#00acc1" layoutX="80.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departamento:">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="80.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cargo:">
+      <Text fill="#00acc1" layoutX="80.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cargo:">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="80.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sueldo:">
+      <Text fill="#00acc1" layoutX="80.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sueldo:">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="80.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jefe:">
+      <Text fill="#00acc1" layoutX="80.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jefe:">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="80.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de alta:">
+      <Text fill="#00acc1" layoutX="80.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de alta:">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Label fx:id="codigo" layoutX="160.0" layoutY="110.0" text="codigo">
+      <Label fx:id="codigo" layoutX="160.0" layoutY="110.0" text="codigo" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="departamento" layoutX="225.0" layoutY="150.0" text="departamento">
+      <Label fx:id="departamento" layoutX="225.0" layoutY="150.0" text="departamento" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="cargo" layoutX="150.0" layoutY="190.0" text="cargo">
+      <Label fx:id="cargo" layoutX="150.0" layoutY="190.0" text="cargo" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="sueldo" layoutX="160.0" layoutY="230.0" text="sueldo">
+      <Label fx:id="sueldo" layoutX="160.0" layoutY="230.0" text="sueldo" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="jefe" layoutX="135.0" layoutY="270.0" text="jefe">
+      <Label fx:id="jefe" layoutX="135.0" layoutY="270.0" text="jefe" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="fecha" layoutX="210.0" layoutY="310.0" text="fecha">
+      <Label fx:id="fecha" layoutX="210.0" layoutY="310.0" text="fecha" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
