@@ -3,7 +3,6 @@ package controlador;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -92,27 +91,36 @@ public class EmpleadoControlador extends Controlador implements Initializable {
 	}
 	
 	public void mostrarDatosEmple(int posicion) {
-		this.empleado = modelo.empleados.get(posicion);
-		this.nombreApellidos.setText(empleado.getNombre() + " " + empleado.getApellidos());
-		this.codigo.setText(String.valueOf(empleado.getCodEmpleado()));
-		
 		Departamento departamento = null;
 		Cargo cargo = null;
+		Empleado jefe = null;
+		
+		this.empleado = modelo.empleados.get(posicion);
+		
 		for(int j = 0; j < modelo.departamentos.size(); j++) {
 			if(empleado.getCodDepartamento() == modelo.departamentos.get(j).getCodDepartamento()) {
 				departamento = modelo.departamentos.get(j);
 			}
 		}
+		
 		for(int j = 0; j < modelo.cargos.size(); j++) {
 			if(empleado.getCodCargo() == modelo.cargos.get(j).getCodCargo()) {
 				cargo = modelo.cargos.get(j);
 			}
 		}
 		
+		for(int j = 0; j < modelo.jefes.size(); j++) {
+			if(empleado.getCodJefe() == modelo.jefes.get(j).getCodJefe()) {
+				jefe = modelo.jefes.get(j);
+			}
+		}
+		
+		this.nombreApellidos.setText(empleado.getNombre() + " " + empleado.getApellidos());
+		this.codigo.setText(String.valueOf(empleado.getCodEmpleado()));
 		this.departamento.setText(departamento.getNombre());
 		this.cargo.setText(cargo.getNombre());
-		this.sueldo.setText(String.valueOf(empleado.getSueldo()));
-		this.jefe.setText(String.valueOf(empleado.getCodJefe()));
+		this.sueldo.setText(String.valueOf(empleado.getSueldo()) + "€");
+		this.jefe.setText(jefe.getNombre() + " " + jefe.getApellidos());
 		this.fecha.setText(String.valueOf(empleado.getFechaAlta()));
 	}
 
