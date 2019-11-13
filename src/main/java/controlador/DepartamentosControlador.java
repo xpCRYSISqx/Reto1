@@ -82,7 +82,7 @@ public class DepartamentosControlador extends Controlador implements Initializab
 
 			GridPane grid = crearGrid();
 	        int i = 0;
-	    	for(i = 0; i < modelo.empleados.size(); i++) {
+	    	for(i = 0; i < modelo.departamentos.size(); i++) {
 	    		if(textoBusquedaD.getText().equals("") || textoBusquedaD.getText().toLowerCase().equals(modelo.departamentos.get(i).getNombre().toLowerCase().substring(0, textoBusquedaD.getText().length()))) {
 	    			Departamento depart = modelo.departamentos.get(i);
 		    		
