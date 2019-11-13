@@ -20,7 +20,7 @@ public class EmpleadoControlador extends Controlador implements Initializable {
     private AnchorPane panelEmpleado;
 
 	@FXML
-	private Text nombreApellidos;
+	private Text nombreApellidos, jefeTextField;
 
 	@FXML
 	private Label codigo, departamento, cargo, sueldo, jefe, fecha;
@@ -110,7 +110,12 @@ public class EmpleadoControlador extends Controlador implements Initializable {
 		}
 		
 		for(int j = 0; j < modelo.jefes.size(); j++) {
-			if(empleado.getCodJefe() == modelo.jefes.get(j).getCodJefe()) {
+			if (empleado.getCodJefe() == 0) {
+				this.jefeTextField.setVisible(false);
+				this.jefe.setVisible(false);
+			} else if(empleado.getCodJefe() == modelo.jefes.get(j).getCodEmpleado()) {
+				this.jefeTextField.setVisible(true);
+				this.jefe.setVisible(true);
 				jefe = modelo.jefes.get(j);
 			}
 		}
@@ -120,7 +125,9 @@ public class EmpleadoControlador extends Controlador implements Initializable {
 		this.departamento.setText(departamento.getNombre());
 		this.cargo.setText(cargo.getNombre());
 		this.sueldo.setText(String.valueOf(empleado.getSueldo()) + "€");
-		this.jefe.setText(jefe.getNombre() + " " + jefe.getApellidos());
+		if (empleado.getCodJefe() != 0) {
+			this.jefe.setText(jefe.getNombre() + " " + jefe.getApellidos());
+		}
 		this.fecha.setText(String.valueOf(empleado.getFechaAlta()));
 	}
 
