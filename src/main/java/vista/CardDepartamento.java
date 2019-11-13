@@ -26,9 +26,6 @@ public class CardDepartamento extends AnchorPane implements Initializable {
 
     @FXML
     private Text nombre, localizacion;
-
-    @FXML
-    private Label descripcion;
     
     private Departamento departamento;
     private float tAnimacion;
@@ -60,7 +57,6 @@ public class CardDepartamento extends AnchorPane implements Initializable {
 		
 		this.nombre.setText(this.departamento.getNombre());
 		this.localizacion.setText(this.departamento.getLocalizacion());
-//		this.descripcion.setText(this.departamento.getDescripcion());
 	}
 	
 	@FXML
