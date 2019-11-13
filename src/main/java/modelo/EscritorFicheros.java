@@ -16,7 +16,7 @@ public class EscritorFicheros {
 	 * @param fecha Fecha en la que ha ocurrido el error
 	 * @param motivo Motivo por el cual a ocurrido el error
 	 */
-	public void crearLog(Date fecha, String motivo) {
+	public void crearLog(Date fecha, String motivo, String metodo, String clase) {
 		String ruta = "ficheros" + File.separator + "log.txt"; //Guarda la ruta del fichero
 		FileWriter fichero = null;
 		PrintWriter escritor = null;
@@ -28,9 +28,7 @@ public class EscritorFicheros {
 			escritor = new PrintWriter(fichero); //Invoca PrintWriter en el fichero que le especificamos y de la manera que le hemos indicado con FileWriter
 			
 			//Se escribe en el archivo
-			escritor.println();
-			escritor.println("===================================================================================================================");
-			escritor.println("Fecha: " + fecha + " - Motivo del error: " + motivo);
+			escritor.println("Fecha: " + fecha + " | Clase: " + clase + " | Metodo: " + metodo + " | Motivo del error: " + motivo);
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -98,7 +96,7 @@ public class EscritorFicheros {
 		}
 		catch(Exception e){
 			e.printStackTrace();
-			crearLog(new Date(), e.toString());
+			crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 		}
 		finally { //Una vez terminado, se cierra el fichero
 			try {
@@ -106,7 +104,7 @@ public class EscritorFicheros {
 			}
 			catch(Exception e) {
 				e.printStackTrace();
-				crearLog(new Date(), e.toString());
+				crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			}
 		}
 	}

@@ -46,7 +46,9 @@ public class CardDepartamento extends AnchorPane implements Initializable {
 	    try {
 	        fxmlLoader.load();
 	    } catch (IOException e) {
+	    	modelo.escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 	        throw new RuntimeException(e);
+	        
 	    }
 	    
 	    inizializarAnimacion();
@@ -66,7 +68,7 @@ public class CardDepartamento extends AnchorPane implements Initializable {
 		try {
 			FXML = fxmlLoader.load();
 		} catch (IOException e) {
-			modelo.escritorFicheros.crearLog(new Date(), e.toString());
+			modelo.escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 		} 
 		DepartamentoControlador controller = fxmlLoader.<DepartamentoControlador>getController();
 		controller.setDepartamento(departamento);

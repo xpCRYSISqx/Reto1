@@ -39,7 +39,7 @@ public class EscritorBBDD {
 		} catch (SQLException e) {
 //			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(new Date(), e.toString());
+			escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 //			System.exit(0);
 		} finally {
 			pool.desconectar();
@@ -63,7 +63,7 @@ public class EscritorBBDD {
 		} catch (SQLException e) {
 //			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(new Date(), e.toString());
+			escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 //			System.exit(0);
 		} finally {
 			pool.desconectar();
@@ -102,7 +102,7 @@ public class EscritorBBDD {
 		} catch (SQLException e) {
 //			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(new Date(), e.toString());
+			escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 //			System.exit(0);
 		} finally {
 			pool.desconectar();

@@ -34,12 +34,12 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Text fill="#00acc1" layoutX="80.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jefe:">
+      <Text fx:id="jefeTextField" fill="#00acc1" layoutX="80.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jefe:">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Text fill="#00acc1" layoutX="80.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de alta:">
+      <Text fill="#00acc1" layoutX="80.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de alta:">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -64,12 +64,12 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="jefe" layoutX="135.0" layoutY="270.0" text="jefe" textFill="WHITE">
+      <Label fx:id="jefe" layoutX="135.0" layoutY="310.0" text="jefe" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="fecha" layoutX="210.0" layoutY="310.0" text="fecha" textFill="WHITE">
+      <Label fx:id="fecha" layoutX="210.0" layoutY="270.0" text="fecha" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

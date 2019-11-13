@@ -50,7 +50,7 @@ public class PoolConexiones {
 		} catch (SQLException e) {
 //			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos: error de conexion", JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(new Date(), e.toString());
+			escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			System.exit(0);
 		}
 		return conexion;
@@ -66,7 +66,7 @@ public class PoolConexiones {
 			} catch (SQLException e) {
 //				e.printStackTrace();
 				JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos: error de desconexion", JOptionPane.ERROR_MESSAGE);
-				escritorFicheros.crearLog(new Date(), e.toString());
+				escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 				System.exit(0);
 			}
 		}
