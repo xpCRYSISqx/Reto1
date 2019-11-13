@@ -70,6 +70,7 @@ public class ResultSetConverter {
 				emple.setCodCargo(result.getInt("COD_CARGO"));
 				emple.setCodJefe(result.getInt("COD_JEFE"));
 				emple.setEsJefe(result.getBoolean("ES_JEFE"));
+				emple.setFechaAlta(result.getDate("FECHA_ALTA"));
 				empleados.add(emple);
 	        }
 		} catch (SQLException e) {
