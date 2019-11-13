@@ -15,8 +15,6 @@ import modelo.Modelo;
 public class Launcher extends Application {
 	
 	public static void main(String[] args) {
-		System.out.println(System.getProperty("java.version"));
-		System.out.println(System.getProperty("javafx.version"));
 		launch(args);
 	}
 	
@@ -29,7 +27,7 @@ public class Launcher extends Application {
 		try {
 			FXML = fxmlLoader.load();
 		} catch (IOException e) {
-			Modelo.getModelo().escritorFicheros.crearLog(new Date(), e.toString());
+			Modelo.getModelo().escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 		}
 		
 		// configurar vista principal

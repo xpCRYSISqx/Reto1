@@ -33,7 +33,7 @@ public class LectorBBDD {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
-			modelo.escritorFicheros.crearLog(new Date(), e.toString());
+			modelo.escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			System.exit(0);
 		} finally {
 			pool.desconectar();
@@ -54,7 +54,7 @@ public class LectorBBDD {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
-			modelo.escritorFicheros.crearLog(new Date(), e.toString());
+			modelo.escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			System.exit(0);
 		} finally {
 			pool.desconectar();
@@ -75,7 +75,7 @@ public class LectorBBDD {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
-			modelo.escritorFicheros.crearLog(new Date(), e.toString());
+			modelo.escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			System.exit(0);
 		} finally {
 			pool.desconectar();
@@ -96,7 +96,7 @@ public class LectorBBDD {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
-			modelo.escritorFicheros.crearLog(new Date(), e.toString());
+			modelo.escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			System.exit(0);
 		} finally {
 			pool.desconectar();
