@@ -65,7 +65,7 @@ public class EmpleadosControlador extends Controlador implements Initializable {
 		    		
 		        // añade la tarjeta al grid
 				grid.add(card, 0, i); 
-	    		}
+	    	}
 		});
 	}
 	
@@ -110,7 +110,7 @@ public class EmpleadosControlador extends Controlador implements Initializable {
 			    		
 			        // añade la tarjeta al grid
 					grid.add(card, 0, i); 
-		    		}
+		    	}
 	    	}
 		});
     }
