@@ -21,11 +21,11 @@ public class Modelo {
 	public ArrayList<Empleado> jefes = null;
 
 	private Modelo() {
-		lectorArchivos = new LectorArchivos();
-		escritorFicheros = new EscritorFicheros();
+		lectorArchivos = new LectorArchivos(this);
+		escritorFicheros = new EscritorFicheros(this);
 		comprobador = new Comprobadores(this);
 		pool = PoolConexiones.getPool(this);
-		converter = new ResultSetConverter();
+		converter = new ResultSetConverter(this);
 		escritorBBDD = new EscritorBBDD(this);
 		lectorBBDD = new LectorBBDD(this);
 		cargadorDatos = new CargadorDatos(this);

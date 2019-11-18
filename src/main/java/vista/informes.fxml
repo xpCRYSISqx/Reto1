@@ -9,13 +9,13 @@
 
 <AnchorPane prefHeight="670.0" prefWidth="820.0" styleClass="fondo-negro" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.InformesControlador">
 	<children>
-		<AnchorPane fx:id="panelEmpleado" layoutX="80.0" layoutY="80.0" prefHeight="480.0" prefWidth="660.0" styleClass="fondo-gris">
+		<AnchorPane fx:id="panelInformes" layoutX="80.0" layoutY="80.0" prefHeight="480.0" prefWidth="660.0" styleClass="fondo-gris">
 	      <Text fill="#00acc1" layoutX="80.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Imprimir empleados:">
 	         <font>
 	            <Font name="System Bold" size="18.0" />
 	         </font>
 	      </Text>
-	      <Text fx:id="jefeTextField" fill="#00acc1" layoutX="80.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Imprimir empleados y departamentos:">
+	      <Text fill="#00acc1" layoutX="80.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Imprimir empleados y departamentos:">
 	         <font>
 	            <Font name="System Bold" size="18.0" />
 	         </font>
@@ -25,32 +25,32 @@
 	            <Font name="System Bold" size="18.0" />
 	         </font>
 	      </Text>
-	      <Label fx:id="sueldo" layoutX="80.0" layoutY="80.0" text="Generar archivo con los datos de todos los empleados" textFill="WHITE">
+	      <Label layoutX="80.0" layoutY="80.0" text="Generar archivo con los datos de todos los empleados" textFill="WHITE">
 	         <font>
 	            <Font size="18.0" />
 	         </font>
 	      </Label>
-	      <Label fx:id="jefe" layoutX="80.0" layoutY="354.0" text="Generar archivo con los datos de todos los empleados y departamentos" textFill="WHITE">
+	      <Label layoutX="80.0" layoutY="354.0" text="Generar archivo con los datos de todos los empleados y departamentos" textFill="WHITE">
 	         <font>
 	            <Font size="18.0" />
 	         </font>
 	      </Label>
-	      <Label fx:id="fecha" layoutX="80.0" layoutY="220.0" text="Generar archivo con los datos de todos los departamentos" textFill="WHITE">
+	      <Label layoutX="80.0" layoutY="220.0" text="Generar archivo con los datos de todos los departamentos" textFill="WHITE">
 	         <font>
 	            <Font size="18.0" />
 	         </font>
 	      </Label>
-	      <Button layoutX="80.0" layoutY="119.0" mnemonicParsing="false" onAction="#primero" styleClass="btn" text="IMPRIMIR" textFill="WHITE">
+	      <Button layoutX="80.0" layoutY="119.0" mnemonicParsing="false" onAction="#imprimirEmpleados" styleClass="btn" text="IMPRIMIR" textFill="WHITE">
 	         <cursor>
 	            <Cursor fx:constant="HAND" />
 	         </cursor>
 	      </Button>
-	      <Button layoutX="80.0" layoutY="260.0" mnemonicParsing="false" onAction="#anterior" styleClass="btn" text="IMPRIMIR" textFill="WHITE">
+	      <Button layoutX="80.0" layoutY="260.0" mnemonicParsing="false" onAction="#imprimirDepartamentos" styleClass="btn" text="IMPRIMIR" textFill="WHITE">
 	         <cursor>
 	            <Cursor fx:constant="HAND" />
 	         </cursor>
 	      </Button>
-	      <Button layoutX="80.0" layoutY="400.0" mnemonicParsing="false" onAction="#siguiente" styleClass="btn" text="IMPRIMIR" textFill="WHITE">
+	      <Button layoutX="80.0" layoutY="400.0" mnemonicParsing="false" onAction="#imprimirTodo" styleClass="btn" text="IMPRIMIR" textFill="WHITE">
 	         <cursor>
 	            <Cursor fx:constant="HAND" />
 	         </cursor>

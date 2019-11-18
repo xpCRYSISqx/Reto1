@@ -7,7 +7,13 @@ import java.util.Date;
 
 public class ResultSetConverter {
 	
-	EscritorFicheros escritorFicheros = new EscritorFicheros();
+	private Modelo modelo;
+	private EscritorFicheros escritorFicheros;
+	
+	public ResultSetConverter(Modelo modelo) {
+		this.modelo = modelo;
+		this.escritorFicheros = new EscritorFicheros(modelo);
+	}
 	
 	/**
 	 * 

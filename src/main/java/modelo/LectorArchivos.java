@@ -21,7 +21,13 @@ import com.opencsv.CSVReader;
 
 public class LectorArchivos {
 	
-	EscritorFicheros escritorFicheros = new EscritorFicheros();
+	private Modelo modelo;
+	private EscritorFicheros escritorFicheros;
+	
+	public LectorArchivos(Modelo modelo) {
+		this.modelo = modelo;
+		this.escritorFicheros = new EscritorFicheros(modelo);
+	}
 	
 	public String[] leerDatosConexion(String nombreArchivo) {
 		String nombreFichero = "ficheros" + File.separator + nombreArchivo;

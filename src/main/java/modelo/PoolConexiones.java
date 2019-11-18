@@ -14,12 +14,13 @@ public class PoolConexiones {
 	
 	private static PoolConexiones pool;
 	private BasicDataSource dataSource;
-	private Connection conexion = null;
-	Modelo modelo = null;
-	EscritorFicheros escritorFicheros = new EscritorFicheros();
+	private Connection conexion;
+	private Modelo modelo;
+	private EscritorFicheros escritorFicheros;
 		
 	private PoolConexiones(Modelo modelo) {
 		this.modelo = modelo;
+		this.escritorFicheros = new EscritorFicheros(modelo);
 		crearPoolConexiones();
 	}
 	

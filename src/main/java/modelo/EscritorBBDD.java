@@ -13,7 +13,7 @@ public class EscritorBBDD {
 	
 	Modelo modelo = null;
 	PoolConexiones pool = null;
-	EscritorFicheros escritorFicheros = new EscritorFicheros();
+	EscritorFicheros escritorFicheros = new EscritorFicheros(modelo);
 	
 	public EscritorBBDD(Modelo modelo) {
 		this.modelo = modelo;
