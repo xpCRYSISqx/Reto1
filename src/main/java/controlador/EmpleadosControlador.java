@@ -89,28 +89,30 @@ public class EmpleadosControlador extends Controlador implements Initializable {
 			GridPane grid = crearGrid();
 	        int i = 0;
 	    	for(i = 0; i < modelo.empleados.size(); i++) {
-	    		if(textoBusqueda.getText().equals("") || textoBusqueda.getText().toLowerCase().equals(modelo.empleados.get(i).getNombre().toLowerCase().substring(0, textoBusqueda.getText().length()))) {
-			    	Empleado empleado = modelo.empleados.get(i);
-			    	Departamento departamento = null;
-			    	Cargo cargo = null;
-			    	for(int j = 0; j < modelo.departamentos.size(); j++) {
-			    		if(empleado.getCodDepartamento() == modelo.departamentos.get(j).getCodDepartamento()) {
-			    			departamento = modelo.departamentos.get(j);
-			    		}
+	    		if(textoBusqueda.getText().length() <= modelo.empleados.get(i).getNombre().length()) {
+		    		if(textoBusqueda.getText().equals("") || textoBusqueda.getText().toLowerCase().equals(modelo.empleados.get(i).getNombre().toLowerCase().substring(0, textoBusqueda.getText().length()))) {
+				    	Empleado empleado = modelo.empleados.get(i);
+				    	Departamento departamento = null;
+				    	Cargo cargo = null;
+				    	for(int j = 0; j < modelo.departamentos.size(); j++) {
+				    		if(empleado.getCodDepartamento() == modelo.departamentos.get(j).getCodDepartamento()) {
+				    			departamento = modelo.departamentos.get(j);
+				    		}
+				    	}
+				    	for(int j = 0; j < modelo.cargos.size(); j++) {
+				    		if(empleado.getCodCargo() == modelo.cargos.get(j).getCodCargo()) {
+				    			cargo = modelo.cargos.get(j);
+				    		}
+				    	}
+				    		
+				    	// crea la tarjeta con la informacion del empleado
+				    	CardEmpleado card = new CardEmpleado(empleado, departamento, cargo, (float)(i)/16 + 1F, contenido, modelo);	    		
+				    	JFXDepthManager.setDepth(card, 1);
+				    		
+				        // añade la tarjeta al grid
+						grid.add(card, 0, i); 
 			    	}
-			    	for(int j = 0; j < modelo.cargos.size(); j++) {
-			    		if(empleado.getCodCargo() == modelo.cargos.get(j).getCodCargo()) {
-			    			cargo = modelo.cargos.get(j);
-			    		}
-			    	}
-			    		
-			    	// crea la tarjeta con la informacion del empleado
-			    	CardEmpleado card = new CardEmpleado(empleado, departamento, cargo, (float)(i)/16 + 1F, contenido, modelo);	    		
-			    	JFXDepthManager.setDepth(card, 1);
-			    		
-			        // añade la tarjeta al grid
-					grid.add(card, 0, i); 
-		    	}
+	    		}
 	    	}
 		});
     }
