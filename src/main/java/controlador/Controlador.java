@@ -65,7 +65,9 @@ public class Controlador implements Initializable {
 
     @FXML
     void mostrarInformes(ActionEvent event) {
-
+    	Parent FXML = loadFXML("informes.fxml");
+		contenido.getChildren().clear();
+		contenido.getChildren().add(FXML);
     }
     
     /**

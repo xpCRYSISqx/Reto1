@@ -1,3 +1,6 @@
 Fecha: Fri Nov 15 08:44:19 CET 2019 | Clase: modelo.PoolConexiones$2 | Metodo: conectar | Motivo del error: java.sql.SQLException: Cannot create PoolableConnectionFactory (Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+Fecha: Mon Nov 18 14:23:10 CET 2019 | Clase: controlador.Controlador$2 | Metodo: loadFXML | Motivo del error: javafx.fxml.LoadException: Error resolving onAction='#primero', either the event handler is not in the Namespace or there is an error in the script.
+/C:/Users/IN1DM3B_21/Desktop/workspace-retos/Reto1/bin/vista/informes.fxml:47
+
