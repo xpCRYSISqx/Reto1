@@ -14,7 +14,7 @@
 		      <Font name="System Bold" size="24.0" />
 		   </font>
 		</Text>
-	   	<AnchorPane layoutX="80.0" layoutY="120.0" prefHeight="480.0" prefWidth="660.0" styleClass="fondo-gris">
+	   	<AnchorPane fx:id="panelNuevoDepartamento" layoutX="80.0" layoutY="120.0" prefHeight="480.0" prefWidth="660.0" styleClass="fondo-gris">
 	      <Text fill="WHITE" layoutX="60.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CÓDIGO DE DEPARTAMENTO" wrappingWidth="159.13671875" />
 	      <Text fill="WHITE" layoutX="60.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOMBRE" wrappingWidth="159.13672409951687" />
 	      <Text fill="WHITE" layoutX="60.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOCALIZACIÓN" wrappingWidth="159.13672409951687" />
