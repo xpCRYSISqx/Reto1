@@ -10,6 +10,29 @@ public class CargadorDatos {
 		this.modelo = modelo;
 	}
 	
+	public void actualizarTodosLosDatos() {
+		actualizarDepartamentos();
+		actualizarCargos();
+		actualizarEmpleados();
+		actualizarJefes();
+	}
+
+	public void actualizarDepartamentos() {
+		this.modelo.departamentos = this.modelo.lectorBBDD.obtenerTodosLosDepartamento();
+	}
+
+	public void actualizarCargos() {
+		this.modelo.cargos = this.modelo.lectorBBDD.obtenerTodosLosCargos();
+	}
+
+	public void actualizarEmpleados() {
+		this.modelo.empleados = this.modelo.lectorBBDD.obtenerTodosLosEmpleados();
+	}
+
+	public void actualizarJefes() {
+		this.modelo.jefes = this.modelo.lectorBBDD.obtenerJefes();
+	}
+	
 	/**
 	 * Insertar departamentos leidos del fichero
 	 * @return

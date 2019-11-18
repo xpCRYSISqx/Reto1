@@ -2,7 +2,6 @@ package modelo;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -49,9 +48,8 @@ public class PoolConexiones {
 		try {
 			conexion = dataSource.getConnection();
 		} catch (SQLException e) {
-//			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos: error de conexion", JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 			System.exit(0);
 		}
 		return conexion;
@@ -65,10 +63,8 @@ public class PoolConexiones {
 			try {
 				conexion.close();
 			} catch (SQLException e) {
-//				e.printStackTrace();
 				JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos: error de desconexion", JOptionPane.ERROR_MESSAGE);
-				escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
-				System.exit(0);
+				escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 			}
 		}
 	}
@@ -78,7 +74,6 @@ public class PoolConexiones {
 	 * @return
 	 */
     private String[] getDatos() {
-//    	System.out.println("Prueba");
     	return modelo.lectorArchivos.leerDatosConexion("datosBD.txt");
     }
 }

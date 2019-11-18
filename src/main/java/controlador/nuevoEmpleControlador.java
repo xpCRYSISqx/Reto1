@@ -68,7 +68,7 @@ public class nuevoEmpleControlador extends Controlador implements Initializable 
 			} else {
 				guardarEmpleado();
 				mostrarMensaje(panelNuevoEmpleado, "Nuevo empleado creado");
-				modelo.actualizarEmpleados();
+				modelo.cargadorDatos.actualizarEmpleados();
 				resetearFormulario();
 			}
 		}

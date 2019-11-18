@@ -19,6 +19,7 @@ import javafx.util.Duration;
 import modelo.Cargo;
 import modelo.Departamento;
 import modelo.Empleado;
+import modelo.LogginLevels;
 import modelo.Modelo;
 
 public class CardEmpleado extends AnchorPane implements Initializable {
@@ -55,7 +56,7 @@ public class CardEmpleado extends AnchorPane implements Initializable {
 	    try {
 	        fxmlLoader.load();
 	    } catch (IOException e) {
-	    	modelo.escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+	    	modelo.escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 	        throw new RuntimeException(e);
 	    }
 	     
@@ -67,9 +68,6 @@ public class CardEmpleado extends AnchorPane implements Initializable {
 		this.nombre.setText(this.empleado.getNombre());
 		this.departamento.setText(depart.getNombre());
 		this.cargo.setText(car.getNombre());
-//		this.descripcion.setText(this.empleado.getDescripcion());
-//		this.precio.setText(precio + "€");
-
 	}
 	
 	@FXML
@@ -79,7 +77,7 @@ public class CardEmpleado extends AnchorPane implements Initializable {
 		try {
 			FXML = fxmlLoader.load();
 		} catch (IOException e) {
-			modelo.escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			modelo.escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 		}
 		EmpleadoControlador controller = fxmlLoader.<EmpleadoControlador>getController();
 		controller.setEmpleado(empleado);

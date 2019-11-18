@@ -2,7 +2,6 @@ package controlador;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXSnackbar;
@@ -20,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import modelo.LogginLevels;
 import modelo.Modelo;
 
 public class Controlador implements Initializable {
@@ -40,12 +40,12 @@ public class Controlador implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		String info = "";
-		modelo.actualizarTodosLosDatos();
+		modelo.cargadorDatos.actualizarTodosLosDatos();
 		info += modelo.cargadorDatos.cargarDepartamentos();
 		info += modelo.cargadorDatos.cargarCargos();
 		info += modelo.cargadorDatos.cargarEmpleados();
 		mostrarMensaje2(contenido, info, 600); //anchorpane, texto, anchura
-		modelo.actualizarTodosLosDatos();
+		modelo.cargadorDatos.actualizarTodosLosDatos();
 		mostrarEmpleados(null);
 	}
 
@@ -81,7 +81,7 @@ public class Controlador implements Initializable {
 		try {
 			FXML = fxmlLoader.load();
 		} catch (IOException e) {
-			modelo.escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			modelo.escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 		}
 		Controlador controller = fxmlLoader.<Controlador>getController();
 		controller.contenido = contenido;

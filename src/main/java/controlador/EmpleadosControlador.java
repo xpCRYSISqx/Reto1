@@ -36,7 +36,7 @@ public class EmpleadosControlador extends Controlador implements Initializable {
     private TextField textoBusqueda;
     
     @FXML
-    private ComboBox tipoBusqueda;
+    private ComboBox<String> tipoBusqueda;
 
     @FXML
     void nuevo(ActionEvent event) {
@@ -47,7 +47,7 @@ public class EmpleadosControlador extends Controlador implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		ArrayList<String> tipos = new ArrayList();
+		ArrayList<String> tipos = new ArrayList<String>();
 		tipos.add("Nombre");
 		tipos.add("Codigo");
 		ObservableList<String> listaTipos = FXCollections.observableArrayList(tipos);
@@ -59,8 +59,7 @@ public class EmpleadosControlador extends Controlador implements Initializable {
 	        int i = 0;
 	    	for(i = 0; i < modelo.empleados.size(); i++) {
 	    		CardEmpleado card = crearCard(i);
-		    	JFXDepthManager.setDepth(card, 1);	
-		        // añade la tarjeta al grid
+		    	JFXDepthManager.setDepth(card, 1);
 				grid.add(card, 0, i);
 	    	}
 		});
@@ -89,10 +88,8 @@ public class EmpleadosControlador extends Controlador implements Initializable {
 	    		if(tipoBusqueda.getSelectionModel().getSelectedItem().toString() == "Nombre") {
 		    		if(textoBusqueda.getText().length() <= modelo.empleados.get(i).getNombre().length()) {
 			    		if(textoBusqueda.getText().equals("") || textoBusqueda.getText().toLowerCase().equals(modelo.empleados.get(i).getNombre().toLowerCase().substring(0, textoBusqueda.getText().length()))) {
-			    			
 			    			CardEmpleado card = crearCard(i);
-					    	JFXDepthManager.setDepth(card, 1);	
-					        // añade la tarjeta al grid
+					    	JFXDepthManager.setDepth(card, 1);
 							grid.add(card, 0, i);
 				    	}
 		    		}
@@ -100,10 +97,8 @@ public class EmpleadosControlador extends Controlador implements Initializable {
 	    		else {
 	    			if(textoBusqueda.getText().length() <= String.valueOf(modelo.empleados.get(i).getCodEmpleado()).length()) {
 			    		if(textoBusqueda.getText().equals("") || textoBusqueda.getText().equals(String.valueOf(modelo.empleados.get(i).getCodEmpleado()).substring(0, textoBusqueda.getText().length()))) {
-			    			
 			    			CardEmpleado card = crearCard(i);
-					    	JFXDepthManager.setDepth(card, 1);	
-					        // añade la tarjeta al grid
+					    	JFXDepthManager.setDepth(card, 1);
 							grid.add(card, 0, i);
 				    	}
 		    		}
@@ -126,8 +121,6 @@ public class EmpleadosControlador extends Controlador implements Initializable {
     			cargo = modelo.cargos.get(j);
     		}
     	}
-    		
-    	// crea la tarjeta con la informacion del empleado
     	CardEmpleado card = new CardEmpleado(empleado, departamento, cargo, (float)(i)/16 + 1F, contenido, modelo);
     	return card;
     }

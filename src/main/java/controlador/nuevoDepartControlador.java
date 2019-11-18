@@ -48,7 +48,7 @@ public class nuevoDepartControlador extends Controlador implements Initializable
     		else {
     			guardarDepartamento();
     			mostrarMensaje(panelNuevoDepartamento, "Nuevo departamento creado");
-    			modelo.actualizarDepartamentos();
+    			modelo.cargadorDatos.actualizarDepartamentos();
     			resetearFormulario();
     		}
     	}

@@ -11,9 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import modelo.Cargo;
 import modelo.Departamento;
-import modelo.Empleado;
 
 public class DepartamentoControlador extends Controlador implements Initializable  {
 	

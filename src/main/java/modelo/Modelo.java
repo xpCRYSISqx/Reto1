@@ -19,6 +19,8 @@ public class Modelo {
 	public ArrayList<Cargo> cargos = null;
 	public ArrayList<Empleado> empleados = null;
 	public ArrayList<Empleado> jefes = null;
+	
+	public LogginLevels logginLevels = null;
 
 	private Modelo() {
 		lectorArchivos = new LectorArchivos(this);
@@ -38,27 +40,5 @@ public class Modelo {
 		return modelo;
 	}
 	
-	public void actualizarTodosLosDatos() {
-		actualizarDepartamentos();
-		actualizarCargos();
-		actualizarEmpleados();
-		actualizarJefes();
-	}
-
-	public void actualizarDepartamentos() {
-		departamentos = lectorBBDD.obtenerTodosLosDepartamento();
-	}
-
-	public void actualizarCargos() {
-		cargos = lectorBBDD.obtenerTodosLosCargos();
-	}
-
-	public void actualizarEmpleados() {
-		empleados = lectorBBDD.obtenerTodosLosEmpleados();
-	}
-
-	public void actualizarJefes() {
-		jefes = lectorBBDD.obtenerJefes();
-	}
 
 }

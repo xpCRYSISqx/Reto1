@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -31,10 +30,8 @@ public class LectorBBDD {
 			result = stmt.executeQuery();
 			departamentos = modelo.converter.convertDepartamentos(result);
 		} catch (SQLException e) {
-			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
-			modelo.escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
-			System.exit(0);
+			modelo.escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 		} finally {
 			pool.desconectar();
 		}
@@ -52,10 +49,8 @@ public class LectorBBDD {
 			result = stmt.executeQuery();
 			cargos = modelo.converter.convertCargos(result);
 		} catch (SQLException e) {
-			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
-			modelo.escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
-			System.exit(0);
+			modelo.escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 		} finally {
 			pool.desconectar();
 		}
@@ -73,10 +68,8 @@ public class LectorBBDD {
 			result = stmt.executeQuery();
 			empleados = modelo.converter.convertEmpleados(result);
 		} catch (SQLException e) {
-			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
-			modelo.escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
-			System.exit(0);
+			modelo.escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 		} finally {
 			pool.desconectar();
 		}
@@ -94,10 +87,8 @@ public class LectorBBDD {
 			result = stmt.executeQuery();
 			empleados = modelo.converter.convertEmpleados(result);
 		} catch (SQLException e) {
-			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
-			modelo.escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
-			System.exit(0);
+			modelo.escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 		} finally {
 			pool.desconectar();
 		}

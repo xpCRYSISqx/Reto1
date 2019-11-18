@@ -3,7 +3,6 @@ package modelo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ResultSetConverter {
 	
@@ -31,8 +30,7 @@ public class ResultSetConverter {
 				departamentos.add(depart);
 	        }
 		} catch (SQLException e) {
-			e.printStackTrace();
-			escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 		}
 		return departamentos;
 	}
@@ -52,8 +50,7 @@ public class ResultSetConverter {
 				cargos.add(cargo);
 	        }
 		} catch (SQLException e) {
-			e.printStackTrace();
-			escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 		}
 		return cargos;
 	}
@@ -80,8 +77,7 @@ public class ResultSetConverter {
 				empleados.add(emple);
 	        }
 		} catch (SQLException e) {
-			e.printStackTrace();
-			escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 		}
 		return empleados;
 	}

@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -37,10 +36,8 @@ public class EscritorBBDD {
 			stmt.setString(3, departamento.getLocalizacion());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
-//			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
-//			System.exit(0);
+			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 		} finally {
 			pool.desconectar();
 		}
@@ -61,10 +58,8 @@ public class EscritorBBDD {
 			stmt.setString(2, cargo.getNombre());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
-//			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
-//			System.exit(0);
+			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 		} finally {
 			pool.desconectar();
 		}
@@ -100,10 +95,8 @@ public class EscritorBBDD {
 			stmt.setBoolean(8, empleado.getEsJefe());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
-//			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
-//			System.exit(0);
+			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 		} finally {
 			pool.desconectar();
 		}

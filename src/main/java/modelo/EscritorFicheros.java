@@ -2,8 +2,8 @@ package modelo;
 
 import java.awt.FileDialog;
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -23,24 +23,34 @@ public class EscritorFicheros {
 	 * @param fecha Fecha en la que ha ocurrido el error
 	 * @param motivo Motivo por el cual a ocurrido el error
 	 */
-	public void crearLog(Date fecha, String motivo, String metodo, String clase) {
-		String ruta = "ficheros" + File.separator + "log.txt"; //Guarda la ruta del fichero
+	public void crearLog(String clase, String metodo, String motivo, LogginLevels level) {
 		FileWriter fichero = null;
 		PrintWriter escritor = null;
+		// ruta del fichero
+		String ruta = "ficheros" + File.separator + "log.txt";
+		// fecha
+		LocalDateTime fecha = LocalDateTime.now().withNano(0);
+		// 'limpiar' nombre de la clase
+	    int firstChar = clase.lastIndexOf('.') + 1;
+	    if (firstChar > 0) {
+	      clase = clase.substring(firstChar);
+	    }
+	    clase = clase.substring(0, clase.indexOf("$"));
+	    
 		try {
 			File log = new File(ruta); //Busca si existe el fichero en la ruta especificada
 			if(!log.exists())
 				JOptionPane.showMessageDialog(new JFrame(), "Fichero log.txt no encontrado.", null, 0);
 			fichero = new FileWriter(ruta, true); //Invoca FileWriter para la ruta especificada, con el true le indicamos que no borre el contedino del fichero, simplemente escrivira a continuacion del contenido actual del fichero
 			escritor = new PrintWriter(fichero); //Invoca PrintWriter en el fichero que le especificamos y de la manera que le hemos indicado con FileWriter
-			
 			//Se escribe en el archivo
-			escritor.println("Fecha: " + fecha + " | Clase: " + clase + " | Metodo: " + metodo + " | Motivo del error: " + motivo);
+			escritor.println(fecha.toLocalDate() + " | " + fecha.toLocalTime() + " | " + clase + "." + metodo + " | " + level + " | " + motivo);
+			//escritor.println("Fecha: " + fecha.toLocalDate() + " | " + "Hora: " + fecha.toLocalTime() + " | Clase: " + clase + " | Metodo: " + metodo + " | Motivo del error: " + motivo);
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		finally { //Una vez terminado, se cierra el fichero
+		finally {
 			try {
 				fichero.close();
 			}
@@ -124,8 +134,7 @@ public class EscritorFicheros {
 			}
 		}
 		catch(Exception e){
-			e.printStackTrace();
-			crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			this.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 		}
 		finally {
 			try {
@@ -133,7 +142,7 @@ public class EscritorFicheros {
 			}
 			catch(Exception e) {
 				e.printStackTrace();
-				crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+				this.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 			}
 		}
 	}
@@ -165,16 +174,14 @@ public class EscritorFicheros {
 			}
 		}
 		catch(Exception e){
-			e.printStackTrace();
-			crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			this.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 		}
 		finally {
 			try {
 				fichero.close();
 			}
 			catch(Exception e) {
-				e.printStackTrace();
-				crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+				this.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 			}
 		}
 	}

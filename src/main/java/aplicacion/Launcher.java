@@ -1,7 +1,6 @@
 package aplicacion;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import modelo.LogginLevels;
 import modelo.Modelo;
 
 public class Launcher extends Application {
@@ -27,7 +27,7 @@ public class Launcher extends Application {
 		try {
 			FXML = fxmlLoader.load();
 		} catch (IOException e) {
-			Modelo.getModelo().escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			Modelo.getModelo().escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
 		}
 		
 		// configurar vista principal
