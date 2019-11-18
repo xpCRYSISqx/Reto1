@@ -1,16 +1,20 @@
 package controlador;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.jfoenix.effects.JFXDepthManager;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -30,6 +34,9 @@ public class EmpleadosControlador extends Controlador implements Initializable {
     
     @FXML
     private TextField textoBusqueda;
+    
+    @FXML
+    private ComboBox tipoBusqueda;
 
     @FXML
     void nuevo(ActionEvent event) {
@@ -40,31 +47,21 @@ public class EmpleadosControlador extends Controlador implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		ArrayList<String> tipos = new ArrayList();
+		tipos.add("Nombre");
+		tipos.add("Codigo");
+		ObservableList<String> listaTipos = FXCollections.observableArrayList(tipos);
+		tipoBusqueda.setItems(listaTipos);
+		tipoBusqueda.getSelectionModel().selectFirst();
 		Platform.runLater(() -> {
 
 			GridPane grid = crearGrid();
 	        int i = 0;
 	    	for(i = 0; i < modelo.empleados.size(); i++) {
-		    	Empleado empleado = modelo.empleados.get(i);
-		    	Departamento departamento = null;
-		    	Cargo cargo = null;
-		    	for(int j = 0; j < modelo.departamentos.size(); j++) {
-		    		if(empleado.getCodDepartamento() == modelo.departamentos.get(j).getCodDepartamento()) {
-		    			departamento = modelo.departamentos.get(j);
-		    		}
-		    	}
-		    	for(int j = 0; j < modelo.cargos.size(); j++) {
-		    		if(empleado.getCodCargo() == modelo.cargos.get(j).getCodCargo()) {
-		    			cargo = modelo.cargos.get(j);
-		    		}
-		    	}
-		    		
-		    	// crea la tarjeta con la informacion del empleado
-		    	CardEmpleado card = new CardEmpleado(empleado, departamento, cargo, (float)(i)/16 + 1F, contenido, modelo);	    		
-		    	JFXDepthManager.setDepth(card, 1);
-		    		
+	    		CardEmpleado card = crearCard(i);
+		    	JFXDepthManager.setDepth(card, 1);	
 		        // añade la tarjeta al grid
-				grid.add(card, 0, i); 
+				grid.add(card, 0, i);
 	    	}
 		});
 	}
@@ -89,31 +86,49 @@ public class EmpleadosControlador extends Controlador implements Initializable {
 			GridPane grid = crearGrid();
 	        int i = 0;
 	    	for(i = 0; i < modelo.empleados.size(); i++) {
-	    		if(textoBusqueda.getText().length() <= modelo.empleados.get(i).getNombre().length()) {
-		    		if(textoBusqueda.getText().equals("") || textoBusqueda.getText().toLowerCase().equals(modelo.empleados.get(i).getNombre().toLowerCase().substring(0, textoBusqueda.getText().length()))) {
-				    	Empleado empleado = modelo.empleados.get(i);
-				    	Departamento departamento = null;
-				    	Cargo cargo = null;
-				    	for(int j = 0; j < modelo.departamentos.size(); j++) {
-				    		if(empleado.getCodDepartamento() == modelo.departamentos.get(j).getCodDepartamento()) {
-				    			departamento = modelo.departamentos.get(j);
-				    		}
+	    		if(tipoBusqueda.getSelectionModel().getSelectedItem().toString() == "Nombre") {
+		    		if(textoBusqueda.getText().length() <= modelo.empleados.get(i).getNombre().length()) {
+			    		if(textoBusqueda.getText().equals("") || textoBusqueda.getText().toLowerCase().equals(modelo.empleados.get(i).getNombre().toLowerCase().substring(0, textoBusqueda.getText().length()))) {
+			    			
+			    			CardEmpleado card = crearCard(i);
+					    	JFXDepthManager.setDepth(card, 1);	
+					        // añade la tarjeta al grid
+							grid.add(card, 0, i);
 				    	}
-				    	for(int j = 0; j < modelo.cargos.size(); j++) {
-				    		if(empleado.getCodCargo() == modelo.cargos.get(j).getCodCargo()) {
-				    			cargo = modelo.cargos.get(j);
-				    		}
+		    		}
+	    		}
+	    		else {
+	    			if(textoBusqueda.getText().length() <= String.valueOf(modelo.empleados.get(i).getCodEmpleado()).length()) {
+			    		if(textoBusqueda.getText().equals("") || textoBusqueda.getText().equals(String.valueOf(modelo.empleados.get(i).getCodEmpleado()).substring(0, textoBusqueda.getText().length()))) {
+			    			
+			    			CardEmpleado card = crearCard(i);
+					    	JFXDepthManager.setDepth(card, 1);	
+					        // añade la tarjeta al grid
+							grid.add(card, 0, i);
 				    	}
-				    		
-				    	// crea la tarjeta con la informacion del empleado
-				    	CardEmpleado card = new CardEmpleado(empleado, departamento, cargo, (float)(i)/16 + 1F, contenido, modelo);	    		
-				    	JFXDepthManager.setDepth(card, 1);
-				    		
-				        // añade la tarjeta al grid
-						grid.add(card, 0, i); 
-			    	}
+		    		}
 	    		}
 	    	}
 		});
+    }
+    
+    public CardEmpleado crearCard(int i) {
+    	Empleado empleado = modelo.empleados.get(i);
+    	Departamento departamento = null;
+    	Cargo cargo = null;
+    	for(int j = 0; j < modelo.departamentos.size(); j++) {
+    		if(empleado.getCodDepartamento() == modelo.departamentos.get(j).getCodDepartamento()) {
+    			departamento = modelo.departamentos.get(j);
+    		}
+    	}
+    	for(int j = 0; j < modelo.cargos.size(); j++) {
+    		if(empleado.getCodCargo() == modelo.cargos.get(j).getCodCargo()) {
+    			cargo = modelo.cargos.get(j);
+    		}
+    	}
+    		
+    	// crea la tarjeta con la informacion del empleado
+    	CardEmpleado card = new CardEmpleado(empleado, departamento, cargo, (float)(i)/16 + 1F, contenido, modelo);
+    	return card;
     }
 }
