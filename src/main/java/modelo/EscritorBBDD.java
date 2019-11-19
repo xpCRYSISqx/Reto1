@@ -36,13 +36,14 @@ public class EscritorBBDD {
 			stmt.setString(2, departamento.getNombre());
 			stmt.setString(3, departamento.getLocalizacion());
 			stmt.executeUpdate();
+			escritorFicheros.crearLog("Se ha insertado el departamento: " + departamento.getNombre() + " con el codigo: " + departamento.getCodDepartamento(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 		} catch (SQLException e) {
 //			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 //			System.exit(0);
 		} finally {
-			escritorFicheros.crearLog(new Date(), "Se ha insertado el departamento: " + departamento.getNombre() + " con el codigo: " + departamento.getCodDepartamento(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			escritorFicheros.crearLog("Se ha insertado el departamento: " + departamento.getNombre() + " con el codigo: " + departamento.getCodDepartamento(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			pool.desconectar();
 		}
 	}
@@ -64,7 +65,7 @@ public class EscritorBBDD {
 		} catch (SQLException e) {
 //			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 //			System.exit(0);
 		} finally {
 			escritorFicheros.crearLog(new Date(), "Se ha insertado el cargo: " + cargo.getNombre() + " con el codigo: " + cargo.getCodCargo(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
@@ -104,10 +105,10 @@ public class EscritorBBDD {
 		} catch (SQLException e) {
 //			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 //			System.exit(0);
 		} finally {
-			escritorFicheros.crearLog(new Date(), "Se ha insertado el empleado: " + empleado.getNombre() + " con el codigo: " + empleado.getCodEmpleado(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			escritorFicheros.crearLog("Se ha insertado el empleado: " + empleado.getNombre() + " con el codigo: " + empleado.getCodEmpleado(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			pool.desconectar();
 		}
 	}

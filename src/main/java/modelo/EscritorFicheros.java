@@ -2,6 +2,7 @@ package modelo;
 
 import java.awt.FileDialog;
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -23,10 +24,12 @@ public class EscritorFicheros {
 	 * @param fecha Fecha en la que ha ocurrido el error
 	 * @param motivo Motivo por el cual a ocurrido el error
 	 */
-	public void crearLog(Date fecha, String motivo, String metodo, String clase) {
+	public void crearLog(String motivo, String metodo, String clase) {
 		String ruta = "ficheros" + File.separator + "log.txt"; //Guarda la ruta del fichero
 		FileWriter fichero = null;
 		PrintWriter escritor = null;
+		// fecha
+		LocalDateTime fecha = LocalDateTime.now().withNano(0);
 		try {
 			File log = new File(ruta); //Busca si existe el fichero en la ruta especificada
 			if(!log.exists())
@@ -35,7 +38,7 @@ public class EscritorFicheros {
 			escritor = new PrintWriter(fichero); //Invoca PrintWriter en el fichero que le especificamos y de la manera que le hemos indicado con FileWriter
 			
 			//Se escribe en el archivo
-			escritor.println("Fecha: " + fecha + " | Clase: " + clase + " | Metodo: " + metodo + " | " + motivo);
+			escritor.println(fecha.toLocalDate() + " | " + fecha.toLocalTime() + " | Clase: " + clase + " | Metodo: " + metodo + " | " + motivo);
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -125,7 +128,7 @@ public class EscritorFicheros {
 		}
 		catch(Exception e){
 			e.printStackTrace();
-			crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 		}
 		finally {
 			try {
@@ -133,7 +136,7 @@ public class EscritorFicheros {
 			}
 			catch(Exception e) {
 				e.printStackTrace();
-				crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+				crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			}
 		}
 	}
@@ -166,7 +169,7 @@ public class EscritorFicheros {
 		}
 		catch(Exception e){
 			e.printStackTrace();
-			crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 		}
 		finally {
 			try {
@@ -174,7 +177,7 @@ public class EscritorFicheros {
 			}
 			catch(Exception e) {
 				e.printStackTrace();
-				crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+				crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			}
 		}
 	}
