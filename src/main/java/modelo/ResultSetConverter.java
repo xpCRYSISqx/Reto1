@@ -32,7 +32,7 @@ public class ResultSetConverter {
 	        }
 		} catch (SQLException e) {
 			e.printStackTrace();
-			escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 		}
 		return departamentos;
 	}
@@ -53,7 +53,7 @@ public class ResultSetConverter {
 	        }
 		} catch (SQLException e) {
 			e.printStackTrace();
-			escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 		}
 		return cargos;
 	}
@@ -81,7 +81,7 @@ public class ResultSetConverter {
 	        }
 		} catch (SQLException e) {
 			e.printStackTrace();
-			escritorFicheros.crearLog(new Date(), e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 		}
 		return empleados;
 	}
