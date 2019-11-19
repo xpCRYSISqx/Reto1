@@ -35,7 +35,7 @@ public class EscritorFicheros {
 			escritor = new PrintWriter(fichero); //Invoca PrintWriter en el fichero que le especificamos y de la manera que le hemos indicado con FileWriter
 			
 			//Se escribe en el archivo
-			escritor.println("Fecha: " + fecha + " | Clase: " + clase + " | Metodo: " + metodo + " | Motivo del error: " + motivo);
+			escritor.println("Fecha: " + fecha + " | Clase: " + clase + " | Metodo: " + metodo + " | " + motivo);
 		}
 		catch(Exception e){
 			e.printStackTrace();
