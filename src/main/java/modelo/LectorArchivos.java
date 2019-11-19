@@ -49,14 +49,14 @@ public class LectorArchivos {
 			}
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos",JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
+			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString());
 			System.exit(0);
 		} finally {
 			try {
 				fileReader.close();
 			} catch (Exception e2) {
 				e2.printStackTrace();
-				escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e2.toString(), LogginLevels.ERROR);
+				escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e2.toString());
 			}
 		}
 		return datos;
@@ -81,14 +81,14 @@ public class LectorArchivos {
 				vuelta++;
 			}
 		} catch (Exception e) {
-			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
+			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString());
 		} finally {
 			if (null != reader) {
 				try {
 					reader.close();
 				} catch (IOException e) {
 					e.printStackTrace();
-					escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
+					escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString());
 				}
 			} 
 		}
@@ -118,7 +118,7 @@ public class LectorArchivos {
         		departamentos.add(departamento);
             }
         } catch (Exception e) {
-            escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
+            escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString());
         }
         return departamentos;
 	}
@@ -151,7 +151,7 @@ public class LectorArchivos {
         		empleados.add(empleado);
             }
         } catch (Exception e) {
-        	escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
+        	escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString());
         }
         return empleados;
 	}

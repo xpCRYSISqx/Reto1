@@ -27,7 +27,7 @@ public class Launcher extends Application {
 		try {
 			FXML = fxmlLoader.load();
 		} catch (IOException e) {
-			Modelo.getModelo().escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
+			Modelo.getModelo().escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString());
 		}
 		
 		// configurar vista principal

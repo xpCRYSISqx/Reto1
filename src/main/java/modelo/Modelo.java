@@ -19,8 +19,6 @@ public class Modelo {
 	public ArrayList<Cargo> cargos = null;
 	public ArrayList<Empleado> empleados = null;
 	public ArrayList<Empleado> jefes = null;
-	
-	public LogginLevels logginLevels = null;
 
 	private Modelo() {
 		lectorArchivos = new LectorArchivos(this);
@@ -39,6 +37,4 @@ public class Modelo {
 		}
 		return modelo;
 	}
-	
-
 }

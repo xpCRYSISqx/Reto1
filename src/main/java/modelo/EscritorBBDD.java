@@ -10,9 +10,8 @@ import javax.swing.JOptionPane;
 
 public class EscritorBBDD {
 	
-	Modelo modelo = null;
-	PoolConexiones pool = null;
-	EscritorFicheros escritorFicheros = new EscritorFicheros(modelo);
+	Modelo modelo;
+	PoolConexiones pool;
 	
 	public EscritorBBDD(Modelo modelo) {
 		this.modelo = modelo;
@@ -35,9 +34,10 @@ public class EscritorBBDD {
 			stmt.setString(2, departamento.getNombre());
 			stmt.setString(3, departamento.getLocalizacion());
 			stmt.executeUpdate();
+			modelo.escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), "Se ha realizado una insercion a la base de datos del departamento " + departamento.getCodDepartamento() + " y con el codigo " + departamento.getCodDepartamento());
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
+			modelo.escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString());
 		} finally {
 			pool.desconectar();
 		}
@@ -59,7 +59,7 @@ public class EscritorBBDD {
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
+			modelo.escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString());
 		} finally {
 			pool.desconectar();
 		}
@@ -96,7 +96,7 @@ public class EscritorBBDD {
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
+			modelo.escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString());
 		} finally {
 			pool.desconectar();
 		}

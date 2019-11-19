@@ -23,7 +23,7 @@ public class EscritorFicheros {
 	 * @param fecha Fecha en la que ha ocurrido el error
 	 * @param motivo Motivo por el cual a ocurrido el error
 	 */
-	public void crearLog(String clase, String metodo, String motivo, LogginLevels level) {
+	public void crearLog(String clase, String metodo, String motivo) {
 		FileWriter fichero = null;
 		PrintWriter escritor = null;
 		// ruta del fichero
@@ -44,8 +44,7 @@ public class EscritorFicheros {
 			fichero = new FileWriter(ruta, true); //Invoca FileWriter para la ruta especificada, con el true le indicamos que no borre el contedino del fichero, simplemente escrivira a continuacion del contenido actual del fichero
 			escritor = new PrintWriter(fichero); //Invoca PrintWriter en el fichero que le especificamos y de la manera que le hemos indicado con FileWriter
 			//Se escribe en el archivo
-			escritor.println(fecha.toLocalDate() + " | " + fecha.toLocalTime() + " | " + clase + "." + metodo + " | " + level + " | " + motivo);
-			//escritor.println("Fecha: " + fecha.toLocalDate() + " | " + "Hora: " + fecha.toLocalTime() + " | Clase: " + clase + " | Metodo: " + metodo + " | Motivo del error: " + motivo);
+			escritor.println("Fecha: " + fecha.toLocalDate() + " | " + "Hora: " + fecha.toLocalTime() + " | Clase: " + clase + " | Metodo: " + metodo + " | Motivo del error: " + motivo);
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -134,7 +133,7 @@ public class EscritorFicheros {
 			}
 		}
 		catch(Exception e){
-			this.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
+			this.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString());
 		}
 		finally {
 			try {
@@ -142,7 +141,7 @@ public class EscritorFicheros {
 			}
 			catch(Exception e) {
 				e.printStackTrace();
-				this.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
+				this.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString());
 			}
 		}
 	}
@@ -174,14 +173,14 @@ public class EscritorFicheros {
 			}
 		}
 		catch(Exception e){
-			this.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
+			this.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString());
 		}
 		finally {
 			try {
 				fichero.close();
 			}
 			catch(Exception e) {
-				this.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
+				this.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString());
 			}
 		}
 	}

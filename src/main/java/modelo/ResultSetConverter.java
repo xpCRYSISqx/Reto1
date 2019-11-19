@@ -30,7 +30,7 @@ public class ResultSetConverter {
 				departamentos.add(depart);
 	        }
 		} catch (SQLException e) {
-			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
+			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString());
 		}
 		return departamentos;
 	}
@@ -50,7 +50,7 @@ public class ResultSetConverter {
 				cargos.add(cargo);
 	        }
 		} catch (SQLException e) {
-			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
+			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString());
 		}
 		return cargos;
 	}
@@ -77,7 +77,7 @@ public class ResultSetConverter {
 				empleados.add(emple);
 	        }
 		} catch (SQLException e) {
-			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString(), LogginLevels.ERROR);
+			escritorFicheros.crearLog(this.getClass().getName(), this.getClass().getEnclosingMethod().getName(), e.toString());
 		}
 		return empleados;
 	}
