@@ -43,6 +43,7 @@ public class EscritorBBDD {
 			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 //			System.exit(0);
 		} finally {
+			escritorFicheros.crearLog("Se ha insertado el departamento: " + departamento.getNombre() + " con el codigo: " + departamento.getCodDepartamento(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			pool.desconectar();
 		}
 	}
@@ -106,6 +107,7 @@ public class EscritorBBDD {
 			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 //			System.exit(0);
 		} finally {
+			escritorFicheros.crearLog("Se ha insertado el empleado: " + empleado.getNombre() + " con el codigo: " + empleado.getCodEmpleado(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			pool.desconectar();
 		}
 	}
