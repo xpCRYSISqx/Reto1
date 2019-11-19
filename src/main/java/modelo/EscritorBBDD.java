@@ -36,6 +36,7 @@ public class EscritorBBDD {
 			stmt.setString(2, departamento.getNombre());
 			stmt.setString(3, departamento.getLocalizacion());
 			stmt.executeUpdate();
+			escritorFicheros.crearLog(new Date(), "Se ha insertado el departamento: " + departamento.getNombre() + " con el codigo: " + departamento.getCodDepartamento(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 		} catch (SQLException e) {
 //			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
