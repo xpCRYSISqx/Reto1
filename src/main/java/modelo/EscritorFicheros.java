@@ -30,6 +30,12 @@ public class EscritorFicheros {
 		PrintWriter escritor = null;
 		// fecha
 		LocalDateTime fecha = LocalDateTime.now().withNano(0);
+		// 'limpiar' nombre de la clase
+	    int firstChar = clase.lastIndexOf('.') + 1;
+	    if (firstChar > 0) {
+	      clase = clase.substring(firstChar);
+	    }
+	    clase = clase.substring(0, clase.indexOf("$"));
 		try {
 			File log = new File(ruta); //Busca si existe el fichero en la ruta especificada
 			if(!log.exists())

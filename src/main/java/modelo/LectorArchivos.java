@@ -30,7 +30,7 @@ public class LectorArchivos {
 	}
 	
 	public String[] leerDatosConexion(String nombreArchivo) {
-		String nombreFichero = "ficheros" + File.separator;
+		String nombreFichero = "ficheros" + File.separator + nombreArchivo;
 		String[] datos = new String[4];
 		String linea, clave, dato = "";
 		FileReader fileReader = null;
