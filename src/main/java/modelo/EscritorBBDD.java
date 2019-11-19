@@ -68,6 +68,7 @@ public class EscritorBBDD {
 			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 //			System.exit(0);
 		} finally {
+			escritorFicheros.crearLog("Se ha insertado el cargo: " + cargo.getNombre() + " con el codigo: " + cargo.getCodCargo(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			pool.desconectar();
 		}
 	}
