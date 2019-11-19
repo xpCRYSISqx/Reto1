@@ -4,7 +4,6 @@ import java.awt.FileDialog;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -133,7 +132,6 @@ public class EscritorFicheros {
 			}
 		}
 		catch(Exception e){
-			e.printStackTrace();
 			crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 		}
 		finally {
@@ -141,7 +139,6 @@ public class EscritorFicheros {
 				fichero.close();
 			}
 			catch(Exception e) {
-				e.printStackTrace();
 				crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			}
 		}
@@ -174,7 +171,6 @@ public class EscritorFicheros {
 			}
 		}
 		catch(Exception e){
-			e.printStackTrace();
 			crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 		}
 		finally {

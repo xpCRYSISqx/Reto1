@@ -2,7 +2,6 @@ package vista;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 import controlador.EmpleadoControlador;
@@ -56,7 +55,7 @@ public class CardEmpleado extends AnchorPane implements Initializable {
 	        fxmlLoader.load();
 	    } catch (IOException e) {
 	    	modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
-	        throw new RuntimeException(e);
+	        //throw new RuntimeException(e);
 	    }
 	     
 	    inizializarAnimacion();
@@ -67,9 +66,6 @@ public class CardEmpleado extends AnchorPane implements Initializable {
 		this.nombre.setText(this.empleado.getNombre());
 		this.departamento.setText(depart.getNombre());
 		this.cargo.setText(car.getNombre());
-//		this.descripcion.setText(this.empleado.getDescripcion());
-//		this.precio.setText(precio + "€");
-
 	}
 	
 	@FXML

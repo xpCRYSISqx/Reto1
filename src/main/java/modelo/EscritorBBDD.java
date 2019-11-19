@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -38,12 +37,9 @@ public class EscritorBBDD {
 			stmt.executeUpdate();
 			escritorFicheros.crearLog("Se ha insertado el departamento: " + departamento.getNombre() + " con el codigo: " + departamento.getCodDepartamento(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 		} catch (SQLException e) {
-//			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
 			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
-//			System.exit(0);
 		} finally {
-			escritorFicheros.crearLog("Se ha insertado el departamento: " + departamento.getNombre() + " con el codigo: " + departamento.getCodDepartamento(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			pool.desconectar();
 		}
 	}
@@ -63,10 +59,8 @@ public class EscritorBBDD {
 			stmt.setString(2, cargo.getNombre());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
-//			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
 			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
-//			System.exit(0);
 		} finally {
 			escritorFicheros.crearLog("Se ha insertado el cargo: " + cargo.getNombre() + " con el codigo: " + cargo.getCodCargo(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			pool.desconectar();
@@ -103,10 +97,8 @@ public class EscritorBBDD {
 			stmt.setBoolean(8, empleado.getEsJefe());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
-//			e1.printStackTrace();
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error al intentar guardar los datos", JOptionPane.ERROR_MESSAGE);
 			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
-//			System.exit(0);
 		} finally {
 			escritorFicheros.crearLog("Se ha insertado el empleado: " + empleado.getNombre() + " con el codigo: " + empleado.getCodEmpleado(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			pool.desconectar();
