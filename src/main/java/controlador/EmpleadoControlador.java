@@ -128,7 +128,7 @@ public class EmpleadoControlador extends Controlador implements Initializable {
 		if (empleado.getCodJefe() != 0) {
 			this.jefe.setText(jefe.getNombre() + " " + jefe.getApellidos());
 		}
-		this.fecha.setText(empleado.getFechaAlta().toLocalDate() + " " + empleado.getFechaAlta().toLocalTime());
+		this.fecha.setText(String.valueOf(empleado.getFechaAlta()));
 	}
 
 }

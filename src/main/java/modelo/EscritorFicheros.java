@@ -122,8 +122,7 @@ public class EscritorFicheros {
 					escritor.println("Es jefe: Si");
 				else
 					escritor.println("Es jefe: No");
-			    
-				escritor.println("Fecha de alta: " + empleados.get(i).getFechaAlta().toLocalDate() + " " + empleados.get(i).getFechaAlta().toLocalTime());
+				escritor.println("Fecha de alta: " + empleados.get(i).getFechaAlta());
 				
 				escritor.println();
 				if (i < empleados.size() - 1) {

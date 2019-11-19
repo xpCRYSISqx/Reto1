@@ -1,6 +1,6 @@
 package modelo;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 public class Empleado {
 	
@@ -12,7 +12,7 @@ public class Empleado {
 	private int codCargo;
 	private Integer codJefe;
 	private boolean esJefe;
-	private LocalDateTime fechaAlta;
+	private Date fechaAlta;
 	
 	public Empleado() {
 		
@@ -82,11 +82,11 @@ public class Empleado {
 		this.esJefe = esJefe;
 	}
 
-	public LocalDateTime getFechaAlta() {
+	public Date getFechaAlta() {
 		return fechaAlta;
 	}
 
-	public void setFechaAlta(LocalDateTime fechaAlta) {
+	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
 	
