@@ -20,7 +20,7 @@
 	      <FontAwesomeIconView fill="WHITE" glyphName="MAP_MARKER" layoutX="35.0" layoutY="70.0" size="20" />
 	      <Text fx:id="departamento" fill="WHITE" layoutX="55.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DEPARTAMENTO" />
          <Label fx:id="cargo" layoutX="35.0" layoutY="75.0" prefHeight="40.0" prefWidth="390.0" text="Cargo" textFill="WHITE" wrapText="true" />
-         <JFXButton onAction="#verEmpleado" prefHeight="150.0" prefWidth="600.0" ripplerFill="#bbbbbb" text=" ">
+         <JFXButton onAction="#verEmpleado" prefHeight="130.0" prefWidth="600.0" ripplerFill="#bbbbbb" text=" ">
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor></JFXButton>

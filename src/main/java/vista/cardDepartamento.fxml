@@ -18,7 +18,7 @@
 	      </Text>
 	      <FontAwesomeIconView fill="WHITE" glyphName="MAP_MARKER" layoutX="35.0" layoutY="70.0" size="20" />
 	      <Text fx:id="localizacion" fill="WHITE" layoutX="55.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="localizacion" />
-         <JFXButton onAction="#verDepartamento" prefHeight="150.0" prefWidth="600.0" ripplerFill="#bbbbbb" style="-fx-background-color: transparent;" text=" ">
+         <JFXButton onAction="#verDepartamento" prefHeight="100.0" prefWidth="600.0" ripplerFill="#bbbbbb" style="-fx-background-color: transparent;" text=" ">
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor></JFXButton>
