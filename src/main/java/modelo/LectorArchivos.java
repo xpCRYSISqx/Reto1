@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -49,7 +48,6 @@ public class LectorArchivos {
 				}
 			}
 		} catch (Exception e) {
-//			System.out.println(e.getMessage());
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos",JOptionPane.ERROR_MESSAGE);
 			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			System.exit(0);
@@ -57,7 +55,6 @@ public class LectorArchivos {
 			try {
 				fileReader.close();
 			} catch (Exception e2) {
-				e2.printStackTrace();
 				escritorFicheros.crearLog(e2.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			}
 		}
@@ -84,13 +81,11 @@ public class LectorArchivos {
 			}
 		} catch (Exception e) {
 			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
-			//Excepción que corresponda
 		} finally {
 			if (null != reader) {
 				try {
 					reader.close();
 				} catch (IOException e) {
-					e.printStackTrace();
 					escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 				}
 			} 
@@ -121,7 +116,6 @@ public class LectorArchivos {
         		departamentos.add(departamento);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
         }
         return departamentos;
@@ -155,7 +149,6 @@ public class LectorArchivos {
         		empleados.add(empleado);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
         }
         return empleados;

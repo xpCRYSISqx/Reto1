@@ -2,7 +2,6 @@ package vista;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 import controlador.DepartamentoControlador;
@@ -12,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
@@ -47,8 +45,7 @@ public class CardDepartamento extends AnchorPane implements Initializable {
 	        fxmlLoader.load();
 	    } catch (IOException e) {
 	    	modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
-	        throw new RuntimeException(e);
-	        
+	        //throw new RuntimeException(e);
 	    }
 	    
 	    inizializarAnimacion();

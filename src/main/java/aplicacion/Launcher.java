@@ -1,7 +1,6 @@
 package aplicacion;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

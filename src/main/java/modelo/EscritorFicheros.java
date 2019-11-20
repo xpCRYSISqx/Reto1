@@ -4,7 +4,6 @@ import java.awt.FileDialog;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -30,6 +29,12 @@ public class EscritorFicheros {
 		PrintWriter escritor = null;
 		// fecha
 		LocalDateTime fecha = LocalDateTime.now().withNano(0);
+		// 'limpiar' nombre de la clase
+	    int firstChar = clase.lastIndexOf('.') + 1;
+	    if (firstChar > 0) {
+	      clase = clase.substring(firstChar);
+	    }
+	    clase = clase.substring(0, clase.indexOf("$"));
 		try {
 			File log = new File(ruta); //Busca si existe el fichero en la ruta especificada
 			if(!log.exists())
@@ -127,7 +132,6 @@ public class EscritorFicheros {
 			}
 		}
 		catch(Exception e){
-			e.printStackTrace();
 			crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 		}
 		finally {
@@ -135,7 +139,6 @@ public class EscritorFicheros {
 				fichero.close();
 			}
 			catch(Exception e) {
-				e.printStackTrace();
 				crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 			}
 		}
@@ -168,7 +171,6 @@ public class EscritorFicheros {
 			}
 		}
 		catch(Exception e){
-			e.printStackTrace();
 			crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
 		}
 		finally {
