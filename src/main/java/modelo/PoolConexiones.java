@@ -15,11 +15,9 @@ public class PoolConexiones {
 	private BasicDataSource dataSource;
 	private Connection conexion;
 	private Modelo modelo;
-	private EscritorFicheros escritorFicheros;
 		
 	private PoolConexiones(Modelo modelo) {
 		this.modelo = modelo;
-		this.escritorFicheros = new EscritorFicheros(modelo);
 		crearPoolConexiones();
 	}
 	
@@ -49,7 +47,7 @@ public class PoolConexiones {
 			conexion = dataSource.getConnection();
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos: error de conexion", JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 		}
 		return conexion;
 	}
@@ -63,7 +61,7 @@ public class PoolConexiones {
 				conexion.close();
 			} catch (SQLException e) {
 				JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos: error de desconexion", JOptionPane.ERROR_MESSAGE);
-				escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+				modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 			}
 		}
 	}

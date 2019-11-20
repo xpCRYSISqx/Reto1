@@ -19,11 +19,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import modelo.Cargo;
 import modelo.Departamento;
-import modelo.Empleado;
 import vista.CardDepartamento;
-import vista.CardEmpleado;
 
 public class DepartamentosControlador extends Controlador implements Initializable  {
 
@@ -37,7 +34,7 @@ public class DepartamentosControlador extends Controlador implements Initializab
     private TextField textoBusquedaD;
     
     @FXML
-    private ComboBox tipoBusquedaD;
+    private ComboBox<String> tipoBusquedaD;
 
     @FXML
     void nuevo(ActionEvent event) {
@@ -48,7 +45,7 @@ public class DepartamentosControlador extends Controlador implements Initializab
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		ArrayList<String> tipos = new ArrayList();
+		ArrayList<String> tipos = new ArrayList<String>();
 		tipos.add("Nombre");
 		tipos.add("Codigo");
 		ObservableList<String> listaTipos = FXCollections.observableArrayList(tipos);

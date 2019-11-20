@@ -7,11 +7,9 @@ import java.util.ArrayList;
 public class ResultSetConverter {
 	
 	private Modelo modelo;
-	private EscritorFicheros escritorFicheros;
 	
 	public ResultSetConverter(Modelo modelo) {
 		this.modelo = modelo;
-		this.escritorFicheros = new EscritorFicheros(modelo);
 	}
 	
 	/**
@@ -30,7 +28,7 @@ public class ResultSetConverter {
 				departamentos.add(depart);
 	        }
 		} catch (SQLException e) {
-			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 		}
 		return departamentos;
 	}
@@ -50,7 +48,7 @@ public class ResultSetConverter {
 				cargos.add(cargo);
 	        }
 		} catch (SQLException e) {
-			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 		}
 		return cargos;
 	}
@@ -77,7 +75,7 @@ public class ResultSetConverter {
 				empleados.add(emple);
 	        }
 		} catch (SQLException e) {
-			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 		}
 		return empleados;
 	}

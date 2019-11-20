@@ -19,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import modelo.LogginLevels;
 import modelo.Modelo;
 
 public class Controlador implements Initializable {
@@ -80,7 +81,7 @@ public class Controlador implements Initializable {
 		try {
 			FXML = fxmlLoader.load();
 		} catch (IOException e) {
-			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 		}
 		Controlador controller = fxmlLoader.<Controlador>getController();
 		controller.contenido = contenido;

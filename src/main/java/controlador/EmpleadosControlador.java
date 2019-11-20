@@ -36,7 +36,7 @@ public class EmpleadosControlador extends Controlador implements Initializable {
     private TextField textoBusqueda;
     
     @FXML
-    private ComboBox tipoBusqueda;
+    private ComboBox<String> tipoBusqueda;
 
     @FXML
     void nuevo(ActionEvent event) {
@@ -47,7 +47,7 @@ public class EmpleadosControlador extends Controlador implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		ArrayList<String> tipos = new ArrayList();
+		ArrayList<String> tipos = new ArrayList<String>();
 		tipos.add("Nombre");
 		tipos.add("Codigo");
 		ObservableList<String> listaTipos = FXCollections.observableArrayList(tipos);

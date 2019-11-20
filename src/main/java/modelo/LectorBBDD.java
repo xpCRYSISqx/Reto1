@@ -31,7 +31,7 @@ public class LectorBBDD {
 			departamentos = modelo.converter.convertDepartamentos(result);
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
-			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 		} finally {
 			pool.desconectar();
 		}
@@ -50,7 +50,7 @@ public class LectorBBDD {
 			cargos = modelo.converter.convertCargos(result);
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
-			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 		} finally {
 			pool.desconectar();
 		}
@@ -69,7 +69,7 @@ public class LectorBBDD {
 			empleados = modelo.converter.convertEmpleados(result);
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
-			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 		} finally {
 			pool.desconectar();
 		}
@@ -88,7 +88,7 @@ public class LectorBBDD {
 			empleados = modelo.converter.convertEmpleados(result);
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos", JOptionPane.ERROR_MESSAGE);
-			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 		} finally {
 			pool.desconectar();
 		}

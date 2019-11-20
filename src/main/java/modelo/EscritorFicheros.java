@@ -23,7 +23,7 @@ public class EscritorFicheros {
 	 * @param fecha Fecha en la que ha ocurrido el error
 	 * @param motivo Motivo por el cual a ocurrido el error
 	 */
-	public void crearLog(String motivo, String metodo, String clase) {
+	public void crearLog(String motivo, String metodo, String clase, LogginLevels level) {
 		String ruta = "ficheros" + File.separator + "log.txt"; //Guarda la ruta del fichero
 		FileWriter fichero = null;
 		PrintWriter escritor = null;
@@ -43,7 +43,7 @@ public class EscritorFicheros {
 			escritor = new PrintWriter(fichero); //Invoca PrintWriter en el fichero que le especificamos y de la manera que le hemos indicado con FileWriter
 			
 			//Se escribe en el archivo
-			escritor.println(fecha.toLocalDate() + " | " + fecha.toLocalTime() + " | Clase: " + clase + " | Metodo: " + metodo + " | " + motivo);
+			escritor.println(fecha.toLocalDate() + " | " + fecha.toLocalTime() + " | " + level + " | Clase: " + clase + " | Metodo: " + metodo + " | " + motivo);
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -130,16 +130,17 @@ public class EscritorFicheros {
 					escritor.println();
 				}
 			}
+			modelo.escritorFicheros.crearLog("Se ha imprimido un informe con los datos de los empleados", new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.INFO);
 		}
 		catch(Exception e){
-			crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 		}
 		finally {
 			try {
 				fichero.close();
 			}
 			catch(Exception e) {
-				crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+				crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 			}
 		}
 	}
@@ -169,9 +170,10 @@ public class EscritorFicheros {
 					escritor.println();
 				}
 			}
+			modelo.escritorFicheros.crearLog("Se ha imprimido un informe con los datos de los departamentos", new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.INFO);
 		}
 		catch(Exception e){
-			crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 		}
 		finally {
 			try {
@@ -179,7 +181,7 @@ public class EscritorFicheros {
 			}
 			catch(Exception e) {
 				e.printStackTrace();
-				crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+				crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 			}
 		}
 	}

@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import modelo.Departamento;
+import modelo.LogginLevels;
 import modelo.Modelo;
 
 public class CardDepartamento extends AnchorPane implements Initializable {
@@ -44,8 +45,7 @@ public class CardDepartamento extends AnchorPane implements Initializable {
 	    try {
 	        fxmlLoader.load();
 	    } catch (IOException e) {
-	    	modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
-	        //throw new RuntimeException(e);
+	    	modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 	    }
 	    
 	    inizializarAnimacion();
@@ -65,7 +65,7 @@ public class CardDepartamento extends AnchorPane implements Initializable {
 		try {
 			FXML = fxmlLoader.load();
 		} catch (IOException e) {
-			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 		} 
 		DepartamentoControlador controller = fxmlLoader.<DepartamentoControlador>getController();
 		controller.setDepartamento(departamento);

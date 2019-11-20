@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import modelo.LogginLevels;
 import modelo.Modelo;
 
 public class Launcher extends Application {
@@ -26,7 +27,7 @@ public class Launcher extends Application {
 		try {
 			FXML = fxmlLoader.load();
 		} catch (IOException e) {
-			Modelo.getModelo().escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			Modelo.getModelo().escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 		}
 		
 		// configurar vista principal

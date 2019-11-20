@@ -114,8 +114,25 @@ public class nuevoEmpleControlador extends Controlador implements Initializable 
 			this.mostrarMensaje2(panelNuevoEmpleado, "Debe seleccionar si el empleado es jefe o no", 400);
 			return false;
 		}
+		
+		// validar departamento
+		if (departEmpleComboBox.getSelectionModel().isEmpty()) {
+			this.mostrarMensaje2(panelNuevoEmpleado, "No hay departamentos para seleccionar", 400);
+			return false;
+		}
+		
+		// validar cargo
+		if (cargoEmpleComboBox.getSelectionModel().isEmpty()) {
+			this.mostrarMensaje2(panelNuevoEmpleado, "No hay cargos para seleccionar", 400);
+			return false;
+		}
+		
+		// validar jefe
+		if (jefeEmpleComboBox.getSelectionModel().isEmpty()) {
+			this.mostrarMensaje2(panelNuevoEmpleado, "No hay empleados jefe para seleccionar", 400);
+			return false;
+		}
 
-		// si todo es valido devuelve true
 		return true;
 	}
 

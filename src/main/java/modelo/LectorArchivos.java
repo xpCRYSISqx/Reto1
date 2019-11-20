@@ -21,11 +21,9 @@ import com.opencsv.CSVReader;
 public class LectorArchivos {
 	
 	private Modelo modelo;
-	private EscritorFicheros escritorFicheros;
 	
 	public LectorArchivos(Modelo modelo) {
 		this.modelo = modelo;
-		this.escritorFicheros = new EscritorFicheros(modelo);
 	}
 	
 	public String[] leerDatosConexion(String nombreArchivo) {
@@ -49,13 +47,13 @@ public class LectorArchivos {
 			}
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error en la base de datos",JOptionPane.ERROR_MESSAGE);
-			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 			System.exit(0);
 		} finally {
 			try {
 				fileReader.close();
 			} catch (Exception e2) {
-				escritorFicheros.crearLog(e2.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+				modelo.escritorFicheros.crearLog(e2.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 			}
 		}
 		return datos;
@@ -80,13 +78,13 @@ public class LectorArchivos {
 				vuelta++;
 			}
 		} catch (Exception e) {
-			escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+			modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 		} finally {
 			if (null != reader) {
 				try {
 					reader.close();
 				} catch (IOException e) {
-					escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+					modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
 				}
 			} 
 		}
@@ -116,7 +114,7 @@ public class LectorArchivos {
         		departamentos.add(departamento);
             }
         } catch (Exception e) {
-            escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+        	modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
         }
         return departamentos;
 	}
@@ -149,7 +147,7 @@ public class LectorArchivos {
         		empleados.add(empleado);
             }
         } catch (Exception e) {
-            escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName());
+        	modelo.escritorFicheros.crearLog(e.toString(), new Object() {} .getClass().getEnclosingMethod().getName(), new Object() {} .getClass().getName(), LogginLevels.ERROR);
         }
         return empleados;
 	}
