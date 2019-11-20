@@ -19,6 +19,11 @@
 .textfield {
 	-fx-background-radius: 0;
 }
+.combo-box  {
+    -fx-background-color: white, white, white, white;
+    -fx-background-radius: 0;
+    -fx-padding: 3px;
+}
 .btn {
 	-fx-background-color:  #00acc1;
 	-fx-background-radius: 2px;

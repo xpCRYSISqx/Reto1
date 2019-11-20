@@ -29,7 +29,7 @@
             <AnchorPane fx:id="contenedor" prefHeight="480.0" prefWidth="660.0" />
          </content>
       </ScrollPane>
-      <TextField fx:id="textoBusqueda" layoutX="259.0" layoutY="58.0" onKeyReleased="#busqueda" prefHeight="32.0" prefWidth="161.0" promptText="Busqueda" />
-      <ComboBox fx:id="tipoBusqueda" layoutX="424.0" layoutY="62.0" prefHeight="25.0" prefWidth="107.0" />
+      <TextField fx:id="textoBusqueda" layoutX="259.0" layoutY="58.0" onKeyReleased="#busqueda" prefHeight="32.0" prefWidth="161.0" promptText="Busqueda" styleClass="textfield" />
+      <ComboBox fx:id="tipoBusqueda" layoutX="424.0" layoutY="58.0" prefHeight="25.0" prefWidth="107.0" />
 	</children>
 </AnchorPane>
